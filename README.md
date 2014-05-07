@@ -33,22 +33,24 @@ Bedienung
 ---------
 * Mögliche Aufrufe unter `http://<raspi>/service.html`
 * Alternativ direkt über `http://<raspi>/serv.fsr?<befehl>`, Befehle:
-  * shutdown: Herunterfahren. Bitte ausführen, bevor der Stecker gezogen wird, und eine Weile warten.
-  * reboot  : Neustart des gesamten Raspis
-  * restart : Neustart der Browserumgebung. Kann zu Fehlermeldung führen, dann einfach erneut ausführen.
-  * refresh, reload : Seite/Daten neu laden (wird vermutlich nicht implementiert, da umständlicher als restart)
-  * kaffee  : Kaffee machen
+  * `shutdown`: Herunterfahren. Bitte ausführen, bevor der Stecker gezogen wird, und eine Weile warten.
+  * `reboot`  : Neustart des gesamten Raspis
+  * `restart` : Neustart der Browserumgebung. Kann zu Fehlermeldung führen, dann einfach erneut ausführen.
+  * `refresh`, `reload`: Seite/Daten neu laden (wird vermutlich nicht implementiert, da umständlicher als restart)
+  * `kaffee  : Kaffee machen
 
 Installation
 ============
 Einfache Variante
 -----------------
 Zum Beispiel bei Dateisystemfehlern oder neuer SD-Karte anzuwenden.
+
 1. Raspberry Pi, 4GB-SD-Karte
 2. `$ gzip -d raspkiosk.sd.gz`
 3. `$ dd bs=1m if=raspkiosk.sd of=/dev/<sdkarte>`
 
 Anmerkungen zur vorinstallierten Version:
+
 * Softwarestand Mitte 2013
 * MPEG2- und VC1-Keys für iFSR-Raspberry vorinstalliert
 * startet automatisch im Kiosk-Modus
@@ -64,7 +66,8 @@ Anmerkungen zur vorinstallierten Version:
 Manuelle Variante
 -----------------
 Vollständige Dokumentation der zu tätigenden Einstellungen.
+
 1. Raspbian installieren (für andere Distributionen ggf. Anleitung geringfügig anpassen)
-2. ... TODO
+2. … TODO
 3. Profit!
 
