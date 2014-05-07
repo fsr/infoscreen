@@ -1,0 +1,10 @@
+#!/bin/bash
+echo 020 > /dev/ledborg
+echo "Content-type: text/json"
+echo ""
+curl -k -s https://www.ifsr.de/_feed/fsr:ticker | xmlstarlet sel -t -m "/rss/channel/item" -v "description" -o "<!--next-->"  | \
+	xmlstarlet unesc | \
+	sed 's,<\/*p>,,g' | \
+	sed 's,\&quot\;,\",g'
+
+echo 000 > /dev/ledborg

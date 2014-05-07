@@ -1,0 +1,2 @@
+#!/bin/bash
+raspistill -p '900,650,400,300' -v -t 20000000 -op 140 -hf
