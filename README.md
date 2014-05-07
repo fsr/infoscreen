@@ -37,7 +37,7 @@ Bedienung
   * `reboot`  : Neustart des gesamten Raspis
   * `restart` : Neustart der Browserumgebung. Kann zu Fehlermeldung führen, dann einfach erneut ausführen.
   * `refresh`, `reload`: Seite/Daten neu laden (wird vermutlich nicht implementiert, da umständlicher als restart)
-  * `kaffee  : Kaffee machen
+  * `kaffee`  : Kaffee machen
 
 Installation
 ============
