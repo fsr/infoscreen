@@ -1,4 +1,4 @@
-iFSR-Info-Screen für Raspberry Pi
+iFSR-Info-Screen für Raspberry Pi 
 Dirk Legler - dirk@ifsr.de
 
 Funktionen
@@ -15,35 +15,38 @@ iFSR-Newsticker
 * Adresse: https://ifsr.de/fsr:newsticker
 * Wenn Seite leer: Editieren, Zahl der Beiträge ändern, speichern
 * Neue News: Blogeintrag anlegen (Name beliebig, aber aussagekräftig), Template:
+```html
 	<html>
-	<h2 class="newstitle">$newstitel$</h2>
-	<div class="newstext">$newstext$</div>
+	<h2 class="newstitle">%newstitel%</h2>
+	<div class="newstext">%newstext%</div>
 	</html>
-
+```
 * für Bilder (1200x600px, am besten lokal auf Raspi speichern):
+```html
 	<html>
-	<div style="width:1200px;height:600px;background:url('$bildurl1200x600$');">&nbsp;</div>
+	<div style="width:1200px;height:600px;background:url('%bildurl1200x600%');">&nbsp;</div>
 	</html>
+```
 * News löschen: Eintrag bearbeiten, Text löschen, speichern
 
 Bedienung
 ---------
-* Mögliche Aufrufe unter http://<raspi>/service.html
-* Alternativ direkt über http://<raspi>/serv.fsr?<befehl>, Befehle:
- + shutdown: Herunterfahren. Bitte ausführen, bevor der Stecker gezogen wird, und eine Weile warten.
- + reboot  : Neustart des gesamten Raspis
- + restart : Neustart der Browserumgebung. Kann zu Fehlermeldung führen, dann einfach erneut ausführen.
- + refresh, reload : Seite/Daten neu laden (wird vermutlich nicht implementiert, da umständlicher als restart)
- + kaffee  : Kaffee machen
+* Mögliche Aufrufe unter `http://<raspi>/service.html`
+* Alternativ direkt über `http://<raspi>/serv.fsr?<befehl>`, Befehle:
+  * shutdown: Herunterfahren. Bitte ausführen, bevor der Stecker gezogen wird, und eine Weile warten.
+  * reboot  : Neustart des gesamten Raspis
+  * restart : Neustart der Browserumgebung. Kann zu Fehlermeldung führen, dann einfach erneut ausführen.
+  * refresh, reload : Seite/Daten neu laden (wird vermutlich nicht implementiert, da umständlicher als restart)
+  * kaffee  : Kaffee machen
 
 Installation
 ============
 Einfache Variante
 -----------------
 Zum Beispiel bei Dateisystemfehlern oder neuer SD-Karte anzuwenden.
-0. Raspberry Pi, 4GB-SD-Karte
-1. $ gzip -d raspkiosk.sd.gz
-2. $ dd bs=1m if=raspkiosk.sd of=/dev/<sdkarte>
+1. Raspberry Pi, 4GB-SD-Karte
+2. `$ gzip -d raspkiosk.sd.gz`
+3. `$ dd bs=1m if=raspkiosk.sd of=/dev/<sdkarte>`
 
 Anmerkungen zur vorinstallierten Version:
 * Softwarestand Mitte 2013
@@ -55,8 +58,8 @@ Anmerkungen zur vorinstallierten Version:
 * /var/log und /tmp liegen im RAM, Webserver-Log ist deaktiviert
 * Treiber für LEDborg vorinstalliert (müssen bei neuem Kernel aktualisiert werden)
 * keine Sicherheitsexperten drüberschauen lassen, die noch keinen Kaffee hatten – horribly insecure!
- + Webserver-Nutzer hat sudo-Rechte (um Browser neu zu starten etc.)
- + Begründung: Jeder, der Netzzugriff auf den Raspi hat, hat auch physischen Zugriff und sollte trustworthy sein
+  * Webserver-Nutzer hat sudo-Rechte (um Browser neu zu starten etc.)
+  * Begründung: Jeder, der Netzzugriff auf den Raspi hat, hat auch physischen Zugriff und sollte trustworthy sein
 
 Manuelle Variante
 -----------------
