@@ -45,9 +45,12 @@ Einfache Variante
 -----------------
 Zum Beispiel bei Dateisystemfehlern oder neuer SD-Karte anzuwenden.
 
-1. Raspberry Pi, 4GB-SD-Karte
-2. `$ gzip -d raspkiosk.sd.gz`
-3. `$ dd bs=1m if=raspkiosk.sd of=/dev/<sdkarte>`
+1. raspkiosk.sd.gz von der kaki unter `/home/fsr/Infoscreen` laden
+2. Raspberry Pi und 4GB-SD-Karte versorgen
+3. `$ gzip -d raspkiosk.sd.gz`
+4. `$ dd bs=1m if=raspkiosk.sd of=/dev/<sdkarte>`
+5. Raspberry Pi anschließen (inkl. Ethernetkabel), SD-Karte einstecken, Strom geben
+6. Infoscreen bootet automatisch
 
 Anmerkungen zur vorinstallierten Version:
 
