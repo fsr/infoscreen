@@ -45,14 +45,14 @@ then
 			echo "Content-type: text/json"
 			echo ""
 			echo -n "[\""
-			sudo -u pi git --git-dir=/home/pi/infoscreen/.git --work-tree=/home/pi git reset --hard
+			sudo -u pi git --git-dir=/home/pi/infoscreen/.git --work-tree=/home/pi reset --hard
 			echo "\"]"
 			exit 0;;
 		gitpull|"gitpull=")
 			echo "Content-type: text/json"
 			echo ""
 			echo -n "[\""
-			sudo -u pi git --git-dir=/home/pi/infoscreen/.git --work-tree=/home/pi git pull origin master
+			sudo -u pi git --git-dir=/home/pi/infoscreen/.git --work-tree=/home/pi pull origin master
 			echo "\"]"
 			exit 0;;
 		refresh|"refresh=")
