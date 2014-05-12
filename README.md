@@ -1,4 +1,4 @@
-iFSR-Info-Screen für Raspberry Pi 
+iFSR-Info-Screen für Raspberry Pi  
 Dirk Legler - dirk@ifsr.de
 
 Funktionen
