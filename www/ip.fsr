@@ -1,5 +1,4 @@
 #!/bin/bash
-echo 220 > /dev/ledborg
 echo "Content-type: text/json"
 echo ""
 ifconfig|sed -n "/inet addr:.*255.255.255.0/{s/.*inet addr://; s/ .*//; p}"
