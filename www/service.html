@@ -5,6 +5,7 @@
 		<title>iFSR info screen service</title>
 			<script type="text/javascript">
 				var servreq = new XMLHttpRequest();
+				var versreq = new XMLHttpRequest();
 				function init() {
 					servreq.open('GET', 'serv.fsr');
 					servreq.onreadystatechange = function() {
@@ -12,7 +13,15 @@
     					if(this.status==300) showOptions(this.responseText);
     				};
     				servreq.send(null);
-				
+					versreq.open('GET', 'version.fsr');
+					versreq.onreadystatechange = function() {
+    					if(this.readyState!=4) return;
+    					if(this.status==200) {
+    						var versiontext = JSON.parse(this.responseText);
+							version = versiontext[2];
+    					};
+    				};
+   					 versreq.send(null);
 				}
 				
 				function showOptions(response) {

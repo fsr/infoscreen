@@ -1,6 +1,6 @@
 var stops = ["helmholtz", "muenchner"];
 var tickerCopyright = "(Der Postillon)";
-var version = "0.4.0306a"
+var version = "0"
 
 var news = new Array();
 var ticker = new Array();
@@ -20,6 +20,7 @@ for(s in stops) dynamos.push(new XMLHttpRequest());
 
 var rssreq = new XMLHttpRequest();
 var tickerreq = new XMLHttpRequest();
+var versionreq = new XMLHttpRequest();
 var ipreq = new XMLHttpRequest();
 
 
@@ -37,7 +38,18 @@ function saveTicker(tickerjson) {
 	luTicker = new Date().getTime();
 	ticker = tickertext["ticker"];
 	showTicker();
+}
 
+function updateVersion() {
+	versionreq.open('GET', 'version.fsr');
+	versionreq.onreadystatechange = function() {
+    			if(this.readyState!=4) return;
+    			if(this.status==200) {
+    				var versiontext = JSON.parse(this.responseText);
+					version = versiontext[2];
+    			};
+    		};
+    versionreq.send(null);
 }
 
 function showTicker() {
@@ -118,7 +130,7 @@ window.onload = function() {
 	setInterval('updateRSS()', 1800000);
 	setInterval('showRSS()', 20000);
 	setInterval('showTicker()', 15000);
-	
+	updateVersion();
 	ipreq.open('GET', 'ip.fsr');
 	ipreq.onreadystatechange = function() {
     			if(this.readyState!=4) return;
