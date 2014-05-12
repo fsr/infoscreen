@@ -18,7 +18,7 @@
     					if(this.readyState!=4) return;
     					if(this.status==200) {
     						var versiontext = JSON.parse(this.responseText);
-							version = versiontext[2];
+							document.getElementById("version").innerHTML = versiontext[2];
     					};
     				};
    					 versreq.send(null);
