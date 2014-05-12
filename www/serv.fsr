@@ -41,6 +41,20 @@ then
 #			sudo -u pi /home/pi/kiosk.sh &
 			DISPLAY=:0 sudo -u pi chromium --disk-cache-dir="/var/tmp" --disable-translate --incognito --kiosk "http://localhost/" 
 			exit 0;;
+		gitreset|"gitreset=")
+			echo "Content-type: text/json"
+			echo ""
+			echo -n "[\""
+			sudo -u pi git --git-dir=/home/pi/infoscreen/.git --work-tree=/home/pi git reset --hard
+			echo "\"]"
+			exit 0;;
+		gitpull|"gitpull=")
+			echo "Content-type: text/json"
+			echo ""
+			echo -n "[\""
+			sudo -u pi git --git-dir=/home/pi/infoscreen/.git --work-tree=/home/pi git pull origin master
+			echo "\"]"
+			exit 0;;
 		refresh|"refresh=")
 			error="501";;
 		reload|"reload=")
@@ -95,12 +109,12 @@ else
 	Content-type: text/json
 	
 	[
-		["reboot", "shutdown", "reload", "refresh", "restart", "kaffee"],
+		["reboot", "shutdown", "gitreset", "gitpull", "restart", "kaffee"],
 		[
 			"Reboot the Pi",
 			"Shutdown the Pi",
-			"Reload all data on screen",
-			"Refresh info screen",
+			"Reset testing code",
+			"Pull new code from git",
 			"Restart browser",
 			"Make coffee"
 		]
