@@ -45,23 +45,26 @@ Einfache Variante
 -----------------
 Zum Beispiel bei Dateisystemfehlern oder neuer SD-Karte anzuwenden.
 
-1. raspkiosk.sd.gz von der kaki unter `/home/fsr/Infoscreen` laden
+1. fsrinfoscreen.sd.gz von der kaki unter `/home/fsr/Infoscreen` laden
 2. Raspberry Pi und 4GB-SD-Karte versorgen
-3. `$ gzip -d raspkiosk.sd.gz`
-4. `$ dd bs=1m if=raspkiosk.sd of=/dev/<sdkarte>`
+3. `$ gzip -d fsrinfoscreen.sd.gz`
+4. `$ dd bs=1m if=fsrinfoscreen.sd of=/dev/<sdkarte>`
 5. Raspberry Pi anschließen (inkl. Ethernetkabel), SD-Karte einstecken, Strom geben
 6. Infoscreen bootet automatisch
 
 Anmerkungen zur vorinstallierten Version:
 
-* Softwarestand Mitte 2013
+* Softwarestand 18.05.2014
 * MPEG2- und VC1-Keys für iFSR-Raspberry vorinstalliert
 * startet automatisch im Kiosk-Modus
 * User: pi, Passwort: fsrberry
 * iFSR-WLAN-Verbindung voreingestellt
-* IP-Adresse im iFSR-LAN siehe kleine
+* IP-Adresse im iFSR-LAN siehe kleine Anzeige unter dem FSR-Logo
 * /var/log und /tmp liegen im RAM, Webserver-Log ist deaktiviert
 * Treiber für LEDborg vorinstalliert (müssen bei neuem Kernel aktualisiert werden)
+* Update des Codes per git möglich
+  * `$ cd /home/pi/infoscreen`
+  * `$ git pull origin master`
 * keine Sicherheitsexperten drüberschauen lassen, die noch keinen Kaffee hatten – horribly insecure!
   * Webserver-Nutzer hat sudo-Rechte (um Browser neu zu starten etc.)
   * Begründung: Jeder, der Netzzugriff auf den Raspi hat, hat auch physischen Zugriff und sollte trustworthy sein
