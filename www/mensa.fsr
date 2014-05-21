@@ -6,7 +6,7 @@ then
 mensa=${QUERY_STRING//+/ } 
 mensa=${mensa//%20/ } 
 echo "["
-curl -k -s http://www.studentenwerk-dresden.de/feeds/speiseplan.rss | xmlstarlet sel -T -t -m "/rss/channel/item[author='$mensa']" --if "position()>1" -o "," -o "\"" -c "description" -o "\""
+curl -k -s http://www.studentenwerk-dresden.de/feeds/speiseplan.rss | xmlstarlet sel -T -t -m "/rss/channel/item[author='$mensa']" --if "position() > 1" -o "," -o "\"" -c "description" -o "\""
 echo "]"
 else
 echo "[\"Bitte Mensa per GET-Query angeben.\""]
