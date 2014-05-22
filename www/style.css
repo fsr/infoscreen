@@ -115,8 +115,8 @@ body {
 #pages {
 	position: fixed;
 	text-align: right;
-	top: 572px;
-	right: 45px;
+	top: 582px;
+	left: 1110px;
 	width: 100px;
 	height: 50px;
 	font-size: 32px;
@@ -126,9 +126,9 @@ body {
 #ticker {
 	position: fixed;
 	text-align: left;
-	bottom: 330px;
+	bottom: 340px;
 	left: 20px;
-	width: 1200px;
+	width: 924px;
 	height: 85px;
 	font-size: 26px;
 	overflow: hidden;
