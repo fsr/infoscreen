@@ -1,4 +1,4 @@
-var stops = ["helmholtz", "muenchner"];
+var stops = ["helmholtz", "muenchner", "technische"];
 var tickerCopyright = "(Alte Mensa)";
 var version = "0"
 
