@@ -1,5 +1,5 @@
 var stops = ["helmholtz", "muenchner"];
-var tickerCopyright = "(Der Postillon)";
+var tickerCopyright = "(Alte Mensa)";
 var version = "0"
 
 var news = new Array();
@@ -25,7 +25,7 @@ var ipreq = new XMLHttpRequest();
 
 
 function updateTicker() {
-	tickerreq.open('GET', 'ticker.fsr');
+	tickerreq.open('GET', 'mensa.fsr?Alte+Mensa');
 	tickerreq.onreadystatechange = function() {
     			if(this.readyState!=4) return;
     			if(this.status==200) saveTicker(this.responseText);
@@ -36,7 +36,7 @@ function updateTicker() {
 function saveTicker(tickerjson) {
 	var tickertext = JSON.parse(tickerjson);
 	luTicker = new Date().getTime();
-	ticker = tickertext["ticker"];
+	ticker = tickertext;
 	showTicker();
 }
 
