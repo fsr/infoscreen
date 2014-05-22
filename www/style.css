@@ -15,18 +15,6 @@ body {
 	position: fixed;
 	bottom: 10px;
 	right: 75px;
-	
-	
-  /*  text-shadow:
-    	0 0 10px #FFFFFF,
-    	0 0 20px #FFFFFF,
-    	0 0 30px #FFFFFF,
-    	0 0 40px #FF00DE,
-    	0 0 70px #FF00DE,
-    	0 0 80px #FF00DE,
-    	0 0 100px #FF00DE,
-    	0 0 150px #FF00DE;*/
-    
 }
 
 .glow {
@@ -45,6 +33,7 @@ body {
 	margin: 0px; padding: 0px;
 	margin-bottom: 15px;
 }
+
 .vvo {
 	float:left;
 	padding-right: 70px;
@@ -55,18 +44,14 @@ body {
 }
 
 .vvono {
-	/*width: 60px;*/
-	/*text-align: right;*/
 	width: 60px;
 }
 
 .vvono3 {
-	/*background:#ffbb44;*/
 	width: 50px;
 }
 
 .vvono85 {
-	/*background:#ffbb44;*/
 	width: 70px;
 }
 
@@ -78,8 +63,6 @@ body {
 }
 
 .vvostation {
-	/*width: 230px;*/
-	/*height: 30px;*/
 	max-height: 25px;
 	overflow: hidden;
 }
@@ -167,6 +150,19 @@ pre {
 	font-size: 42px;
 }
 
+.newstext table {
+	font-size:18px;
+}
+
+#debug {
+	position: absolute;
+	bottom: 4px;
+	right: 4px;
+	font-size: 8px;
+	width: 250px;
+	color: #aaa;
+}
+
 #newsbox {
 	position: absolute;
 	top: 10px;
@@ -176,7 +172,6 @@ pre {
 	overflow: hidden;	
 	/*border: 1px solid green;*/
 }
-
 
 /* ESE-Stundenplaene */
 #stundenplan td {
@@ -232,17 +227,4 @@ pre {
 .plan_name {
 	padding:2px;
 	border-bottom:none !important;
-}
-
-.newstext table {
-	font-size:18px;
-}
-
-#debug {
-	position: absolute;
-	bottom: 4px;
-	right: 4px;
-	font-size: 8px;
-	width: 250px;
-	color: #aaa;
 }
