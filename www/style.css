@@ -36,7 +36,7 @@ body {
 #vvobox {
 	position: fixed;
 	left: 20px;
-	top: 700px;
+	bottom: 50px;
 	border: 1px solid red;
 }
 	
@@ -126,7 +126,7 @@ body {
 #ticker {
 	position: fixed;
 	text-align: left;
-	top: 613px; /*885*/
+	bottom: 400px;
 	left: 20px;
 	width: 924px;
 	height: 85px;
@@ -168,7 +168,9 @@ pre {
 }
 
 #newsbox {
-	margin: 0 auto;
+	position: absolute;
+	top: 10px;
+	left: 10px;
 	width: 1200px;
 	height: 600px;
 	overflow: hidden;	
