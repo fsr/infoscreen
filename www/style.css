@@ -37,7 +37,7 @@ body {
 	position: fixed;
 	left: 20px;
 	bottom: 55px;
-	border: 1px solid red;
+	/*border: 1px solid red;*/
 }
 	
 .vvoheader {
@@ -132,7 +132,7 @@ body {
 	height: 85px;
 	font-size: 26px;
 	overflow: hidden;
-	border: 1px solid blue;
+	/*border: 1px solid blue;*/
 }
 
 #ticker a {
@@ -174,7 +174,7 @@ pre {
 	width: 1200px;
 	height: 600px;
 	overflow: hidden;	
-	border: 1px solid green;
+	/*border: 1px solid green;*/
 }
 
 
