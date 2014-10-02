@@ -1,4 +1,4 @@
-var stops = ["helmholtz", "muenchner", "technische"];
+var stops = ["helmholtz", "muenchner"];
 var tickerCopyright = "(Alte Mensa)";
 var version = "0"
 
@@ -14,6 +14,7 @@ var lutDVB = "";
 var lutTicker = "";
 var lutNews = "";
 var raspiIP = "";
+var picsadded = false;
 // ajax requests
 var dynamos = new Array();
 for(s in stops) dynamos.push(new XMLHttpRequest());
@@ -22,7 +23,24 @@ var rssreq = new XMLHttpRequest();
 var tickerreq = new XMLHttpRequest();
 var versionreq = new XMLHttpRequest();
 var ipreq = new XMLHttpRequest();
+var picreq = new XMLHttpRequest();
 
+function load_pics() {
+	picreq.open('GET', 'pics.fsr');
+	picreq.onreadystatechange = function() {
+    			if(this.readyState!=4) return;
+    			if(this.status==200) inject_pics(this.responseText);
+    		};
+    picreq.send(null);
+}
+
+function inject_pics(pictext) {
+	var pics = pictext.split("\n");
+	pics.forEach(function(val) {
+      	if(val.trim()!="") news.unshift("<div style=\"position:fixed;top:0px;left:150px;width:1600px;height:790px;z-index:1000;text-align:center;\"><img style=\"max-height:780px;\" src=\""+val.trim()+"\"/></div></html>");
+    });
+    picsadded = true;
+}
 
 function updateTicker() {
 	tickerreq.open('GET', 'mensa.fsr?Alte+Mensa');
@@ -63,7 +81,6 @@ function showTicker() {
 		document.getElementById("ticker").innerHTML = "Derzeit kein Ticker.";
 		
 	}
-	
 }
 
 function updateRSS() {
@@ -83,6 +100,7 @@ function saveRSS(response) {
 		setTimeout('updateRSS()', 20000);
 	}
 	luNews= new Date().getTime();
+	if(!picsadded) load_pics();
 	showRSS();
 }
 
@@ -95,9 +113,7 @@ function showRSS() {
 	} else {
 		document.getElementById("newsbox").innerHTML = "Derzeit keine Nachrichten.";
 		document.getElementById("pages").innerHTML = "";
-		
 	}
-
 }
 
 function updateDVB() {
@@ -128,8 +144,8 @@ window.onload = function() {
 	setInterval('updateTicker()', 600000);
 	updateTicker();
 	setInterval('updateRSS()', 1800000);
-	setInterval('showRSS()', 20000);
-	setInterval('showTicker()', 15000);
+	setInterval('showRSS()', 10000); // set to 20000 without pics
+	setInterval('showTicker()', 10000);
 	updateVersion();
 	ipreq.open('GET', 'ip.fsr');
 	ipreq.onreadystatechange = function() {
