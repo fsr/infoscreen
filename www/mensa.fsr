@@ -1,13 +1,16 @@
-#!/bin/bash
-echo "Content-type: text/json"
-echo ""
-if [ ! -z $QUERY_STRING ]
-then
-mensa=${QUERY_STRING//+/ } 
-mensa=${mensa//%20/ } 
-echo -n "["
-curl -k -s http://www.studentenwerk-dresden.de/feeds/speiseplan.rss | xmlstarlet sel -T -t -m "/rss/channel/item[author='$mensa']" --if "position() > 1" -o "," -b -o "\"" -c "description" -o "\""
-echo -n "]"
-else
-echo "[\"Bitte Mensa per GET-Query angeben.\""]
-fi
+<?php
+header("Content-type: text/json");
+
+if(!empty($_SERVER["QUERY_STRING"])) {
+	$mensa = str_replace(array("+","%20"), " ", $_SERVER["QUERY_STRING"]);
+	$planxml = simplexml_load_file("http://www.studentenwerk-dresden.de/feeds/speiseplan.rss");
+	$mensaxml = $planxml->xpath("/rss/channel/item[author=\"".$mensa."\"]/description");
+	$mensaarray = array();
+	foreach($mensaxml as $k=>$v) {
+		array_push($mensaarray, $v->__toString());
+	}
+	echo json_encode($mensaarray);
+
+} else {
+	echo "[\"Bitte Mensa per GET-Query angeben.\"]";
+} 

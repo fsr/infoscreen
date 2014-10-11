@@ -1,4 +1,3 @@
-#!/bin/bash
-echo "Content-type: text/json"
-echo ""
-curl -s "http://derposti.cluster003.ovh.net/ticker/newsticker.php"
+<?php
+echo file_get_contents("http://derposti.cluster003.ovh.net/ticker/newsticker.php");
+?>

@@ -1,12 +1,8 @@
-#!/bin/bash
-echo 220 > /dev/ledborg
-echo "Content-type: text/json"
-echo ""
-if [ ! -z $QUERY_STRING ]
-then 
-curl -s "http://widgets.vvo-online.de/abfahrtsmonitor/Abfahrten.do?ort=Dresden&hst="$QUERY_STRING"&vz=0&lim=4"
-echo 000 > /dev/ledborg
-else 
-echo 200 > /dev/ledborg
-echo "[]"
-fi
+<?php
+header("Content-type: text/json");
+if(!empty($_SERVER["QUERY_STRING"])) {
+	echo file_get_contents("http://widgets.vvo-online.de/abfahrtsmonitor/Abfahrten.do?ort=Dresden&hst=".$_SERVER["QUERY_STRING"]."&vz=0&lim=4");
+} else {
+	echo "[]";
+}
+?>
