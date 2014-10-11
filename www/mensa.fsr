@@ -9,5 +9,5 @@ echo -n "["
 curl -k -s http://www.studentenwerk-dresden.de/feeds/speiseplan.rss | xmlstarlet sel -T -t -m "/rss/channel/item[author='$mensa']" --if "position() > 1" -o "," -b -o "\"" -c "description" -o "\""
 echo -n "]"
 else
-echo "[\"Bitte Mensa per GET-Query angeben.\""]
+echo "[\"Bitte Mensa per GET-Query angeben.\"]"
 fi
