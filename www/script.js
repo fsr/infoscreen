@@ -145,7 +145,7 @@ function showDVB(station, response) {
 	var table = "";
 	
     nextup.forEach(function(val) {
-      	table += "<tr><td class=\"vvono vvono"+val[0]+"\">"+val[0]+"</td><td class=\"vvostation\">"+val[1]+"</td><td class=\"vvomin\">"+val[2]+"</td></tr>";
+      	table += "<tr><td class=\"vvono vvono"+val[0]+"\">"+val[0]+"</td><td class=\"vvostation\">"+val[1].replace("Dresden","")+"</td><td class=\"vvomin\">"+val[2]+"</td></tr>";
     });
         
     document.getElementById(station+"table").innerHTML = table;
