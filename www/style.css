@@ -51,8 +51,12 @@ body {
 	width: 50px;
 }
 
-.vvono85 {
+.vvono85, .vvonoE3 {
 	width: 70px;
+}
+
+.vvono360, .vvono424 {
+	width: 80px;
 }
 
 .vvo table {
@@ -60,6 +64,10 @@ body {
 	overflow: hidden;
 	white-space: nowrap; 
 	width: 400px;
+}
+
+#technische table {
+	width: 450px;
 }
 
 .vvostation {
@@ -70,6 +78,10 @@ body {
 .vvomin {
 	text-align: right;
 	width: 60px;
+}
+
+#helmholtz .vvomin {
+	width: 70px;
 }
 
 #fsrlogo {
