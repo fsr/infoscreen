@@ -1,9 +1,10 @@
 var stops = ["helmholtz", "muenchner", "technische"];
-var tickerCopyright = "(Alte Mensa)";
+var tickerCopyright = "(Der Postillon)";
 var version = "0"
 
 var news = new Array();
 var ticker = new Array();
+var mensa = new Array();
 var currentNews = 0;
 var currentTicker = 0;
 // last update (text)
@@ -22,10 +23,11 @@ var rssreq = new XMLHttpRequest();
 var tickerreq = new XMLHttpRequest();
 var versionreq = new XMLHttpRequest();
 var ipreq = new XMLHttpRequest();
+var mensareq = new XMLHttpRequest();
 
 
 function updateTicker() {
-	tickerreq.open('GET', 'mensa.fsr?Alte+Mensa');
+	tickerreq.open('GET', 'ticker.fsr');
 	tickerreq.onreadystatechange = function() {
     			if(this.readyState!=4) return;
     			if(this.status==200) saveTicker(this.responseText);
@@ -36,8 +38,26 @@ function updateTicker() {
 function saveTicker(tickerjson) {
 	var tickertext = JSON.parse(tickerjson);
 	luTicker = new Date().getTime();
-	ticker = tickertext;
+	ticker = tickertext["ticker"];
 	showTicker();
+}
+
+function updateMensa() {
+	mensareq.open('GET', 'mensa.fsr?alte-mensa');
+	mensareq.onreadystatechange = function() {
+    			if(this.readyState!=4) return;
+    			if(this.status==200) saveMensa(this.responseText);
+    		};
+    mensareq.send(null);
+}
+
+function saveMensa(mensatext) {
+	mensa = unescape(mensatext).split('</table>', 6);
+	showMensa();
+}
+
+function showMensa() {
+	document.getElementById("mensa").innerHTML = mensa[(new Date().getDay()+1)%7]+"</table>";
 }
 
 function updateVersion() {
@@ -127,6 +147,8 @@ window.onload = function() {
 	updateRSS();
 	setInterval('updateTicker()', 600000);
 	updateTicker();
+	setInterval('updateMensa()', 14400000);
+	updateMensa();
 	setInterval('updateRSS()', 1800000);
 	setInterval('showRSS()', 20000);
 	setInterval('showTicker()', 15000);

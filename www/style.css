@@ -185,6 +185,22 @@ pre {
 	/*border: 1px solid green;*/
 }
 
+#mensa {
+	position: fixed;
+	top: 20px;
+	left: 1300px;
+	width: 600px;
+	height: 700px;
+	font-size: 12px;
+	border: 1px dotted #a0a0a0;
+	border-width: 0 1px 1px 0;
+}
+
+#mensa a {
+	text-decoration: none;
+	color: #000;
+}
+
 /* ESE-Stundenplaene */
 #stundenplan td {
 	border:1px solid #000000;
