@@ -57,7 +57,7 @@ function saveMensa(mensatext) {
 }
 
 function showMensa() {
-	document.getElementById("mensa").innerHTML = mensa[(new Date().getDay()+1)%7]+"</table>";
+	document.getElementById("mensa").innerHTML = mensa[(new Date().getDay()+6)%7]+"</table>";
 }
 
 function updateVersion() {
