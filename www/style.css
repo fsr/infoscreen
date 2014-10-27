@@ -192,6 +192,9 @@ pre {
 	width: 600px;
 	height: 700px;
 	font-size: 12px;
+}
+
+#mensa td {
 	border: 1px dotted #a0a0a0;
 	border-width: 0 1px 1px 0;
 }
