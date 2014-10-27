@@ -57,7 +57,12 @@ function saveMensa(mensatext) {
 }
 
 function showMensa() {
-	document.getElementById("mensa").innerHTML = mensa[(new Date().getDay()+6)%7]+"</table>";
+	var date = new Date();
+	var day = (date.getDay()+6)%7;
+	if(date.getHours()>15) {
+		day = (day+1)%7;
+	}
+	document.getElementById("mensa").innerHTML = mensa[day]+"</table>";
 }
 
 function updateVersion() {
@@ -147,7 +152,7 @@ window.onload = function() {
 	updateRSS();
 	setInterval('updateTicker()', 600000);
 	updateTicker();
-	setInterval('updateMensa()', 14400000);
+	setInterval('updateMensa()', 3600000);
 	updateMensa();
 	setInterval('updateRSS()', 1800000);
 	setInterval('showRSS()', 20000);
