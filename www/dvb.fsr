@@ -4,7 +4,15 @@ echo "Content-type: text/json"
 echo ""
 if [ ! -z $QUERY_STRING ]
 then 
-curl -s "http://widgets.vvo-online.de/abfahrtsmonitor/Abfahrten.do?ort=Dresden&hst="$QUERY_STRING"&vz=0&lim=4"
+vz=0
+if [ "$QUERY_STRING" == "technische" ]
+then
+vz=12
+elif [ "$QUERY_STRING" == "muenchner" ]
+then
+vz=6
+fi
+curl -s "http://widgets.vvo-online.de/abfahrtsmonitor/Abfahrten.do?ort=Dresden&hst="$QUERY_STRING"&vz="$vz"&lim=4"
 echo 000 > /dev/ledborg
 else 
 echo 200 > /dev/ledborg
