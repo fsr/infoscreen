@@ -3,9 +3,11 @@ Dirk Legler - dirk@ifsr.de
 
 Funktionen
 ==========
-* aktuelle DVB-Abfahrtszeiten für Helmholtzstraße und Münchner Platz
+* aktuelle DVB-Abfahrtszeiten für Helmholtzstraße, Münchner Platz und Technische Universität
 * Postillon-Newsticker
 * Newsticker von https://ifsr.de/fsr:newsticker
+* Mensa-Plan der Alten Mensa
+* Uhrzeit, Datum, Kalenderwoche
 
 Benutzungshinweise
 ==================
@@ -36,7 +38,8 @@ Bedienung
   * `shutdown`: Herunterfahren. Bitte ausführen, bevor der Stecker gezogen wird, und eine Weile warten.
   * `reboot`  : Neustart des gesamten Raspis
   * `restart` : Neustart der Browserumgebung. Kann zu Fehlermeldung führen, dann einfach erneut ausführen.
-  * `refresh`, `reload`: Seite/Daten neu laden (wird vermutlich nicht implementiert, da umständlicher als restart)
+  * `gitpull` : Neuesten Code aus dem master-Branch des github-Repos laden
+  * `gitreset`: Lokale Änderungen zurücksetzen
   * `kaffee`  : Kaffee machen
 
 Installation
@@ -62,6 +65,7 @@ Anmerkungen zur vorinstallierten Version:
 * IP-Adresse im iFSR-LAN siehe kleine Anzeige unter dem FSR-Logo
 * /var/log und /tmp liegen im RAM, Webserver-Log ist deaktiviert
 * Treiber für LEDborg vorinstalliert (müssen bei neuem Kernel aktualisiert werden)
+* 
 * Update des Codes per git möglich
   * `$ cd /home/pi/infoscreen`
   * `$ git pull origin master`
