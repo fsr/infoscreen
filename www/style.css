@@ -8,6 +8,7 @@ body {
 }
 
 #fsrurl {
+	display: none;
 	margin: 0px;
 	margin-bottom: 0px;
 	text-align: right;
@@ -85,12 +86,12 @@ body {
 }
 
 #fsrlogo {
-	width: 302px;
-	height: 295px;
+	width: 374px;
+	height: 203px;
 	position: fixed;
 	right: 30px;
-	bottom: 80px;
-	background-image:url('logo.png');
+	bottom: 40px;
+	background-image:url('logo2014.png');
 	background-position: right bottom;
 	background-repeat: no-repeat;
 }
