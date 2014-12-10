@@ -1,7 +1,11 @@
 <?php
 header("Content-type: text/json");
 if(!empty($_SERVER["QUERY_STRING"])) {
-	echo file_get_contents("http://widgets.vvo-online.de/abfahrtsmonitor/Abfahrten.do?ort=Dresden&hst=".$_SERVER["QUERY_STRING"]."&vz=0&lim=4");
+	$qs = $_SERVER["QUERY_STRING"];
+	$vz = 0;
+	if($qs=="muenchner") $vz = 5;
+	if($qs=="technische") $vz = 10;
+	echo file_get_contents("http://widgets.vvo-online.de/abfahrtsmonitor/Abfahrten.do?ort=Dresden&hst=".$qs."&vz=".$vz."&lim=4");
 } else {
 	echo "[]";
 }
