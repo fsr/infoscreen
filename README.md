@@ -81,3 +81,8 @@ Vollständige Dokumentation der zu tätigenden Einstellungen.
 2. … TODO
 3. Profit!
 
+Tablet-Version
+==============
+Die Tablet-Version unter `tab.html` zeigt nur das Datum und zwei Haltestellen an. Die Launcher-Icons wurden mit dem [Android Asset Studio](http://romannurik.github.io/AndroidAssetStudio/) basierend auf dem FSR-Logo von Sebastian Lay erstellt.
+
+

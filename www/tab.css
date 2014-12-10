@@ -1,0 +1,70 @@
+@import url(http://fonts.googleapis.com/css?family=PT+Sans:400,700|Exo:400,700);
+
+body {
+	padding: 0px;
+	margin: 0px;
+	font-size: 50px;
+	font-family: 'PT Sans', sans-serif;
+	overflow: hidden;
+	background: #000;
+	color: #b0e01b;
+}
+
+#vvobox {
+	width: 100%;
+}
+	
+.vvoheader {
+	font-family: 'Exo', sans-serif;
+	font-weight: bold;
+	font-size: 48px;
+	margin: 0px; padding: 0px;
+	margin-bottom: 15px;
+}
+
+.vvo {
+	float:left;
+	padding: 2%;
+	width: 46%;
+}
+
+.vvono {
+	width: 60px;
+}
+
+.vvono85, .vvonoE3 {
+	width: 75px;
+}
+
+.vvono360, .vvono424 {
+	width: 80px;
+}
+
+.vvo table {
+	table-layout:fixed;
+	overflow: hidden;
+	white-space: nowrap; 
+	width: 100%;
+}
+
+.vvostation {
+	max-height: 25px;
+	overflow: hidden;
+}
+
+.vvomin {
+	text-align: right;
+	width: 80px;
+}
+	
+#footer {
+	position: fixed;
+	bottom: 0px;
+	border-top: 1px solid #1b1e12;
+	height: 32px;
+	padding: 10px;
+	margin: 0px;
+	width: 100%;
+	font-size: 32px;
+	text-align: center;
+}
