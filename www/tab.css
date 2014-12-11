@@ -3,11 +3,12 @@
 body {
 	padding: 0px;
 	margin: 0px;
-	font-size: 50px;
+	font-size: 80px;
 	font-family: 'PT Sans', sans-serif;
 	overflow: hidden;
 	background: #000;
-	color: #b0e01b;
+	color: #fff; /*#b0e01b;*/
+	text-align: right;
 }
 
 #vvobox {
@@ -17,44 +18,42 @@ body {
 .vvoheader {
 	font-family: 'Exo', sans-serif;
 	font-weight: bold;
-	font-size: 48px;
+	font-size: 30px;
 	margin: 0px; padding: 0px;
-	margin-bottom: 15px;
+	margin-top: 25px;
+	float: left;
+	width: 20%;
 }
 
 .vvo {
 	float:left;
 	padding: 2%;
-	width: 46%;
+	width: 100%;
+	text-align: left;
 }
 
 .vvono {
-	width: 60px;
-}
-
-.vvono85, .vvonoE3 {
-	width: 75px;
-}
-
-.vvono360, .vvono424 {
-	width: 80px;
+	width: 90px;
+	text-align: right;
+	padding-right: 5px;
 }
 
 .vvo table {
 	table-layout:fixed;
 	overflow: hidden;
 	white-space: nowrap; 
-	width: 100%;
+	width: 75%;
+	padding-left: 5%;
 }
 
 .vvostation {
-	max-height: 25px;
 	overflow: hidden;
 }
 
 .vvomin {
 	text-align: right;
-	width: 80px;
+	width: 85px;
+	font-weight: bold;
 }
 	
 #footer {
@@ -67,4 +66,14 @@ body {
 	width: 100%;
 	font-size: 32px;
 	text-align: center;
+}
+
+button {
+	z-index: 20;
+	background: #000;
+	color: #222;
+	position: fixed;
+	border: none;
+	width: 200px;
+	height: 100px;
 }
