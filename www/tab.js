@@ -1,4 +1,10 @@
-var stopsMin = ["helmholtz":0, "muenchner":6];
+var stopsMin = {"helmholtz":0, "muenchner":6};
+var directions = {	"Plauen, Rathaus":"&#8592;", "Löbtau":"&#8592;",  
+					"Striesen":"&#8594;", "Gruna":"&#8594;",
+					"Coschütz":"&#8601;", "Plauen, Nöthnitzer":"&#8601;",
+					"Wilder Mann":"&#8599;", "Trachenberge":"&#8599;", "Weixdorf":"&#8599;",
+					};
+
 var stops = Object.keys(stopsMin);
 
 // last update (text)
@@ -33,8 +39,15 @@ function showDVB(station, response) {
     var nextup = eval('(' + response + ')');
 
 	var table = "";
+
     nextup.forEach(function(val) {
-      	table += "<tr><td class=\"vvono vvono"+val[0]+"\">"+val[0]+"</td><td class=\"vvostation\">"+val[1].replace("Dresden","")+"</td><td class=\"vvomin\">"+val[2]+"</td></tr>";
+    	var destination = val[1].replace("Dresden","");
+    	Object.keys(directions).forEach(function(dir) {
+    		if(destination.indexOf(dir)>=0) {
+    			destination = directions[dir] + destination;
+    		}
+    	});
+      	table += "<tr><td class=\"vvono vvono"+val[0]+"\">"+val[0]+"</td><td class=\"vvostation\">"+destination+"</td><td class=\"vvomin\">"+val[2]+"</td></tr>";
     });
         
     document.getElementById(station+"table").innerHTML = table;
