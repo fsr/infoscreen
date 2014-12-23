@@ -1,4 +1,5 @@
-var stops = ["helmholtz", "muenchner"];
+var stopsMin = ["helmholtz":0, "muenchner":6];
+var stops = Object.keys(stopsMin);
 
 // last update (text)
 var luDVB = 0;
@@ -9,7 +10,7 @@ for(s in stops) dynamos.push(new XMLHttpRequest());
 
 function updateDVB() {
 	for(dyn in dynamos) {
-		dynamos[dyn].open('GET', 'dvb.fsr?'+stops[dyn]);
+		dynamos[dyn].open('GET', 'dvb.fsr?'+stops[dyn]+"&"+stopsMin[stops[dyn]]+"&2");
 		dynamos[dyn].onreadystatechange = function(dyni) {
 			return function() {
     				if(this.readyState!=4) return;
@@ -34,9 +35,7 @@ function showDVB(station, response) {
 	var table = "";
 	var i = 0;
     nextup.forEach(function(val) {
-    	if(i++<2){ 
-      		table += "<tr><td class=\"vvono vvono"+val[0]+"\">"+val[0]+"</td><td class=\"vvostation\">"+val[1].replace("Dresden","")+"</td><td class=\"vvomin\">"+val[2]+"</td></tr>";
-      	}
+      	table += "<tr><td class=\"vvono vvono"+val[0]+"\">"+val[0]+"</td><td class=\"vvostation\">"+val[1].replace("Dresden","")+"</td><td class=\"vvomin\">"+val[2]+"</td></tr>";
     });
         
     document.getElementById(station+"table").innerHTML = table;

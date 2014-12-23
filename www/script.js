@@ -1,4 +1,5 @@
-var stops = ["helmholtz", "muenchner", "technische"];
+var stopsMin = ["helmholtz":0, "muenchner":6, "technische":12];
+var stops = Object.keys(stopsMin);
 var tickerCopyright = "(Der Postillon)";
 var version = "0"
 
@@ -127,7 +128,7 @@ function showRSS() {
 
 function updateDVB() {
 	for(dyn in dynamos) {
-		dynamos[dyn].open('GET', 'dvb.fsr?'+stops[dyn]);
+		dynamos[dyn].open('GET', 'dvb.fsr?'+stops[dyn]+"&"+stopsMin[stops[dyn]]+"&4");
 		dynamos[dyn].onreadystatechange = function(dyni) {
 			return function() {
     				if(this.readyState!=4) return;
