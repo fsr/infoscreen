@@ -1,4 +1,5 @@
-var stops = ["helmholtz", "muenchner"];
+var stopsMin = {"helmholtz":0, "muenchner":6};
+var stops = Object.keys(stopsMin);
 
 // last update (text)
 var luDVB = 0;
@@ -9,7 +10,7 @@ for(s in stops) dynamos.push(new XMLHttpRequest());
 
 function updateDVB() {
 	for(dyn in dynamos) {
-		dynamos[dyn].open('GET', 'dvb.fsr?'+stops[dyn]);
+		dynamos[dyn].open('GET', 'dvb.fsr?'+stops[dyn]+"&"+stopsMin[stops[dyn]]+"&2");
 		dynamos[dyn].onreadystatechange = function(dyni) {
 			return function() {
     				if(this.readyState!=4) return;
