@@ -91,3 +91,30 @@ function week(date) {
 	if(day==0) day = 7; // In ISO-8601, Sunday is 7, not 0
 	return Math.floor((dayOfTheYear(date)-day+10)/7);
 }
+
+
+function buttonClick(btn) {
+	var oldHTML = btn.innerHTML;
+	setText(btn, oldHTML, "#b1e11c");
+		
+	var btnXHR = new XMLHttpRequest();
+	btnXHR.open('GET', 'serv.fsr?'+btn.id);
+	btnXHR.onreadystatechange = function(oldtext) {
+			return function() {
+    				if(this.readyState!=4) return;
+    				if(this.status==200) {
+    					setText(btn, JSON.parse(this.responseText)[0], "#b1e11c");
+    					window.setTimeout(setText, 5000, btn, oldtext, "#222");
+    				}
+    			};
+    		}(btn.innerHTML);
+    
+	btnXHR.send(null);
+	// sometimes, serv.fsr doesn't return anything -> reset button anyway
+	window.setTimeout(setText, 20000, btn, oldHTML, "#222");
+}
+
+function setText(target, text, color) {
+	target.innerHTML = text;
+	target.style.color = color;
+}
