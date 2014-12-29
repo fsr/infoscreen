@@ -98,7 +98,7 @@ function buttonClick(btn) {
 	setText(btn, oldHTML, "#b1e11c");
 		
 	var btnXHR = new XMLHttpRequest();
-	btnXHR.open('GET', 'serv.fsr?'+btn.id);
+	btnXHR.open('GET', 'serv.fsr?'+btn.name);
 	btnXHR.onreadystatechange = function(oldtext) {
 			return function() {
     				if(this.readyState!=4) return;
