@@ -1,4 +1,4 @@
-var stopsMin = ["helmholtz":0, "muenchner":6, "technische":12];
+var stopsMin = {"helmholtz":0, "muenchner":6, "technische":12};
 var stops = Object.keys(stopsMin);
 var tickerCopyright = "(Der Postillon)";
 var version = "0"
