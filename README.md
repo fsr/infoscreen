@@ -33,14 +33,15 @@ iFSR-Newsticker
 
 Bedienung
 ---------
-* Mögliche Aufrufe unter `http://<raspi>/service.html`
-* Alternativ direkt über `http://<raspi>/serv.fsr?<befehl>`, Befehle:
-  * `shutdown`: Herunterfahren. Bitte ausführen, bevor der Stecker gezogen wird, und eine Weile warten.
-  * `reboot`  : Neustart des gesamten Raspis
-  * `restart` : Neustart der Browserumgebung. Kann zu Fehlermeldung führen, dann einfach erneut ausführen.
-  * `gitpull` : Neuesten Code aus dem master-Branch des github-Repos laden
-  * `gitreset`: Lokale Änderungen zurücksetzen
-  * `kaffee`  : Kaffee machen
+
+Die Steuerung erfolgt entweder über die Buttons im Tablet-Interface oder über `http://<raspi>/service.html`, alternativ direkt über `http://<raspi>/serv.fsr?<befehl>` mit folgenden Befehlen:
+
+* `shutdown`: Herunterfahren. Bitte ausführen, bevor der Stecker gezogen wird, und eine Weile warten.
+* `reboot`  : Neustart des gesamten Raspis
+* `restart` : Neustart der Browserumgebung. Kann zu Fehlermeldung führen, dann einfach erneut ausführen.
+* `gitpull` : Neuesten Code aus dem master-Branch des github-Repos laden
+* `gitreset`: Lokale Änderungen zurücksetzen
+* `kaffee`  : Kaffee machen
 
 Installation
 ============
@@ -83,6 +84,11 @@ Vollständige Dokumentation der zu tätigenden Einstellungen.
 
 Tablet-Version
 ==============
-Die Tablet-Version unter `tab.html` zeigt nur das Datum und zwei Haltestellen an. Die Launcher-Icons wurden mit dem [Android Asset Studio](http://romannurik.github.io/AndroidAssetStudio/) basierend auf dem FSR-Logo von Sebastian Lay erstellt.
+Die Tablet-Version unter `tab.html` zeigt nur das Datum und zwei Haltestellen an. Außerdem befinden sich zwischen den Haltestellennamen Buttons zum Neustarten des Browsers, Neuladen des github-Codes sowie zum Herunterfahren und Neustarten des Pis.  
+Die Launcher-Icons wurden mit dem [Android Asset Studio](http://romannurik.github.io/AndroidAssetStudio/) basierend auf dem FSR-Logo von Sebastian Lay erstellt.
 
+Bekannte Fehler
+===============
+* "Zwischen den Jahren", also in der letzten halben Woche des alten bzw. ersten halben Woche des neuen Jahres, stimmt die Angabe der Kalenderwoche unter Umständen nicht. Da zu dieser Zeit allerdings an der TUD keine Veranstaltungen stattfinden, bei denen die Parität der Woche eine Rolle spielt, und der Fix die `week()`-Methode sehr viel komplexer machen würde, wird dieser Fehler vorerst nicht behoben.
+* [![githubissues](http://img.shields.io/github/issues/fsr/infoscreen.svg?style=flat)](https://github.com/fsr/infoscreen/issues)
 
