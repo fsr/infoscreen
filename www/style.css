@@ -18,15 +18,10 @@ body {
 	right: 75px;
 }
 
-.glow {
-	text-shadow: 0 0 10px red;
-}
-
 #vvobox {
 	position: fixed;
 	left: 20px;
 	bottom: 55px;
-	/*border: 1px solid red;*/
 }
 	
 .vvoheader {
@@ -56,8 +51,8 @@ body {
 	width: 70px;
 }
 
-.vvono360, .vvono424 {
-	width: 80px;
+.vvono360, .vvono366, .vvono424 {
+	width: 90px;
 }
 
 .vvo table {
@@ -116,7 +111,7 @@ body {
 	width: 100px;
 	height: 50px;
 	font-size: 32px;
-	text-shadow: 2px 2px 2px #FFFFFF, -2px -2px 2px #FFFFFF;
+	text-shadow: 2px 2px 2px #fff, -2px -2px 2px #fff;
 }
 
 #ticker {
@@ -128,7 +123,6 @@ body {
 	height: 85px;
 	font-size: 26px;
 	overflow: hidden;
-	/*border: 1px solid blue;*/
 }
 
 #ticker a {
@@ -183,61 +177,24 @@ pre {
 	width: 1200px;
 	height: 600px;
 	overflow: hidden;	
-	/*border: 1px solid green;*/
 }
 
-/* ESE-Stundenplaene */
-#stundenplan td {
-	border:1px solid #000000;
-	font-family:sans serif;
-	border-spacing:0px;
-	width:52px;
+#mensa {
+	position: fixed;
+	top: 20px;
+	left: 1300px;
+	width: 600px;
+	height: 700px;
+	font-size: 12px;
 }
 
-#stundenplan table {
-	border-spacing:0px;
+#mensa td {
+	border: 1px dotted #a0a0a0;
+	border-width: 0 1px 1px 0;
 }
 
-.plan_tage {
-	background-color:#EEEEEE;
-	font-weight:bold;
-	padding:2px;
+#mensa a {
+	text-decoration: none;
+	color: #000;
 }
 
-.plan_stunden {
-	background-color:#EEEEEE;
-	font-weight:bold;
-	padding:3px;
-	border-bottom:none !important;
-	width:90px !important;
-}
-
-.plan_uhrzeit {
-	background-color:#EEEEEE;
-	font-style:italic;
-	padding:3px;
-	border-top:none !important;
-	width:90px !important;
-}
-
-.plan_leer {
-	font-weight:bold;
-	padding:3px;
-	text-decoration:underline;
-}
-
-.plan_raum {
-	font-style:italic;
-	padding:1px;
-}
-
-.plan_dozent {
-	font-style:italic;
-	padding:1px;
-	border-right:none !important;
-}
-
-.plan_name {
-	padding:2px;
-	border-bottom:none !important;
-}

@@ -1,9 +1,11 @@
-var stops = ["helmholtz", "muenchner", "technische"];
-var tickerCopyright = "(Alte Mensa)";
+var stopsMin = {"helmholtz":0, "muenchner":6, "technische":12};
+var stops = Object.keys(stopsMin);
+var tickerCopyright = "(Der Postillon)";
 var version = "0"
 
 var news = new Array();
 var ticker = new Array();
+var mensa = new Array();
 var currentNews = 0;
 var currentTicker = 0;
 // last update (text)
@@ -22,10 +24,11 @@ var rssreq = new XMLHttpRequest();
 var tickerreq = new XMLHttpRequest();
 var versionreq = new XMLHttpRequest();
 var ipreq = new XMLHttpRequest();
+var mensareq = new XMLHttpRequest();
 
 
 function updateTicker() {
-	tickerreq.open('GET', 'mensa.fsr?Alte+Mensa');
+	tickerreq.open('GET', 'ticker.fsr');
 	tickerreq.onreadystatechange = function() {
     			if(this.readyState!=4) return;
     			if(this.status==200) saveTicker(this.responseText);
@@ -36,8 +39,31 @@ function updateTicker() {
 function saveTicker(tickerjson) {
 	var tickertext = JSON.parse(tickerjson);
 	luTicker = new Date().getTime();
-	ticker = tickertext;
+	ticker = tickertext["ticker"];
 	showTicker();
+}
+
+function updateMensa() {
+	mensareq.open('GET', 'mensa.fsr?alte-mensa');
+	mensareq.onreadystatechange = function() {
+    			if(this.readyState!=4) return;
+    			if(this.status==200) saveMensa(this.responseText);
+    		};
+    mensareq.send(null);
+}
+
+function saveMensa(mensatext) {
+	mensa = unescape(mensatext).split('</table>', 6);
+	showMensa();
+}
+
+function showMensa() {
+	var date = new Date();
+	var day = (date.getDay()+6)%7;
+	if(date.getHours()>15) {
+		day = (day+1)%7;
+	}
+	document.getElementById("mensa").innerHTML = mensa[day]+"</table>";
 }
 
 function updateVersion() {
@@ -102,7 +128,7 @@ function showRSS() {
 
 function updateDVB() {
 	for(dyn in dynamos) {
-		dynamos[dyn].open('GET', 'dvb.fsr?'+stops[dyn]);
+		dynamos[dyn].open('GET', 'dvb.fsr?'+stops[dyn]+"&"+stopsMin[stops[dyn]]+"&4");
 		dynamos[dyn].onreadystatechange = function(dyni) {
 			return function() {
     				if(this.readyState!=4) return;
@@ -127,6 +153,8 @@ window.onload = function() {
 	updateRSS();
 	setInterval('updateTicker()', 600000);
 	updateTicker();
+	setInterval('updateMensa()', 3600000);
+	updateMensa();
 	setInterval('updateRSS()', 1800000);
 	setInterval('showRSS()', 20000);
 	setInterval('showTicker()', 15000);
