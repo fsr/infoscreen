@@ -3,6 +3,7 @@ var directions = {	"Plauen, Rathaus":"&#8592;", "Löbtau":"&#8592;",
 					"Striesen":"&#8594;", "Gruna":"&#8594;",
 					"Coschütz":"&#8601;", "Plauen, Nöthnitzer":"&#8601;",
 					"Wilder Mann":"&#8599;", "Trachenberge":"&#8599;", "Weixdorf":"&#8599;",
+					"Plauen":"&#8601;",
 					};
 
 var stops = Object.keys(stopsMin);
