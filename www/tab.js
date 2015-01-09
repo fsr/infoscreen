@@ -46,6 +46,7 @@ function showDVB(station, response) {
     	Object.keys(directions).forEach(function(dir) {
     		if(destination.indexOf(dir)>=0) {
     			destination = directions[dir] + destination;
+    			break;
     		}
     	});
       	table += "<tr><td class=\"vvono vvono"+val[0]+"\">"+val[0]+"</td><td class=\"vvostation\">"+destination+"</td><td class=\"vvomin\">"+val[2]+"</td></tr>";
