@@ -3,6 +3,7 @@ var directions = {	"Plauen, Rathaus":"&#8592;", "Löbtau":"&#8592;",
 					"Striesen":"&#8594;", "Gruna":"&#8594;",
 					"Coschütz":"&#8601;", "Plauen, Nöthnitzer":"&#8601;",
 					"Wilder Mann":"&#8599;", "Trachenberge":"&#8599;", "Weixdorf":"&#8599;",
+					"Plauen":"&#8601;",
 					};
 
 var stops = Object.keys(stopsMin);
@@ -45,6 +46,7 @@ function showDVB(station, response) {
     	Object.keys(directions).forEach(function(dir) {
     		if(destination.indexOf(dir)>=0) {
     			destination = directions[dir] + destination;
+    			break;
     		}
     	});
       	table += "<tr><td class=\"vvono vvono"+val[0]+"\">"+val[0]+"</td><td class=\"vvostation\">"+destination+"</td><td class=\"vvomin\">"+val[2]+"</td></tr>";
