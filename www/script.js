@@ -30,10 +30,10 @@ var mensareq = new XMLHttpRequest();
 function updateTicker() {
 	tickerreq.open('GET', 'ticker.fsr');
 	tickerreq.onreadystatechange = function() {
-    			if(this.readyState!=4) return;
-    			if(this.status==200) saveTicker(this.responseText);
-    		};
-    tickerreq.send(null);
+				if(this.readyState!=4) return;
+				if(this.status==200) saveTicker(this.responseText);
+			};
+	tickerreq.send(null);
 }
 
 function saveTicker(tickerjson) {
@@ -46,10 +46,10 @@ function saveTicker(tickerjson) {
 function updateMensa() {
 	mensareq.open('GET', 'mensa.fsr?alte-mensa');
 	mensareq.onreadystatechange = function() {
-    			if(this.readyState!=4) return;
-    			if(this.status==200) saveMensa(this.responseText);
-    		};
-    mensareq.send(null);
+				if(this.readyState!=4) return;
+				if(this.status==200) saveMensa(this.responseText);
+			};
+	mensareq.send(null);
 }
 
 function saveMensa(mensatext) {
@@ -69,36 +69,36 @@ function showMensa() {
 function updateVersion() {
 	versionreq.open('GET', 'version.fsr');
 	versionreq.onreadystatechange = function() {
-    			if(this.readyState!=4) return;
-    			if(this.status==200) {
-    				var versiontext = JSON.parse(this.responseText);
+				if(this.readyState!=4) return;
+				if(this.status==200) {
+					var versiontext = JSON.parse(this.responseText);
 					version = versiontext[2];
-    			};
-    		};
-    versionreq.send(null);
+				};
+			};
+	versionreq.send(null);
 }
 
 function showTicker() {
 	document.getElementById("ticker").innerHTML = ticker[currentTicker++];
-	
+
 	if(currentTicker>=ticker.length-1) currentTicker = 0;
 	if(ticker.length>0) {
 		document.getElementById("ticker").innerHTML = ticker[currentTicker]+" <span class=\"tickersrc\">"+tickerCopyright+"</span>";
 		currentTicker++;
 	} else {
 		document.getElementById("ticker").innerHTML = "Derzeit kein Ticker.";
-		
+
 	}
-	
+
 }
 
 function updateRSS() {
 	rssreq.open('GET', 'rss.fsr');
 	rssreq.onreadystatechange = function() {
-    			if(this.readyState!=4) return;
-    			if(this.status==200) saveRSS(this.responseText);
-    		};
-    rssreq.send(null);
+				if(this.readyState!=4) return;
+				if(this.status==200) saveRSS(this.responseText);
+			};
+	rssreq.send(null);
 }
 
 function saveRSS(response) {
@@ -121,7 +121,7 @@ function showRSS() {
 	} else {
 		document.getElementById("newsbox").innerHTML = "Derzeit keine Nachrichten.";
 		document.getElementById("pages").innerHTML = "";
-		
+
 	}
 
 }
@@ -131,13 +131,13 @@ function updateDVB() {
 		dynamos[dyn].open('GET', 'dvb.fsr?'+stops[dyn]+"&"+stopsMin[stops[dyn]]+"&4");
 		dynamos[dyn].onreadystatechange = function(dyni) {
 			return function() {
-    				if(this.readyState!=4) return;
-    				if(this.status==200) showDVB(stops[dyni], this.responseText);
-    			};
-    		}(dyn);
-    
+					if(this.readyState!=4) return;
+					if(this.status==200) showDVB(stops[dyni], this.responseText);
+				};
+			}(dyn);
+
 	dynamos[dyn].send(null);
-	
+
 	}
 
 }
@@ -161,23 +161,23 @@ window.onload = function() {
 	updateVersion();
 	ipreq.open('GET', 'ip.fsr');
 	ipreq.onreadystatechange = function() {
-    			if(this.readyState!=4) return;
-    			if(this.status==200) raspiIP = this.responseText;
-    		};
-    ipreq.send(null);
+				if(this.readyState!=4) return;
+				if(this.status==200) raspiIP = this.responseText;
+			};
+	ipreq.send(null);
 }
 
 function showDVB(station, response) {
-    var nextup = eval('(' + response + ')');
+	var nextup = eval('(' + response + ')');
 
 	var table = "";
-	
-    nextup.forEach(function(val) {
-      	table += "<tr><td class=\"vvono vvono"+val[0]+"\">"+val[0]+"</td><td class=\"vvostation\">"+val[1].replace("Dresden","")+"</td><td class=\"vvomin\">"+val[2]+"</td></tr>";
-    });
-        
-    document.getElementById(station+"table").innerHTML = table;
-    luDVB = new Date().getTime();
+
+	nextup.forEach(function(val) {
+		table += "<tr><td class=\"vvono vvono"+val[0]+"\">"+val[0]+"</td><td class=\"vvostation\">"+val[1].replace("Dresden","")+"</td><td class=\"vvomin\">"+val[2]+"</td></tr>";
+	});
+
+	document.getElementById(station+"table").innerHTML = table;
+	luDVB = new Date().getTime();
 }
 
 function updateTime() {
@@ -185,26 +185,26 @@ function updateTime() {
 	var year = time.getFullYear();
 	var month = time.getMonth();
 	var dayt = time.getDate();
-  	var hours = time.getHours();
-  	var mins = time.getMinutes();
-  	var seconds = time.getSeconds();  	
-  
-  	dayt = (dayt<10?"0":"")+dayt;
-  	hours = (hours<10?"0":"")+hours;
-  	mins = (mins<10?"0":"")+mins;
-  	seconds = (seconds<10?"0":"")+seconds;
+	var hours = time.getHours();
+	var mins = time.getMinutes();
+	var seconds = time.getSeconds();
+
+	dayt = (dayt<10?"0":"")+dayt;
+	hours = (hours<10?"0":"")+hours;
+	mins = (mins<10?"0":"")+mins;
+	seconds = (seconds<10?"0":"")+seconds;
 
 	var months = ["Januar", "Februar", "M&auml;rz", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"];
-  	var kw = week(time);
+	var kw = week(time);
 
-  	var text = kw + ". Woche &ndash; "+ dayt +". "+ months[month] + " " + year +" &ndash; "+ hours + ":" + mins + ":" + seconds;
+	var text = kw + ". Woche &ndash; "+ dayt +". "+ months[month] + " " + year +" &ndash; "+ hours + ":" + mins + ":" + seconds;
 
-  	document.getElementById("footer").innerHTML = text;
+	document.getElementById("footer").innerHTML = text;
 }
 
 function dayOfTheYear(date) {
 	var year = date.getFullYear();
-	var days = new Array(31,(year%400==0||(year%4==0&&year%100!=0))?29:28,31,30,31,30,31,31,30,31,30,31);	
+	var days = new Array(31,(year%400==0||(year%4==0&&year%100!=0))?29:28,31,30,31,30,31,31,30,31,30,31);
 	var doty = date.getDate();
 	for(var i=0; i < date.getMonth(); i++) {
 		doty += days[i];

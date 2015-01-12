@@ -6,7 +6,7 @@ echo ""
 # split query string
 # stopname&leadtime&count
 if [ ! -z $QUERY_STRING ]
-then 
+then
 oldIFS=$oldIFS
 IFS='&'
 qs=($QUERY_STRING)
@@ -29,7 +29,7 @@ fi
 # query dvb
 curl -s  "http://widgets.vvo-online.de/abfahrtsmonitor/Abfahrten.do?ort=Dresden&hst="${qs[0]}"&vz="$vz"&lim="$lim
 echo 000 > /dev/ledborg
-else 
+else
 echo 200 > /dev/ledborg
 echo "[]"
 fi

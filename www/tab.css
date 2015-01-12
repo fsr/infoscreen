@@ -14,7 +14,7 @@ body {
 #vvobox {
 	width: 100%;
 }
-	
+
 .vvoheader {
 	font-family: 'Exo', sans-serif;
 	font-weight: bold;
@@ -41,7 +41,7 @@ body {
 .vvo table {
 	table-layout:fixed;
 	overflow: hidden;
-	white-space: nowrap; 
+	white-space: nowrap;
 	width: 75%;
 	padding-left: 5%;
 }
@@ -55,7 +55,7 @@ body {
 	width: 135px;
 	font-weight: bold;
 }
-	
+
 #footer {
 	position: fixed;
 	bottom: 0px;
