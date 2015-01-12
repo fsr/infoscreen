@@ -42,11 +42,14 @@ function showDVB(station, response) {
 	var table = "";
 
     nextup.forEach(function(val) {
+    	var added = false;
     	var destination = val[1].replace("Dresden","");
     	Object.keys(directions).forEach(function(dir) {
     		if(destination.indexOf(dir)>=0) {
-    			destination = directions[dir] + destination;
-    			break;
+    			if(!added) {
+    				destination = directions[dir] + destination;
+    				added = true;
+    			}
     		}
     	});
       	table += "<tr><td class=\"vvono vvono"+val[0]+"\">"+val[0]+"</td><td class=\"vvostation\">"+destination+"</td><td class=\"vvomin\">"+val[2]+"</td></tr>";
