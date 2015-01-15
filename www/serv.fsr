@@ -32,6 +32,14 @@ then
 			EOR
 			sudo halt
 			exit 0;;
+		zihsd|"zihsd=")
+			cat <<-"EOR"
+                        Content-type: text/json
+                        ["displaying zih"]
+			EOR
+			DISPLAY=:0 sudo -u pi omxplayer /var/www/zihsd.mp4 -r 15
+                        sudo -u pi /usr/bin/xrefresh -display :0
+			exit 0;;
 		restart|"restart=")
 			cat <<-"EOR"
 			Content-type: text/json
@@ -109,13 +117,14 @@ else
 	Content-type: text/json
 
 	[
-		["reboot", "shutdown", "gitreset", "gitpull", "restart", "kaffee"],
+		["reboot", "shutdown", "gitreset", "gitpull", "restart", "zihsd", "kaffee"],
 		[
 			"Reboot the Pi",
 			"Shutdown the Pi",
 			"Reset testing code",
 			"Pull new code from git",
 			"Restart browser",
+			"Show the way to ZIH SD",
 			"Make coffee"
 		]
 	]
