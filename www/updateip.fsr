@@ -1,6 +1,0 @@
-#!/bin/bash
-echo "Content-type: text/json"
-echo ""
-curip=`ifconfig wlan0 | grep "inet " | grep -v 127.0.0.1 | awk '{print $2}' | rev | cut -d. -f1 | rev`
-curl -s "https://dirko.net/pi/updateip.php?ip=$curip" > /dev/null
-echo $curip

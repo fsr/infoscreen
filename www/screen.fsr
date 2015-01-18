@@ -1,8 +1,0 @@
-#!/bin/bash
-echo "Content-type: image/png"
-
-DISPLAY=:0.0
-XAUTHORITY=/home/pi/.Xauthority
-sudo -u pi import -window root -
-
-#sleep 10
