@@ -101,6 +101,7 @@ function week(date) {
 function buttonClick(btn) {
 	var oldHTML = btn.innerHTML;
 	setText(btn, oldHTML, "#b1e11c");
+	btn.blur();
 
 	var btnXHR = new XMLHttpRequest();
 	btnXHR.open('GET', 'serv.fsr?'+btn.name);
