@@ -21,6 +21,7 @@ then
 		reboot|"reboot=")
 			cat <<-"EOR"
 			Content-type: text/json
+			
 			["rebooting"]
 			EOR
 			sudo reboot
@@ -28,25 +29,27 @@ then
 		shutdown|"shutdown=")
 			cat <<-"EOR"
 			Content-type: text/json
+			
 			["shutting down"]
 			EOR
 			sudo halt
 			exit 0;;
 		zihsd|"zihsd=")
 			cat <<-"EOR"
-                        Content-type: text/json
-                        ["displaying zih"]
+			Content-type: text/json
+			
+			["displayed zih"]
 			EOR
-			DISPLAY=:0 sudo -u pi omxplayer /var/www/zihsd.mp4 -r 15
-                        sudo -u pi /usr/bin/xrefresh -display :0
+			DISPLAY=:0 sudo -u pi omxplayer /var/www/zihsd.mp4 -r 15 > /dev/null
+            sudo -u pi /usr/bin/xrefresh -display :0
 			exit 0;;
 		restart|"restart=")
 			cat <<-"EOR"
 			Content-type: text/json
+			
 			["restarting Chromium"]
 			EOR
 			sudo killall chromium
-#			sudo -u pi /home/pi/kiosk.sh &
 			DISPLAY=:0 sudo -u pi chromium --disk-cache-dir="/var/tmp" --disable-translate --incognito --kiosk "http://localhost/"
 			exit 0;;
 		gitreset|"gitreset=")
