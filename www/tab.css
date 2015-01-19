@@ -60,20 +60,21 @@ body {
 	position: fixed;
 	bottom: 0px;
 	border-top: 1px solid #1b1e12;
-	height: 32px;
+	height: 80px;
 	padding: 10px;
 	margin: 0px;
 	width: 100%;
-	font-size: 32px;
+	font-size: 80px;
 	text-align: center;
 }
 
 button {
 	z-index: 20;
 	background: #000;
-	color: #222;
+	color: #333;
 	position: fixed;
 	border: none;
 	width: 200px;
-	height: 100px;
+	height: 80px;
+	font-size: 32px;
 }

@@ -76,7 +76,7 @@ function updateTime() {
 	var months = ["Januar", "Februar", "M&auml;rz", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"];
 	var kw = week(time);
 
-	var text = kw + ". Woche &ndash; "+ dayt +". "+ months[month] + " " + year +" &ndash; "+ hours + ":" + mins + ":" + seconds;
+	var text = "W" + kw + " &middot; "+ dayt +". "+ month+1 + " " + year +" &middot; "+ hours + ":" + mins + ":" + seconds;
 
 	document.getElementById("footer").innerHTML = text;
 }
