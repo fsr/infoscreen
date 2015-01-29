@@ -7,7 +7,7 @@ echo ""
 # stopname&leadtime&count
 if [ ! -z $QUERY_STRING ]
 then
-oldIFS=$oldIFS
+oldIFS=$IFS
 IFS='&'
 qs=($QUERY_STRING)
 IFS=$oldIFS
