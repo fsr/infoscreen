@@ -62,7 +62,7 @@ function showDVB(station, response) {
 function updateTime() {
 	var time = new Date();
 	var year = time.getFullYear();
-	var month = time.getMonth();
+	var month = time.getMonth()+1;
 	var dayt = time.getDate();
 	var hours = time.getHours();
 	var mins = time.getMinutes();
@@ -72,11 +72,11 @@ function updateTime() {
 	hours = (hours<10?"0":"")+hours;
 	mins = (mins<10?"0":"")+mins;
 	seconds = (seconds<10?"0":"")+seconds;
+	month = (month<10?"0":"")+month;
 
-	var months = ["Januar", "Februar", "M&auml;rz", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"];
 	var kw = week(time);
 
-	var text = "W" + kw + " &middot; "+ dayt +". "+ month+1 + " " + year +" &middot; "+ hours + ":" + mins + ":" + seconds;
+	var text = "W" + kw + " &middot; "+ dayt +". "+ month + " " + year +" &middot; "+ hours + ":" + mins + ":" + seconds;
 
 	document.getElementById("footer").innerHTML = text;
 }
