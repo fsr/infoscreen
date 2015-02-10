@@ -76,7 +76,7 @@ function updateTime() {
 
 	var kw = week(time);
 
-	var text = "W" + kw + " &middot; "+ dayt +". "+ month + " " + year +" &middot; "+ hours + ":" + mins + ":" + seconds;
+	var text = "W" + kw + " &middot; "+ dayt +". "+ month + "." + year +" &middot; "+ hours + ":" + mins + ":" + seconds;
 
 	document.getElementById("footer").innerHTML = text;
 }
