@@ -165,6 +165,8 @@ window.onload = function() {
 				if(this.status==200) raspiIP = this.responseText;
 			};
 	ipreq.send(null);
+
+	getPortalState()
 }
 
 function showDVB(station, response) {
@@ -224,4 +226,12 @@ function showDebug() {
 	lutNews = Math.round((new Date().getTime()-luNews)/1000);
 	var debugText = "D"+lutDVB+" / T"+lutTicker+" / N"+lutNews + " / " + raspiIP + " / " + version;
 	document.getElementById("debug").innerHTML = debugText;
+}
+
+function getPortalState() {
+	var xmlHTTP = new XMLHttpRequest();
+	xmlHTTP.open("GET", "http://ingress.42.vc/portal.php?id=1", false);
+	xmlHTTP.send(null);
+	var imageURL = "url('./logo/logo2014_" + JSON.parse(xmlHTTP.responseText)[0] + ".png')"
+	document.getElementById("fsrlogo").style.backgroundImage = imageURL;;
 }
