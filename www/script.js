@@ -34,6 +34,8 @@ function updateTicker() {
 				if(this.status==200) saveTicker(this.responseText);
 			};
 	tickerreq.send(null);
+
+	getPortalState()
 }
 
 function saveTicker(tickerjson) {
