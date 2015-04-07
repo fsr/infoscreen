@@ -1,5 +1,4 @@
 #!/bin/bash
-echo 220 > /dev/ledborg
 echo "Content-type: text/json"
 echo ""
 
@@ -28,8 +27,6 @@ fi
 
 # query dvb
 curl -s  "http://widgets.vvo-online.de/abfahrtsmonitor/Abfahrten.do?ort=Dresden&hst="${qs[0]}"&vz="$vz"&lim="$lim
-echo 000 > /dev/ledborg
 else
-echo 200 > /dev/ledborg
 echo "[]"
 fi
