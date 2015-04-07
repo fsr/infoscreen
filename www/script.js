@@ -232,7 +232,7 @@ function showDebug() {
 
 function getPortalState() {
 	var xmlHTTP = new XMLHttpRequest();
-	xmlHTTP.open("GET", "portal.fsr?id=1", false);
+	xmlHTTP.open("GET", "portal.fsr?1", false);
 	xmlHTTP.send(null);
 	var imageURL = "url('./logo/logo2014_" + JSON.parse(xmlHTTP.responseText)[0] + ".png')"
 	document.getElementById("fsrlogo").style.backgroundImage = imageURL;;
