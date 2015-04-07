@@ -234,6 +234,9 @@ function getPortalState() {
 	var xmlHTTP = new XMLHttpRequest();
 	xmlHTTP.open("GET", "portal.fsr?1", false);
 	xmlHTTP.send(null);
+	var led = new XMLHttpRequest();
+	led.open("GET", "portalled.fsr", false);
+	led.send(null);
 	var imageURL = "url('./logo/logo2014_" + JSON.parse(xmlHTTP.responseText)[0] + ".png')"
 	document.getElementById("fsrlogo").style.backgroundImage = imageURL;;
 }

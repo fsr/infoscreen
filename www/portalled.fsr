@@ -1,0 +1,20 @@
+#!/bin/bash
+echo "Content-type: text/json"
+echo ""
+
+timestamp=$(date +%T)
+if [[ "$timestamp" > "07:00:00" && "$timestamp" < "23:00:00" ]]; then
+
+status=`curl -k -s http://ingress.42.vc/portal.php?id=0`
+if [ "$status" == "[\"ENL\"]" ]; then
+  echo 020 > /dev/ledborg
+elif [ "$status" == "[\"RES\"]" ]; then
+  echo 002 > /dev/ledborg
+else
+  echo 000 > /dev/ledborg
+fi
+
+else
+  echo 000 > /dev/ledborg
+fi
+echo "[]"
