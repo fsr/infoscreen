@@ -62,9 +62,6 @@ function saveMensa(mensatext) {
 function showMensa() {
 	var date = new Date();
 	var day = (date.getDay()+6)%7;
-	if(date.getHours()>15) {
-		day = (day+1)%7;
-	}
 	document.getElementById("mensa").innerHTML = mensa[day]+"</table>";
 }
 
