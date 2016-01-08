@@ -34,8 +34,6 @@ function updateTicker() {
 				if(this.status==200) saveTicker(this.responseText);
 			};
 	tickerreq.send(null);
-
-	getPortalState()
 }
 
 function saveTicker(tickerjson) {
@@ -167,8 +165,6 @@ window.onload = function() {
 				if(this.status==200) raspiIP = this.responseText;
 			};
 	ipreq.send(null);
-
-	getPortalState()
 }
 
 function showDVB(station, response) {
@@ -230,13 +226,3 @@ function showDebug() {
 	document.getElementById("debug").innerHTML = debugText;
 }
 
-function getPortalState() {
-	var xmlHTTP = new XMLHttpRequest();
-	xmlHTTP.open("GET", "portal.fsr?1", false);
-	xmlHTTP.send(null);
-	var led = new XMLHttpRequest();
-	led.open("GET", "portalled.fsr", false);
-	led.send(null);
-	var imageURL = "url('./logo/logo2014_" + JSON.parse(xmlHTTP.responseText)[0] + ".png')"
-	document.getElementById("fsrlogo").style.backgroundImage = imageURL;;
-}
