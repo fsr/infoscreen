@@ -1,7 +1,0 @@
-#!/bin/bash
-echo "Content-type: text/json"
-echo ""
-curl -k -s https://www.ifsr.de/_feed/fsr:ticker | xmlstarlet sel -t -m "/rss/channel/item" -v "description" -o "<!--next-->"  | \
-	xmlstarlet unesc | \
-	sed 's,<\/*p>,,g' | \
-	sed 's,\&quot\;,\",g'
