@@ -33,5 +33,13 @@
             {% endfor %}
         </ul>
         {% endif %}
+
+        <br /><br />
+        <h2>Ein aus Markdown gerenderter Artikel:</h2>
+        <div border=1>
+            {% if article %}
+            {{ article }}
+            {% endif %}
+        </div>
     </body>
 </html>
