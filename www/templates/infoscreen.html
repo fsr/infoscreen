@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <title>FSR-Infoscreen</title>
+    </head>
+
+    <body>
+        <h1>Heute @Alte Mensa</h1>
+        <table border=1>
+            <tr>
+                <th>Name</th>
+                <th>Preis</th>
+                <th>Anmerkungen</th>
+            </tr>
+            {% for meal in meals %}
+            <tr>
+                <td>{{ meal.name }}</td>
+                <td>{% if meal.prices.students %} {{ meal.prices.students }} €{% endif %}</td>
+                <td>
+                    {% for info in meal.notes %}
+                    {{info}} <br />
+                    {% endfor %}
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+
+    </body>
+</html>

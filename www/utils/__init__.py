@@ -1,0 +1,1 @@
+from .mensa import *

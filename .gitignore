@@ -1,1 +1,4 @@
 www/images/speiseplan
+
+# Ignore python cache folder
+__pycache__/
