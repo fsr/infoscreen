@@ -4,7 +4,7 @@
     </head>
 
     <body>
-        <h1>Heute @Alte Mensa</h1>
+        <h2>Heute @Alte Mensa</h2>
         <table border=1>
             <tr>
                 <th>Name</th>
@@ -24,5 +24,14 @@
             {% endfor %}
         </table>
 
+        <br /><br />
+        <h2>Postillon-Ticker:</h2>
+        {% if ticker %}
+        <ul>
+            {% for message in ticker %}
+            {% if message.text %}<li>{{ message.text }}</li>{% endif %}
+            {% endfor %}
+        </ul>
+        {% endif %}
     </body>
 </html>
