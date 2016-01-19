@@ -201,9 +201,9 @@ span.footer_text{
 .mensa_title {
   color: #E5E5E5;
   font-size: 13px;
-  width: 96%;
+  width: 97%;
   padding-top: 4px;
-  padding-left: 2%;
+  padding-left: 3%;
   padding-left: 2%;
   min-height: 15px;
   display: table;
@@ -211,8 +211,8 @@ span.footer_text{
 .mensa_price {
   color: grey;
   font-size: 12px;
-  width: 18%;
-  padding-left: 2%;
+  min-width: 10%;
+  padding-left: 3%;
   text-align: left;
   min-height: 15px;
   margin: 0px;
@@ -220,7 +220,7 @@ span.footer_text{
   display: table;
 }
 .mensa_emoji {
-  width: 57%;
+  min-width: 30%;
   padding-left: 2%;
     padding-bottom: 1%;
   text-align: left;
