@@ -6,32 +6,50 @@ div {
 
 .schwein {
     background-image: url(/static/emojis/pig.png);
+    background-size: cover;
+    width: 20px;
+    height: 20px;
     display: inline-block;
 }
 
 .rind {
     background-image: url(/static/emojis/cow.png);
     display: inline-block;
+    background-size: cover;
+    width: 20px;
+    height: 20px;
 }
 
 .knoblauch {
     background-image: url(/static/emojis/garlic.png);
     display: inline-block;
+    background-size: cover;
+    width: 20px;
+    height: 20px;
 }
 
 .vegan {
     background-image: url(/static/emojis/herb.png);
     display: inline-block;
+    background-size: cover;
+    width: 20px;
+    height: 20px;
 }
 
 .vegetarisch {
     background-image: url(/static/emojis/tomato.png);
     display: inline-block;
+    background-size: cover;
+    width: 20px;
+    height: 20px;
 }
 
 .alkohol {
     background-image: url(/static/emojis/wine.png);
     display: inline-block;
+    background-size: cover;
+    width: 20px;
+    height: 20px;
 }
 
 @font-face {
@@ -176,13 +194,13 @@ span.footer_text{
 }
 .mensa_entry {
   width: 100%;
-  background-color: white;
+  background-color: #404040;
   display: table;
   margin-top: 3;
 }
 .mensa_title {
-  color: black;
-  font-size: 12px;
+  color: #E5E5E5;
+  font-size: 13px;
   width: 96%;
   padding-top: 4px;
   padding-left: 2%;
@@ -193,7 +211,7 @@ span.footer_text{
 .mensa_price {
   color: grey;
   font-size: 12px;
-  width: 47%;
+  width: 18%;
   padding-left: 2%;
   text-align: left;
   min-height: 15px;
@@ -202,9 +220,10 @@ span.footer_text{
   display: table;
 }
 .mensa_emoji {
-  width: 47%;
+  width: 57%;
   padding-left: 2%;
+    padding-bottom: 1%;
   text-align: left;
   display: inline-block;
-  float: right;
+  float: left;
 }

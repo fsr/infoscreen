@@ -45,9 +45,9 @@
               <div class="mensa_title">{{ meal.name }}</div>
               <div class="mensa_price">{% if meal.price %} {{ meal.price }}{% endif %}</div>
               <div class="mensa_emoji">
-                <!--{% for note in meal.notes %}
+                {% for note in meal.notes %}
                 <div class="{{ note }}"></div>
-                {% endfor %}-->
+                {% endfor %}
               </div>
             </div>
             {% endfor %}
