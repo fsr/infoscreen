@@ -227,3 +227,30 @@ span.footer_text{
   display: inline-block;
   float: left;
 }
+.dvb_table_col {
+    width: 33%;
+    background-color: red;
+    height: 100%;
+    float: right;
+    display: inline-block;
+}
+.dvb_table_col.left {
+    border-left-width: 0%;
+    border-left-style: solid;
+    border-left-color: #333333;
+}
+.dvb_table_elem { 
+    width: 100%;
+}
+.dvb_table_elem.head { 
+    height: 25%;
+}
+.dvb_table_elem.data { 
+    height: 25%;
+}
+.dvb_table_elem.head.light { 
+    background-color: #404040;
+}
+.dvb_table_elem.data.light { 
+    background-color: #404040;
+}
