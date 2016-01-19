@@ -1,6 +1,7 @@
 <html>
     <head>
         <title>FSR-Infoscreen</title>
+        <link rel="stylesheet" type="text/css" href="static/style.css" />
     </head>
 
     <body>
@@ -14,10 +15,10 @@
             {% for meal in meals %}
             <tr>
                 <td>{{ meal.name }}</td>
-                <td>{% if meal.prices.students %} {{ meal.prices.students }} €{% endif %}</td>
+                <td>{% if meal.price %} {{ meal.price }} €{% endif %}</td>
                 <td>
-                    {% for info in meal.notes %}
-                    {{info}} <br />
+                    {% for note in meal.notes %}
+                    <div class="{{ note }}"></div>
                     {% endfor %}
                 </td>
             </tr>

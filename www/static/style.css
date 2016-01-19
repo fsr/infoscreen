@@ -1,0 +1,29 @@
+div {
+  width: 25px;
+  height: 25px;
+  background-size: 25px;
+}
+
+.schwein {
+    background-image: url(/static/emojis/pig.png);
+}
+
+.rind {
+    background-image: url(/static/emojis/cow.png);
+}
+
+.knoblauch {
+    background-image: url(/static/emojis/garlic.png);
+}
+
+.vegan {
+    background-image: url(/static/emojis/herb.png);
+}
+
+.vegetarisch {
+    background-image: url(/static/emojis/tomato.png);
+}
+
+.alkohol {
+    background-image: url(/static/emojis/wein.png);
+}
