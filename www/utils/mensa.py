@@ -61,6 +61,5 @@ def calc_price(price):
         return None
     else:
         price_value = float(price)
-        print(price_value)
-        price_string = '%.2f €' % price_value
+        price_string = '{0:.2f} €'.format(price_value)
         return price_string
