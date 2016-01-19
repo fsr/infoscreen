@@ -1,4 +1,12 @@
 <html>
+<head>
+    <meta charset="utf-8" />
+    <title>iFSR Infoscreen Backend</title>
+    <link rel="stylesheet" type="text/css" href="milligram.min.css" />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <link href='https://fonts.googleapis.com/css?family=Source+Code+Pro' rel='stylesheet' type='text/css'>
+</head>
+    
 <body>
 <?php
 	$db = new SQLite3("items.sqlite");
@@ -15,26 +23,40 @@
 		$result = $statement->execute();
 	}
 ?>
-<ul>
-<?php
-	$res = $db->query("SELECT * FROM items;");
-	while ($row = $res->fetchArray()) {
-		echo "<li>$row[id]: $row[headline]</li>";
-	}
-?>
-</ul>
-<hr />
-<h2> Delete old entry: </h2>
-<form action="index.php" method="POST">
-	<input name="delete_nr" />
-	<input name="delete_submit" type="submit" />
-</form>
-<hr />
-<h2> Add new entry: </h2>
-<form action="index.php" method="POST">
-	<input name="new_headline" value="New Headline" />
-	<textarea name="new_content">New text</textarea>
-	<input name="new_submit" type="submit">
-</form>
+
+    <aside class="articlelist">
+        <h4>Alle News</h4>
+        <?php
+            $res = $db->query("SELECT * FROM items;");
+            while ($row = $res->fetchArray()) {
+                echo "<div class=\"article\">$row[id]: $row[headline]<br />
+                <form action=\"backend.php\" method=\"POST\">
+                    <input name=\"delete_nr\" type=\"hidden\" value=\"$row[id]\" />
+                    <input name=\"delete_submit\" type=\"submit\" class=\"delete\" value=\"Delete me.\" />
+                    </form></div>";
+            }
+        ?>
+
+    </aside>
+    <div class="content">
+        <h1>Einen Eintrag hinzufügen</h1>
+        <br />
+        
+        <form action="backend.php" method="POST">
+            <fieldset>
+                <pre class="info">Der Nachrichtentext unterstützt valides <b>Markdown</b>.</pre>
+                <label for="headline">Überschrift:</label>
+                <input name="new_headline" placeholder="Titel" id="headline" class="inputfield" />
+                <label for="imagelink">Bildlink:</label>
+                <input name="new_image" placeholder="Bildlink" id="imagelink" class="inputfield" />
+                <div class="newstextbox">
+                    <textarea name="new_content" placeholder="Nachrichtentext hier einfügen..." class="newstext"></textarea>
+                </div>
+                <input name="new_submit" type="submit" class="submitbutton button-outline" />
+            </fieldset>
+        </form>
+    </div>
+
+
 </body>
 </html>

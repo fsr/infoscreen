@@ -1,4 +1,4 @@
-www/images/speiseplan
+items.sqlite
 
 # Ignore python cache folder
 __pycache__/
