@@ -174,3 +174,37 @@ span.footer_text{
   font-weight: bold;
   color: white;
 }
+.mensa_entry {
+  width: 100%;
+  background-color: white;
+  display: table;
+  margin-top: 3;
+}
+.mensa_title {
+  color: black;
+  font-size: 12px;
+  width: 96%;
+  padding-top: 4px;
+  padding-left: 2%;
+  padding-left: 2%;
+  min-height: 15px;
+  display: table;
+}
+.mensa_price {
+  color: grey;
+  font-size: 12px;
+  width: 47%;
+  padding-left: 2%;
+  text-align: left;
+  min-height: 15px;
+  margin: 0px;
+  float: left;
+  display: table;
+}
+.mensa_emoji {
+  width: 47%;
+  padding-left: 2%;
+  text-align: left;
+  display: inline-block;
+  float: right;
+}

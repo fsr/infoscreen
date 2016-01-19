@@ -30,6 +30,27 @@
     <aside class="left_aside">
         <article class="logo">
             <img src="../static/logo.png" width="100%" alt="Logo">
+
+
+            <tr>
+                <td></td>
+                <td></td>
+                <td>
+
+                </td>
+            </tr>
+
+            {% for meal in meals %}
+            <div class="mensa_entry">
+              <div class="mensa_title">{{ meal.name }}</div>
+              <div class="mensa_price">{% if meal.price %} {{ meal.price }} €{% endif %}</div>
+              <div class="mensa_emoji">
+                <!--{% for note in meal.notes %}
+                <div class="{{ note }}"></div>
+                {% endfor %}-->
+              </div>
+            </div>
+            {% endfor %}
         </article>
     </aside>
     <section class="main">
