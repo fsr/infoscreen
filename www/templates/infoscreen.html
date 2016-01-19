@@ -1,4 +1,83 @@
 <html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="text/html; charset=ISO-8859-1" http-equiv="content-type">
+    <script type="text/javascript" src="data/jquery-1.11.3.min.js"></script>
+    <meta name='viewport' content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="style.css" type="text/css">
+    <title>FSR-Infoscreen</title>
+    <link rel="stylesheet" type="text/css" href="static/style.css" />
+    <script type="text/javascript">
+        function id1() {
+
+            $(".id1").animate({
+                height: "0px",
+
+                duration: 1000
+            });
+
+
+        }
+        window.onload = function() {
+            setTimeout(id1(), 5000);
+        };
+
+    </script>
+</head>
+
+<body>
+    <aside class="left_aside">
+        <article class="logo">
+            <img src="../static/logo.png" width="100%" alt="Logo">
+        </article>
+    </aside>
+    <section class="main">
+        <article class="id1" id="id1"><span class="id1">Article 1</span></article>
+        <article class="id2" id="id2"><span class="id2">Article 2</span></article>
+    </section>
+    <div class="upper">
+      <div id="helmholtz" class="vvo">
+        <h2 class="vvoheader">Helmholtzstraße</h2>
+        <table class="vvo_t" id="helmholtztable" border="0">
+          <tr><td class="vvono">&nbsp;</td><td class="vvostation">Daten</td><td class="vvomin">.</td></tr>
+          <tr><td class="vvono">&nbsp;</td><td class="vvostation">werden</td><td class="vvomin">.</td></tr>
+          <tr><td class="vvono">&nbsp;</td><td class="vvostation">geladen</td><td class="vvomin">.</td></tr>
+          <tr><td class="vvono">&nbsp;</td><td class="vvostation">…</td><td class="vvomin">.</td></tr>
+        </table>
+      </div>
+
+      <div id="muenchner" class="vvo">
+        <h2 class="vvoheader">Münchner Platz</h2>
+        <table  class="vvo_t" id="muenchnertable" border="0">
+          <tr><td class="vvono">&nbsp;</td><td class="vvostation">Daten</td><td class="vvomin">.</td></tr>
+          <tr><td class="vvono">&nbsp;</td><td class="vvostation">werden</td><td class="vvomin">.</td></tr>
+          <tr><td class="vvono">&nbsp;</td><td class="vvostation">geladen</td><td class="vvomin">.</td></tr>
+          <tr><td class="vvono">&nbsp;</td><td class="vvostation">…</td><td class="vvomin">.</td></tr>
+        </table>
+      </div>
+
+      <div id="technische" class="vvo">
+        <h2 class="vvoheader">Technische Universität</h2>
+        <table class="vvo_t" id="technischetable" border="0">
+          <tr><td class="vvono">&nbsp;</td><td class="vvostation">Daten</td><td class="vvomin">.</td></tr>
+          <tr><td class="vvono">&nbsp;</td><td class="vvostation">werden</td><td class="vvomin">.</td></tr>
+          <tr><td class="vvono">&nbsp;</td><td class="vvostation">geladen</td><td class="vvomin">.</td></tr>
+          <tr><td class="vvono">&nbsp;</td><td class="vvostation">…</td><td class="vvomin">.</td></tr>
+        </table>
+      </div>
+    </div>
+    <footer>
+      <span class="footer_text">Test WOCHE 2</span>
+
+    </footer>
+</body>
+
+
+
+</html>
+
+<!--<html>
     <head>
         <title>FSR-Infoscreen</title>
         <link rel="stylesheet" type="text/css" href="static/style.css" />
@@ -43,4 +122,4 @@
             {% endif %}
         </div>
     </body>
-</html>
+</html>-->
