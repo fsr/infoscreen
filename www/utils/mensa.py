@@ -24,13 +24,13 @@ def getmeals():
                 new_meal['name'] = 'Abendangebot: ' + meal['name']
             else:
                 new_meal['name'] = meal['name']
-            new_meal['price'] = meal['prices']['students']
+            new_meal['price'] = calc_price(meal['prices']['students'])
             new_meal['notes'] = get_notes(meal['notes'])
             meals.append(new_meal)
 
         elif meal['category'] == 'Abendangebot':
             new_meal['name'] = meal['name']
-            new_meal['price'] = meal['prices']['students']
+            new_meal['price'] = calc_price(meal['prices']['students'])
             new_meal['notes'] = get_notes(meal['notes'])
             meals.append(new_meal)
 
@@ -54,3 +54,13 @@ def get_notes(meal):
         notes.append('alkohol')
 
     return notes
+
+
+def calc_price(price):
+    if price is None:
+        return None
+    else:
+        price_value = float(price)
+        print(price_value)
+        price_string = '%.2f €' % price_value
+        return price_string
