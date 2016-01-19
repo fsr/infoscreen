@@ -60,30 +60,39 @@
       <div id="helmholtz" class="vvo">
         <h2 class="vvoheader">Helmholtzstraße</h2>
         <table class="vvo_t" id="helmholtztable" border="0">
-          <tr><td class="vvono">&nbsp;</td><td class="vvostation">Daten</td><td class="vvomin">.</td></tr>
-          <tr><td class="vvono">&nbsp;</td><td class="vvostation">werden</td><td class="vvomin">.</td></tr>
-          <tr><td class="vvono">&nbsp;</td><td class="vvostation">geladen</td><td class="vvomin">.</td></tr>
-          <tr><td class="vvono">&nbsp;</td><td class="vvostation">…</td><td class="vvomin">.</td></tr>
+          {% if HhBus %}
+          {% for item in HhBus %}
+              <tr><td class="vvono">{{ item[0] }}</td><td class="vvostation">{{ item[1] }}</td><td class="vvomin">{{ item[2] }}</td></tr>
+          {% endfor %}
+          {% else %}
+          <tr><td class="vvono">&nbsp;</td><td class="vvostation">Keine Daten</td><td class="vvomin">&nbsp;</td></tr>
+          {% endif %}
         </table>
       </div>
 
       <div id="muenchner" class="vvo">
         <h2 class="vvoheader">Münchner Platz</h2>
         <table  class="vvo_t" id="muenchnertable" border="0">
-          <tr><td class="vvono">&nbsp;</td><td class="vvostation">Daten</td><td class="vvomin">.</td></tr>
-          <tr><td class="vvono">&nbsp;</td><td class="vvostation">werden</td><td class="vvomin">.</td></tr>
-          <tr><td class="vvono">&nbsp;</td><td class="vvostation">geladen</td><td class="vvomin">.</td></tr>
-          <tr><td class="vvono">&nbsp;</td><td class="vvostation">…</td><td class="vvomin">.</td></tr>
+          {% if MPBus %}
+          {% for item in MPBus %}
+              <tr><td class="vvono">{{ item[0] }}</td><td class="vvostation">{{ item[1] }}</td><td class="vvomin">{{ item[2] }}</td></tr>
+          {% endfor %}
+          {% else %}
+          <tr><td class="vvono">&nbsp;</td><td class="vvostation">Keine Daten</td><td class="vvomin">&nbsp;</td></tr>
+          {% endif %}
         </table>
       </div>
 
       <div id="technische" class="vvo">
         <h2 class="vvoheader">Technische Universität</h2>
         <table class="vvo_t" id="technischetable" border="0">
-          <tr><td class="vvono">&nbsp;</td><td class="vvostation">Daten</td><td class="vvomin">.</td></tr>
-          <tr><td class="vvono">&nbsp;</td><td class="vvostation">werden</td><td class="vvomin">.</td></tr>
-          <tr><td class="vvono">&nbsp;</td><td class="vvostation">geladen</td><td class="vvomin">.</td></tr>
-          <tr><td class="vvono">&nbsp;</td><td class="vvostation">…</td><td class="vvomin">.</td></tr>
+          {% if TuBus %}
+          {% for item in TuBus %}
+              <tr><td class="vvono">{{ item[0] }}</td><td class="vvostation">{{ item[1] }}</td><td class="vvomin">{{ item[2] }}</td></tr>
+          {% endfor %}
+          {% else %}
+          <tr><td class="vvono">&nbsp;</td><td class="vvostation">Keine Daten</td><td class="vvomin">&nbsp;</td></tr>
+          {% endif %}
         </table>
       </div>
     </div>
