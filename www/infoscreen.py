@@ -20,6 +20,7 @@ def render_infoscreen():
                                   'Dresden', 3)
     return render_template("infoscreen.html", meals=meals,
                            ticker=postillon_ticker,
+                           ticker_time=int(len(postillon_ticker)/5),
                            article=latest_news,
                            HhBus=dep_helmholtz,
                            MPBus=dep_muenchner,
