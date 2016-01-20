@@ -1,8 +1,8 @@
-div {
+/*div {
   width: 25px;
   height: 25px;
   background-size: 25px;
-}
+}*/
 
 .schwein {
     background-image: url(/static/emojis/pig.png);
@@ -196,7 +196,7 @@ span.footer_text{
   width: 100%;
   background-color: #404040;
   display: table;
-  margin-top: 3;
+  margin-top: 3px;
 }
 .mensa_title {
   color: #E5E5E5;
@@ -228,22 +228,23 @@ span.footer_text{
   float: left;
 }
 .dvb_table_col {
-    width: 33%;
-    background-color: red;
+    width: 33.1%;
     height: 100%;
-    float: right;
+    float: left;
     display: inline-block;
 }
 .dvb_table_col.left {
-    border-left-width: 0%;
+    border-left-width: 1px;
     border-left-style: solid;
     border-left-color: #333333;
+    float: left;
 }
 .dvb_table_elem { 
     width: 100%;
 }
 .dvb_table_elem.head { 
     height: 25%;
+    display: table;
 }
 .dvb_table_elem.data { 
     height: 25%;
@@ -253,4 +254,14 @@ span.footer_text{
 }
 .dvb_table_elem.data.light { 
     background-color: #404040;
+}
+.dvb_header {
+    font-size: 30px;
+    font-weight: bold;
+    font-family: Exo;
+    padding-bottom: 5px;
+    padding-left: 5px;
+    display: table-cell;
+   vertical-align: bottom;
+    
 }
