@@ -1,5 +1,6 @@
 import time
 import urllib.request
+from urllib.error import URLError
 import json
 
 
@@ -12,8 +13,13 @@ def getmeals():
     link = 'http://openmensa.org/api/v2/canteens/{mensa}/days/{date}/meals'.format(
         mensa=79, date=today)
 
-    ret = urllib.request.urlopen(link)
-    raw_meals = json.loads(ret.read().decode('UTF-8'))
+    raw_meals = {}
+    try:
+        ret = urllib.request.urlopen(link)
+        raw_meals = json.loads(ret.read().decode('UTF-8'))
+    except URLError:
+        return []
+
     hour = int(time.strftime('%H'))
 
     meals = []

@@ -12,19 +12,16 @@ def render_infoscreen():
     postillon_ticker = utils.postillon_ticker()
     latest_news = markdown(utils.get_news())
 
-    dep_helmholtz = utils.get_departures('Helmholtzstrasse',
-                                         'Dresden', 3)
-    dep_muenchner = utils.get_departures('Muenchner%20Platz',
-                                         'Dresden', 3)
-    dep_tu = utils.get_departures('Technische%20Universitaet',
-                                  'Dresden', 3)
+    dep_helmholtz, dep_muenchner, dep_tu = utils.all_departures()
+
     return render_template("infoscreen.html", meals=meals,
                            ticker=postillon_ticker,
-                           ticker_time=int(len(postillon_ticker)/5),
+                           ticker_time=int(len(postillon_ticker) / 5),
                            article=latest_news,
                            HhBus=dep_helmholtz,
                            MPBus=dep_muenchner,
                            TuBus=dep_tu)
 
 if __name__ == "__main__":
+    app.debug = True
     app.run()
