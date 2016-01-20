@@ -138,33 +138,7 @@ span.id2 {
     color: #b1e11c;
     ;
 }
-div.vvo {
-  display: inline-block;
-  width: 25%;
-  padding-left: 1%;
-  padding-right: 6%;
-}
-h2.vvoheader {
-  font-size: 20px;
-}
-td.vvostation {
-  color: white;
-}
-td.vvomin {
-  color: white;
-}
-table.vvo_t {
-  width: 100%;
-}
-h2.vvoheader {
-  font-size: 30px;
-}
-h3.vvoheader {
-  font-size: 20px;
-}
-td.vvostation {
-  font-size: 30px;
-}
+
 div.upper {
     height: 26%;
     width: 80%;
@@ -227,41 +201,80 @@ span.footer_text{
   display: inline-block;
   float: left;
 }
+.dvb_table {
+    width: 100%;
+    height: 100%;
+}
+.dvb_table_single {
+    width: 96%;
+    
+    height: 100%;
+}
 .dvb_table_col {
     width: 33.1%;
     height: 100%;
     float: left;
     display: inline-block;
 }
-.dvb_table_col.left {
-    border-left-width: 1px;
-    border-left-style: solid;
-    border-left-color: #333333;
+.dvb_col_table{
+    width:33.1;
+}
+.dvb_row {
+    height: 25%;
+}
+.dvb_cell {
+    width: 33.1%;
+    height: 100%;
+    color: white;
+}
+.dvb_bus {
+    background-color: #005E79;
+    border-radius: 27px;
+    padding: 7px;
     float: left;
-}
-.dvb_table_elem { 
-    width: 100%;
-}
-.dvb_table_elem.head { 
-    height: 25%;
-    display: table;
-}
-.dvb_table_elem.data { 
-    height: 25%;
-}
-.dvb_table_elem.head.light { 
-    background-color: #404040;
-}
-.dvb_table_elem.data.light { 
-    background-color: #404040;
-}
-.dvb_header {
+    color: white;
     font-size: 30px;
-    font-weight: bold;
-    font-family: Exo;
-    padding-bottom: 5px;
-    padding-left: 5px;
-    display: table-cell;
-   vertical-align: bottom;
-    
+    margin: 0px auto;
 }
+.dvb_strbahn {
+    background-color: #DD0B2F;
+    color: white;
+    padding: 7px;
+    float: left;
+    font-size: 30px;
+    padding-left: 17px;
+    padding-right:17px;
+}
+.dvb_header{
+    color:white;
+    font-size: 36px;
+    background-color: #404040;
+    height: 40px;
+}
+td.vvostation {
+  color: white;
+    width: 60%;
+    font-size: 40px;
+}
+td.vvostation_tu {
+  color: white;
+    width: 60%;
+    font-size: 26px;
+}
+td.vvomin {
+  color: white;
+    width: 20%;
+    font-size: 40px;
+}
+.vvono {
+    width: 20%;
+    text-align: center;
+}
+.vvo_arrow {
+    width: 20%;
+}
+
+
+
+
+

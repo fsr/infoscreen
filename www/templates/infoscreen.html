@@ -57,7 +57,90 @@
         <article class="id2" id="id2"><span class="id2">Article 2</span></article>
     </section>
     <div class="upper">
-        <div class="dvb_table_col left">
+        <table class="dvb_table">
+            <tr class="dvb_col_table">
+                <td class="dvb_cell">
+                        <table class="dvb_table_single">
+                            <tr>
+                                <td colspan="4" class="dvb_header">Helmholzstraße</td>
+                            </tr>
+                        {% if HhBus %}
+                            {% for item in HhBus %}
+                            <tr class="dvb_row">
+                                <td class="vvono"><div class="dvb_bus"><b>{{ item[0] }}</b></div></td>
+                                <td class="vvostation">{{ item[1] }}</td>
+                                {% if item[1]=='Löbtau Süd' %}
+                                <td class="vvo_arrow">&rarr;</td>
+                                {% endif %}
+                                {% elif item[1]=='Plauen, Rathaus' %}
+                                <td class="vvo_arrow">&rarr;</td>
+                                {% endif %}
+                                {% elif item[1]=='Strießen' %}
+                                <td class="vvo_arrow">&larr;</td>
+                                {% endif %}
+                                {% elif item[1]=='Gruna' %}
+                                <td class="vvo_arrow">&larr;</td>
+                                {% else %}
+                                <td class="vvo_arrow"></td>
+                                {% endif %}
+                                <td class="vvomin">{{ item[2] }}</td>
+                            </tr>
+                        {% endfor %}
+                            {% else %}
+                            <tr>
+                                <td class="vvono">&nbsp;</td>
+                                <td class="vvostation">Keine Daten</td>
+                                <td class="vvomin">&nbsp;</td></tr>
+                        {% endif %}
+                        </table>
+                </td>
+                <td class="dvb_cell">
+                        <table class="dvb_table_single">
+                            <tr>
+                                <td colspan="4" class="dvb_header">Münchner Platz</td>
+                            </tr>
+                        {% if MPBus %}
+                        {% for item in MPBus %}
+                            <tr class="dvb_row">
+                                <td class="vvono"><div class="dvb_strbahn"><b>{{ item[0] }}</b></div></td>
+                                <td class="vvostation">{{ item[1] }}</td>
+                                <td class="vvo_arrow"></td>
+                                <td class="vvomin">{{ item[2] }}</td>
+                            </tr>
+                        {% endfor %}
+                            {% else %}
+                            <tr>
+                                <td class="vvono">&nbsp;</td>
+                                <td class="vvostation">Keine Daten</td>
+                                <td class="vvomin">&nbsp;</td></tr>
+                        {% endif %}
+                        </table>
+                </td>
+                <td class="dvb_cell">
+                        <table class="dvb_table_single">
+                            <tr>
+                                <td colspan="4" class="dvb_header">Technische Universität</td>
+                            </tr>
+                        {% if TuBus %}
+                        {% for item in TuBus %}
+                            <tr class="dvb_row">
+                                <td class="vvono"><div class="dvb_bus"><b>{{ item[0] }}</b></div></td>
+                                <td class="vvostation_tu">{{ item[1] }}</td>
+                                <td class="vvo_arrow"></td>
+                                <td class="vvomin">{{ item[2] }}</td>
+                            </tr>
+                        {% endfor %}
+                            {% else %}
+                            <tr>
+                                <td class="vvono">&nbsp;</td>
+                                <td class="vvostation">Keine Daten</td>
+                                <td class="vvomin">&nbsp;</td></tr>
+                        {% endif %}
+                        </table>
+                </td>
+            </tr>
+        </table>
+       <!-- <div class="dvb_table_col left">
             <div class="dvb_table_elem head light"><div class="dvb_header">Helmholtzstraße</div></div>
             <div class="dvb_table_elem data"></div>
             <div class="dvb_table_elem data light"></div>
@@ -75,6 +158,9 @@
             <div class="dvb_table_elem data"></div>
             <div class="dvb_table_elem data"></div>
         </div>
+        
+        -->
+        
      <!-- <div id="helmholtz" class="vvo">
         <h2 class="vvoheader">Helmholtzstraße</h2>
         <table class="vvo_t" id="helmholtztable" border="0">
