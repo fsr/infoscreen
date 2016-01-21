@@ -4,13 +4,16 @@ from urllib.error import URLError
 import json
 
 
+MENSA_API_URL = 'http://openmensa.org/api/v2/canteens/{mensa}/days/{date}/meals'
+
+
 def getmeals():
     '''
     Loads, Reads and parses the meals.
 
     '''
     today = time.strftime('%Y-%m-%d')
-    link = 'http://openmensa.org/api/v2/canteens/{mensa}/days/{date}/meals'.format(
+    link = MENSA_API_URL.format(
         mensa=79, date=today)
 
     try:
@@ -22,20 +25,20 @@ def getmeals():
             'notes': 'no_data'
         }
 
-    hour = int(time.strftime('%H'))
+    is_morning = int(time.strftime('%H')) < 15
 
     return [
-        mk_meal(meal)
+        mk_meal(meal, is_morning)
         for meal in raw_meals
     ]
 
 
-def mk_meal(raw_data):
+def mk_meal(raw_data, is_morning):
     return {
         'price': calc_price(raw_data['prices']['students']),
-        'notes': get_notes(raw_data['notes'])
+        'notes': get_notes(raw_data['notes']),
         'name': 'Abendangebot: ' + raw_data['name']
-                if hour < 15 and raw_data['category'] == 'Abendangebot'
+                if is_morning and raw_data['category'] == 'Abendangebot'
                 else raw_data['name']
     }
 
