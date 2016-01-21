@@ -20,10 +20,10 @@ def getmeals():
         ret = urllib.request.urlopen(link)
         raw_meals = json.loads(ret.read().decode('UTF-8'))
     except URLError:
-        return {
+        return [{
             'name': 'Keine Daten',
             'notes': 'no_data'
-        }
+        }]
 
     is_morning = int(time.strftime('%H')) < 15
 
