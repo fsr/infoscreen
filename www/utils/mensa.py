@@ -18,7 +18,10 @@ def getmeals():
         ret = urllib.request.urlopen(link)
         raw_meals = json.loads(ret.read().decode('UTF-8'))
     except URLError:
-        return []
+        no_data = {}
+        no_data['name'] = 'Keine Daten'
+        no_data['notes'] = ['no_data']
+        return no_data
 
     hour = int(time.strftime('%H'))
 
