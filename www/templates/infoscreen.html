@@ -69,16 +69,9 @@
                             <tr class="dvb_row">
                                 <td class="vvono"><div class="dvb_bus"><b>{{ item[0] }}</b></div></td>
                                 <td class="vvostation">{{ item[1] }}</td>
-                                {% if item[1]=='Löbtau Süd' %}
+                                {% if item[1]=='Löbtau Süd' or item[1]=='Plauen, Rathaus' %}
                                 <td class="vvo_arrow">&rarr;</td>
-                                {% endif %}
-                                {% elif item[1]=='Plauen, Rathaus' %}
-                                <td class="vvo_arrow">&rarr;</td>
-                                {% endif %}
-                                {% elif item[1]=='Strießen' %}
-                                <td class="vvo_arrow">&larr;</td>
-                                {% endif %}
-                                {% elif item[1]=='Gruna' %}
+                                {% elif item[1]=='Strießen' or item[1]=='Gruna' %}
                                 <td class="vvo_arrow">&larr;</td>
                                 {% else %}
                                 <td class="vvo_arrow"></td>
@@ -158,9 +151,9 @@
             <div class="dvb_table_elem data"></div>
             <div class="dvb_table_elem data"></div>
         </div>
-        
+
         -->
-        
+
      <!-- <div id="helmholtz" class="vvo">
         <h2 class="vvoheader">Helmholtzstraße</h2>
         <table class="vvo_t" id="helmholtztable" border="0">
