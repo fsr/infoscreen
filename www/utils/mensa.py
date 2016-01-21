@@ -29,7 +29,7 @@ def getmeals():
 
     return [
         mk_meal(meal, is_morning)
-        for meal in raw_meals
+        for meal in raw_meals if is_morning or meal['category'] == 'Abendangebot'
     ]
 
 
