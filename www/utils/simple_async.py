@@ -26,6 +26,8 @@ class AsyncExec:
     def _wrapper(self):
         res = self._function(*self._args, **self._kwargs)
         self._result = res
+        if EMIT_NOTIFICATIONS:
+            print(ct(), 'Thread', self._name, 'finished')
 
     def start(self):
         if EMIT_NOTIFICATIONS:
@@ -51,8 +53,6 @@ class AsyncExec:
     def wait(self):
         if self.is_running:
             self._thread.join()
-            if EMIT_NOTIFICATIONS:
-                print(ct(), 'Thread', self._name, 'finished')
             self._is_running = False
             return self._result
         else:
