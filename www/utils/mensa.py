@@ -13,37 +13,31 @@ def getmeals():
     link = 'http://openmensa.org/api/v2/canteens/{mensa}/days/{date}/meals'.format(
         mensa=79, date=today)
 
-    raw_meals = {}
     try:
         ret = urllib.request.urlopen(link)
         raw_meals = json.loads(ret.read().decode('UTF-8'))
     except URLError:
-        no_data = {}
-        no_data['name'] = 'Keine Daten'
-        no_data['notes'] = ['no_data']
-        return no_data
+        return {
+            'name': 'Keine Daten',
+            'notes': 'no_data'
+        }
 
     hour = int(time.strftime('%H'))
 
-    meals = []
-    for meal in raw_meals:
-        new_meal = {}
-        if hour < 15:
-            if meal['category'] == 'Abendangebot':
-                new_meal['name'] = 'Abendangebot: ' + meal['name']
-            else:
-                new_meal['name'] = meal['name']
-            new_meal['price'] = calc_price(meal['prices']['students'])
-            new_meal['notes'] = get_notes(meal['notes'])
-            meals.append(new_meal)
+    return [
+        mk_meal(meal)
+        for meal in raw_meals
+    ]
 
-        elif meal['category'] == 'Abendangebot':
-            new_meal['name'] = meal['name']
-            new_meal['price'] = calc_price(meal['prices']['students'])
-            new_meal['notes'] = get_notes(meal['notes'])
-            meals.append(new_meal)
 
-    return meals
+def mk_meal(raw_data):
+    return {
+        'price': calc_price(raw_data['prices']['students']),
+        'notes': get_notes(raw_data['notes'])
+        'name': 'Abendangebot: ' + raw_data['name']
+                if hour < 15 and raw_data['category'] == 'Abendangebot'
+                else raw_data['name']
+    }
 
 
 def get_notes(meal):
@@ -69,6 +63,4 @@ def calc_price(price):
     if price is None:
         return None
     else:
-        price_value = float(price)
-        price_string = '{0:.2f} €'.format(price_value)
-        return price_string
+        return '{0:.2f} €'.format(float(price))
