@@ -198,3 +198,14 @@ pre {
 	color: #000;
 }
 
+.stale {
+	color: #555;
+}
+
+.stalestale {
+	color: #aaa;
+}
+
+.stalestalestale {
+	color: #fff;
+}

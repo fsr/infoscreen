@@ -172,9 +172,15 @@ function showDVB(station, response) {
 	nextup.forEach(function(val) {
 		table += "<tr><td class=\"vvono vvono"+val[0]+"\">"+val[0]+"</td><td class=\"vvostation\">"+val[1].replace("Dresden","")+"</td><td class=\"vvomin\">"+val[2]+"</td></tr>";
 	});
-
-	document.getElementById(station+"table").innerHTML = table;
-	luDVB = new Date().getTime();
+	if (nextup.length>0) {
+                document.getElementById(station+"table").innerHTML = table;
+                document.getElementById(station+"table").className = "";
+                luDVB = new Date().getTime();
+        } else {
+		if(document.getElementById(station+"table").className!="stalestalestale") {
+	                document.getElementById(station+"table").className += "stale";
+		}
+        }
 }
 
 function updateTime() {

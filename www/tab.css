@@ -78,3 +78,15 @@ button {
 	height: 80px;
 	font-size: 32px;
 }
+
+.stale {
+	color: #aaa;
+}
+
+.stalestale {
+	color: #555;
+}
+
+.stalestalestale {
+	color: #000;
+}
