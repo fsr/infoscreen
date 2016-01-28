@@ -37,7 +37,7 @@ window.onload = function() {
 }
 
 function showDVB(station, response) {
-	var nextup = eval('(' + response + ')');
+	var nextup = JSON.parse(response);
 
 	var table = "";
 
