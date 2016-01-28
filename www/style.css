@@ -209,3 +209,16 @@ pre {
 .stalestalestale {
 	color: #fff;
 }
+
+.stalestale::after {
+	content:"(ca. 1 Minute veraltete Daten)";
+	color: black;
+	font-size: 16px;
+	position: absolute;
+	top: 150px;
+	background: white;
+	z-index: 2;
+	transform: rotate(-45deg);
+	-webkit-transform: rotate(-45deg);
+	opacity: 0.6;
+}
