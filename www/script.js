@@ -26,7 +26,6 @@ var versionreq = new XMLHttpRequest();
 var ipreq = new XMLHttpRequest();
 var mensareq = new XMLHttpRequest();
 
-
 function updateTicker() {
 	tickerreq.open('GET', 'ticker.fsr');
 	tickerreq.onreadystatechange = function() {
@@ -162,6 +161,8 @@ window.onload = function() {
 				if(this.status==200) raspiIP = this.responseText;
 			};
 	ipreq.send(null);
+	getPortalState();
+	setInterval('getPortalState()', 600000);
 }
 
 function showDVB(station, response) {
@@ -229,3 +230,10 @@ function showDebug() {
 	document.getElementById("debug").innerHTML = debugText;
 }
 
+function getPortalState() {
+	var xmlHTTP = new XMLHttpRequest();
+	xmlHTTP.open("GET", "portal.fsr?1", false);
+	xmlHTTP.send(null);
+	var imageURL = "url('./logo/logo2014_" + JSON.parse(xmlHTTP.responseText)[0] + ".png')"
+	document.getElementById("fsrlogo").style.backgroundImage = imageURL;;
+}
