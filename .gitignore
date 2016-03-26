@@ -3,3 +3,5 @@ items.sqlite
 # Ignore python cache folder
 __pycache__/
 *.pyc
+/frontend/assets/css/layout.css
+/frontend/assets/css/layout.css.map
