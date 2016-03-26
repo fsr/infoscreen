@@ -47,7 +47,7 @@ def json_postillon():
 
 @app.route("/news")
 def json_news():
-    return json.dumps(utils.get_news())
+    return json.dumps(markdown(utils.get_news()))
 
 
 @app.route("/stops")
