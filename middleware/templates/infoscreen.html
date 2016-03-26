@@ -1,0 +1,251 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="text/html; charset=ISO-8859-1" http-equiv="content-type">
+    <script type="text/javascript" src="static/jquery-1.11.3.min.js"></script>
+    <meta name='viewport' content="width=device-width, initial-scale=1" />
+    <title>FSR-Infoscreen</title>
+    <link rel="stylesheet" type="text/css" href="static/style.css" />
+    <script type="text/javascript">
+        function id1() {
+
+            $(".id1").animate({
+                height: "0px",
+
+                duration: 1000
+            });
+
+
+        }
+        window.onload = function() {
+            setTimeout(id1(), 5000);
+        };
+
+    </script>
+</head>
+
+<body>
+    <aside class="left_aside">
+        <article class="logo">
+            <img src="../static/logo.png" width="100%" alt="Logo">
+
+
+            <tr>
+                <td></td>
+                <td></td>
+                <td>
+
+                </td>
+            </tr>
+
+            {% for meal in meals %}
+            <div class="mensa_entry">
+              <div class="mensa_title">{{ meal.name }}</div>
+              <div class="mensa_price">{% if meal.price %} {{ meal.price }}{% endif %}</div>
+              <div class="mensa_emoji">
+                {% for note in meal.notes %}
+                <div class="{{ note }}"></div>
+                {% endfor %}
+              </div>
+            </div>
+            {% endfor %}
+        </article>
+    </aside>
+    <section class="main">
+        <article class="id1" id="id1"><span class="id1">Article 1</span></article>
+        <article class="id2" id="id2"><span class="id2">Article 2</span></article>
+    </section>
+    <div class="upper">
+        <table class="dvb_table">
+            <tr class="dvb_col_table">
+                <td class="dvb_cell">
+                        <table class="dvb_table_single">
+                            <tr>
+                                <td colspan="4" class="dvb_header">Helmholzstraße</td>
+                            </tr>
+                        {% if HhBus %}
+                            {% for item in HhBus %}
+                            <tr class="dvb_row">
+                                <td class="vvono"><div class="dvb_bus"><b>{{ item[0] }}</b></div></td>
+                                <td class="vvostation">{{ item[1] }}</td>
+                                {% if item[1]=='Löbtau Süd' or item[1]=='Plauen, Rathaus' %}
+                                <td class="vvo_arrow">&rarr;</td>
+                                {% elif item[1]=='Strießen' or item[1]=='Gruna' %}
+                                <td class="vvo_arrow">&larr;</td>
+                                {% else %}
+                                <td class="vvo_arrow"></td>
+                                {% endif %}
+                                <td class="vvomin">{{ item[2] }}</td>
+                            </tr>
+                        {% endfor %}
+                            {% else %}
+                            <tr>
+                                <td class="vvono">&nbsp;</td>
+                                <td class="vvostation">Keine Daten</td>
+                                <td class="vvomin">&nbsp;</td></tr>
+                        {% endif %}
+                        </table>
+                </td>
+                <td class="dvb_cell">
+                        <table class="dvb_table_single">
+                            <tr>
+                                <td colspan="4" class="dvb_header">Münchner Platz</td>
+                            </tr>
+                        {% if MPBus %}
+                        {% for item in MPBus %}
+                            <tr class="dvb_row">
+                                <td class="vvono"><div class="dvb_strbahn"><b>{{ item[0] }}</b></div></td>
+                                <td class="vvostation">{{ item[1] }}</td>
+                                <td class="vvo_arrow"></td>
+                                <td class="vvomin">{{ item[2] }}</td>
+                            </tr>
+                        {% endfor %}
+                            {% else %}
+                            <tr>
+                                <td class="vvono">&nbsp;</td>
+                                <td class="vvostation">Keine Daten</td>
+                                <td class="vvomin">&nbsp;</td></tr>
+                        {% endif %}
+                        </table>
+                </td>
+                <td class="dvb_cell">
+                        <table class="dvb_table_single">
+                            <tr>
+                                <td colspan="4" class="dvb_header">Technische Universität</td>
+                            </tr>
+                        {% if TuBus %}
+                        {% for item in TuBus %}
+                            <tr class="dvb_row">
+                                <td class="vvono"><div class="dvb_bus"><b>{{ item[0] }}</b></div></td>
+                                <td class="vvostation_tu">{{ item[1] }}</td>
+                                <td class="vvo_arrow"></td>
+                                <td class="vvomin">{{ item[2] }}</td>
+                            </tr>
+                        {% endfor %}
+                            {% else %}
+                            <tr>
+                                <td class="vvono">&nbsp;</td>
+                                <td class="vvostation">Keine Daten</td>
+                                <td class="vvomin">&nbsp;</td></tr>
+                        {% endif %}
+                        </table>
+                </td>
+            </tr>
+        </table>
+       <!-- <div class="dvb_table_col left">
+            <div class="dvb_table_elem head light"><div class="dvb_header">Helmholtzstraße</div></div>
+            <div class="dvb_table_elem data"></div>
+            <div class="dvb_table_elem data light"></div>
+            <div class="dvb_table_elem data"></div>
+        </div>
+        <div class="dvb_table_col left">
+            <div class="dvb_table_elem head light"></div>
+            <div class="dvb_table_elem data"></div>
+            <div class="dvb_table_elem data"></div>
+            <div class="dvb_table_elem data"></div>
+        </div>
+        <div class="dvb_table_col left">
+            <div class="dvb_table_elem head light"></div>
+            <div class="dvb_table_elem data"></div>
+            <div class="dvb_table_elem data"></div>
+            <div class="dvb_table_elem data"></div>
+        </div>
+
+        -->
+
+     <!-- <div id="helmholtz" class="vvo">
+        <h2 class="vvoheader">Helmholtzstraße</h2>
+        <table class="vvo_t" id="helmholtztable" border="0">
+          {% if HhBus %}
+          {% for item in HhBus %}
+              <tr><td class="vvono">{{ item[0] }}</td><td class="vvostation">{{ item[1] }}</td><td class="vvomin">{{ item[2] }}</td></tr>
+          {% endfor %}
+          {% else %}
+          <tr><td class="vvono">&nbsp;</td><td class="vvostation">Keine Daten</td><td class="vvomin">&nbsp;</td></tr>
+          {% endif %}
+        </table>
+      </div>
+
+      <div id="muenchner" class="vvo">
+        <h2 class="vvoheader">Münchner Platz</h2>
+        <table  class="vvo_t" id="muenchnertable" border="0">
+          {% if MPBus %}
+          {% for item in MPBus %}
+              <tr><td class="vvono">{{ item[0] }}</td><td class="vvostation">{{ item[1] }}</td><td class="vvomin">{{ item[2] }}</td></tr>
+          {% endfor %}
+          {% else %}
+          <tr><td class="vvono">&nbsp;</td><td class="vvostation">Keine Daten</td><td class="vvomin">&nbsp;</td></tr>
+          {% endif %}
+        </table>
+      </div>
+
+      <div id="technische" class="vvo">
+        <h2 class="vvoheader">Technische Universität</h2>
+        <table class="vvo_t" id="technischetable" border="0">
+          {% if TuBus %}
+          {% for item in TuBus %}
+              <tr><td class="vvono">{{ item[0] }}</td><td class="vvostation">{{ item[1] }}</td><td class="vvomin">{{ item[2] }}</td></tr>
+          {% endfor %}
+          {% else %}
+          <tr><td class="vvono">&nbsp;</td><td class="vvostation">Keine Daten</td><td class="vvomin">&nbsp;</td></tr>
+          {% endif %}
+        </table>-->
+      </div>
+    </div>
+    <footer>
+      <span class="footer_text">Test WOCHE 2</span>
+
+    </footer>
+</body>
+
+
+
+</html>
+
+<!--<html>
+    <head>
+        <title>FSR-Infoscreen</title>
+        <link rel="stylesheet" type="text/css" href="static/style.css" />
+    </head>
+
+    <body>
+        <h2>Heute @Alte Mensa</h2>
+        <table border=1>
+            <tr>
+                <th>Name</th>
+                <th>Preis</th>
+                <th>Anmerkungen</th>
+            </tr>
+            {% for meal in meals %}
+            <tr>
+                <td>{{ meal.name }}</td>
+                <td>{% if meal.price %} {{ meal.price }} €{% endif %}</td>
+                <td>
+                    {% for note in meal.notes %}
+                    <div class="{{ note }}"></div>
+                    {% endfor %}
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+
+        <br /><br />
+        <h2>Postillon-Ticker:</h2>
+        {% if ticker %}
+        <ul>
+            {% for message in ticker %}
+            {% if message.text %}<li>{{ message.text }}</li>{% endif %}
+            {% endfor %}
+        </ul>
+        {% endif %}
+
+        <br /><br />
+        <h2>Ein aus Markdown gerenderter Artikel:</h2>
+        <div border=1>
+            {% if article %}
+            {{ article }}
+            {% endif %}
+        </div>
+    </body>
+</html>-->
