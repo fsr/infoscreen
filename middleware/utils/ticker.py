@@ -15,8 +15,10 @@ def postillon_ticker():
     except URLError:
         return '+++ Tickt nicht mehr richtig: Kein Ticker verfügbar +++'
 
-    space = 6
-    return (' ' * space).join(
-        '+++ ' + line['text'] + ' +++'
-        for line in ticker['tickers']
-    )
+    return ['+++ {} +++'.format(element['text'])
+            for element in ticker["tickers"]]
+    # space = 6
+    # return (' ' * space).join(
+    #     '+++ ' + line['text'] + ' +++'
+    #     for line in ticker['tickers']
+    # )

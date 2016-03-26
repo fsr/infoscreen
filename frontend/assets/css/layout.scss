@@ -1,17 +1,106 @@
-
-html, body {
-    height: 100%;
-}
-
+@import 'ifsr/css/global';
+@import 'ifsr/css/grid/grid';
+$margin: 15px;
+$large-content: 75vh;
+$large-header: 13vh;
+$large-content-height: $large-content - $large-header;
+$padding: 15px;
+$small-content: $large-content/2;
+$dvb-height: 100vh - $large-content;
+html,
 body {
-
+    height: 100%;
+    border-width: 0px;
+    border-spacing: 0px;
+    /*box-sizing: border-box;*/
 }
-
-header {
-
+body {
+    font-family: $body-font-family;
+    background-color: black;
+    section#mensa {
+        margin: 0px;
+        padding-left: 0px;
+        padding-right: $padding/2;
+        padding-bottom: 0px;
+        float: left;
+        header {
+            height: $large-header;
+            background-color: white;
+            color: $primary-color;
+            padding-left: 1vw;
+        }
+        article {
+            background-color: $primary-color;
+            height: $large-content-height;
+        }
+    }
+    section#news {
+        margin: 0px;
+        padding-left: $padding/2;
+        padding-right: $padding/2;
+        padding-bottom: 0px;
+        float: left;
+        header {
+            height: $large-header;
+            background-color: white;
+            color: $primary-color;
+            padding-left: 1vw;
+        }
+        article {
+            background-color: $primary-color;
+            height: $large-content-height;
+        }
+    }
+    section#other {
+        margin: 0px;
+        padding: 0px;
+        height: $large-content;
+        vertical-align: top;
+        float: right;
+    }
+    section#weather {
+        margin: 0px;
+        padding-left: $padding/2;
+        padding-right: 0px;
+        padding-bottom: $padding/2;
+        height: $small-content;
+        article {
+            background-color: $primary-color;
+            height: 100%;
+        }
+    }
+    section#misc {
+        margin: 0px;
+        padding-left: $padding/2;
+        padding-right: 0px;
+        padding-top: $padding/2;
+        padding-bottom: 0px;
+        height: $small-content;
+        article {
+            background-color: $primary-color;
+            height: 100%;
+        }
+    }
+    section#dvb {
+        margin: 0px;
+        padding-left: 0px;
+        padding-right: 0px;
+        padding-top: $padding;
+        padding-bottom: 0px;
+        height: $dvb-height;
+        display: inline-block;
+        vertical-align: bottom;
+        article {
+            background-color: $dark-gray;
+            height: 100%;
+        }
+    }
 }
-
-footer {
-
-
+section {}
+.large_content {
+    height: $large-content;
+    display: inline-block;
 }
+.small_content {}
+header {}
+footer {}
