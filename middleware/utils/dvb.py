@@ -15,12 +15,16 @@ def get_departures(station, city, nextStopCount):
     except URLError:
         return []
 
-    return next_stops[:nextStopCount]
+    formatted_stops = [{'number': stop[0], 'name': stop[1], 'minutes': stop[2]}
+                       for stop in next_stops[:nextStopCount]]
+
+    return {station.lower().replace('%20', ''): formatted_stops}
 
 
 def all_departures():
-    dep_helmholtz = get_departures('Helmholtzstrasse', 'Dresden', 3)
-    dep_muenchner = get_departures('Muenchner%20Platz', 'Dresden', 3)
-    dep_tu = get_departures('Technische%20Universitaet', 'Dresden', 3)
+    all_stops = {}
+    all_stops.update(get_departures('Helmholtzstrasse', 'Dresden', 3))
+    all_stops.update(get_departures('Muenchner%20Platz', 'Dresden', 3))
+    all_stops.update(get_departures('Technische%20Universitaet', 'Dresden', 3))
 
-    return dep_helmholtz, dep_muenchner, dep_tu
+    return all_stops
