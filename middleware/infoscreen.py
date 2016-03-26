@@ -1,15 +1,20 @@
-from flask import Flask, render_template, url_for
+#!/usr/bin/env python3
+
+from flask import Flask, abort, render_template, url_for
 from flask.ext.misaka import markdown
 import utils
 import json
-from utils.simple_async import AsyncExec, ct
+# from utils.simple_async import AsyncExec, ct
 
 app = Flask(__name__)
 APP_VERSION = '1.0'
+# latest Commit Hash: https://api.github.com/repos/fsr/infoscreen/commits/new_version
 
 
 @app.route("/")
 def render_infoscreen():
+    abort(404)
+    '''
     url_for('static', filename='style.css')
 
     meals_future = AsyncExec.create_and_start(utils.getmeals, name='GET MEALS')
@@ -33,6 +38,7 @@ def render_infoscreen():
                            HhBus=dep_helmholtz,
                            MPBus=dep_muenchner,
                            TuBus=dep_tu)
+    '''
 
 
 @app.route("/meals")
