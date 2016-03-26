@@ -21,7 +21,7 @@ def render_infoscreen():
 
     dep_helmholtz, dep_muenchner, dep_tu = departure_future.wait()
 
-    return render_template("infoscreen.html", meals=meals,
+    return render_template("template_infoscreen.json", meals=meals,
                            ticker=postillon_ticker,
                            ticker_time=int(len(postillon_ticker) / 5),
                            article=latest_news,
