@@ -4,6 +4,7 @@ from flask import Flask, abort, render_template, url_for
 from flask.ext.misaka import markdown
 import utils
 import json
+import sys
 # from utils.simple_async import AsyncExec, ct
 
 app = Flask(__name__)
@@ -83,5 +84,17 @@ def version():
 
 
 if __name__ == "__main__":
-    app.debug = True
-    app.run()
+    args = sys.argv
+    if len(args) < 2 or args[1] == 'dev':
+        app.debug = True
+        app.run()
+    elif args[1] == 'vm':
+        app.debug = True
+        app.run(host="0.0.0.0")
+    elif args[2] == 'production':
+        app.debug = False
+        app.run()
+    else:
+        print('[INFO] Invalid command. Starting in development mode...')
+        app.debug = True
+        app.run()

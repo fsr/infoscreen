@@ -1,5 +1,8 @@
 items.sqlite
 
+# Vagrant
+.vagrant/
+
 # Ignore python cache folder
 __pycache__/
 *.pyc
