@@ -6,6 +6,8 @@ $large-header: 13vh;
 $padding: 15px;
 $article-padding: 13px;
 
+$news-highlight-color: $primary-color - 50;
+$mensa-highlight-color: $primary-color - 20; /*#476901*/
 
 $large-content-height: $large-content - $large-header;
 $small-content: $large-content/2;
@@ -25,7 +27,9 @@ body {
         font-size: 7vh;
         font-weight: 200;
     }
-    section#mensa {
+
+    
+    section#news {
         margin: 0px;
         padding-left: 0px;
         padding-right: $padding/2;
@@ -34,12 +38,61 @@ body {
         header {
             height: $large-header;
             background-color: white;
-            color: $primary-color;
+            color: $news-highlight-color;
             padding-left: 1vw;
             overflow: hidden;
         }
         article {
-            background-color: #476901;
+            background-color: $news-highlight-color;
+            
+            height: $large-content-height;
+            padding: $article-padding;
+            color: white;
+            overflow: hidden;
+            h2{
+                font-size: 3.5vh;
+                line-height: 1;
+                margin-bottom: 2vh;
+            }
+            h3  {
+                font-size: 3vh;
+            }
+            a {
+                color: white;
+                font-weight: 400;
+            }
+            h4,h5,h6 {
+                font-size: 2.2vh;
+                font-weight: 200;
+            }
+            p{
+                font-weight: 400;
+                font-size: 1.8vh;
+                margin-bottom: 7px;
+            }
+            img {
+
+                float: right;
+                width: 10vw;
+            }
+        }
+    }
+    
+    section#mensa {
+        margin: 0px;
+        padding-left:  $padding/2;
+        padding-right: $padding/2;
+        padding-bottom: 0px;
+        float: left;
+        header {
+            height: $large-header;
+            background-color: white;
+            color: $mensa-highlight-color;
+            padding-left: 1vw;
+            overflow: hidden;
+        }
+        article {
+            background-color: $mensa-highlight-color;
             height: $large-content-height;
             padding: $article-padding;
             color: $white;
@@ -69,29 +122,10 @@ body {
             
         }
     }
-    section#news {
-        margin: 0px;
-        padding-left: $padding/2;
-        padding-right: $padding/2;
-        padding-bottom: 0px;
-        float: left;
-        header {
-            height: $large-header;
-            background-color: white;
-            color: $primary-color;
-            padding-left: 1vw;
-            overflow: hidden;
-        }
-        article {
-            background-color: $primary-color;
-            height: $large-content-height;
-            padding: $article-padding;
-            color: white;
-            h2{
-                font-size: 6vh;
-            }
-        }
-    }
+    
+    
+    
+    
     section#other {
         margin: 0px;
         padding: 0px;
@@ -106,8 +140,9 @@ body {
         padding-bottom: $padding/2;
         height: $small-content;
         article {
-            background-color: $primary-color;
+           background-color: $primary-color;
             height: 100%;
+
         }
     }
     section#misc {
@@ -118,8 +153,15 @@ body {
         padding-bottom: 0px;
         height: $small-content;
         article {
-            background-color: $primary-color;
+             background-color: $primary-color;
             height: 100%;
+            background: #9cd618; /* Old browsers */
+            text-align: center;
+            img{
+                width: 20vw;
+                margin-top: 2vh;
+            }
+
         }
     }
     section#dvb {
