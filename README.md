@@ -2,7 +2,7 @@
 
 [![githubissues](http://img.shields.io/github/issues/fsr/infoscreen.svg?style=flat)](https://github.com/fsr/infoscreen/issues)
 
-All new version 2.0! :sparkle:
+All new version 2.0! :sparkles:
 
 This is the second incarnation of the **iFSR Infoscreen** for the display in our office window which is still under development.
 
