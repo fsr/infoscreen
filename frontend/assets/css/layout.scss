@@ -3,10 +3,14 @@
 $margin: 15px;
 $large-content: 75vh;
 $large-header: 13vh;
-$large-content-height: $large-content - $large-header;
 $padding: 15px;
+$article-padding: 13px;
+
+
+$large-content-height: $large-content - $large-header;
 $small-content: $large-content/2;
 $dvb-height: 100vh - $large-content;
+
 html,
 body {
     height: 100%;
@@ -16,7 +20,11 @@ body {
 }
 body {
     font-family: $body-font-family;
-    background-color: black;
+    background-color: $black;
+    h2 {
+        font-size: 7vh;
+        font-weight: 200;
+    }
     section#mensa {
         margin: 0px;
         padding-left: 0px;
@@ -28,10 +36,37 @@ body {
             background-color: white;
             color: $primary-color;
             padding-left: 1vw;
+            overflow: hidden;
         }
         article {
-            background-color: $primary-color;
+            background-color: #476901;
             height: $large-content-height;
+            padding: $article-padding;
+            color: $white;
+            overflow: hidden;
+            
+                width: 100%;
+                padding-bottom: 7px;
+                p:nth-child(3n+1){
+                    display: inline-block;
+                    width: 20vw;
+                    float: left;
+                    font-weight: 400;
+                    padding-right: 10px;
+
+                }
+                p:nth-child(3n+2){
+                    width: 8vw;
+                    margin-bottom: 7px;
+                    float: right;
+
+                }
+                p:nth-child(3n+3){
+                    width: 8vw;
+                    float: right;
+
+                }
+            
         }
     }
     section#news {
@@ -45,10 +80,16 @@ body {
             background-color: white;
             color: $primary-color;
             padding-left: 1vw;
+            overflow: hidden;
         }
         article {
             background-color: $primary-color;
             height: $large-content-height;
+            padding: $article-padding;
+            color: white;
+            h2{
+                font-size: 6vh;
+            }
         }
     }
     section#other {
@@ -90,9 +131,40 @@ body {
         height: $dvb-height;
         display: inline-block;
         vertical-align: bottom;
+        overflow: hidden;
         article {
+            display: inline-block;
+            float: left;
+            width: 33.3vw;
+            height: 2*$dvb-height/9;
+            color: white;
+            font-size: 4vh;
+             p:nth-child(3n+1){
+                    display: inline-block;
+                    width: 4vw;
+                    float: left;
+                    font-weight: 900;
+                    padding-left: 10px;
+
+                }
+                p:nth-child(3n+2){
+                    width: 2vw;
+                    float: left;
+                    font-weight: 900;
+
+                }
+                p:nth-child(3n+3){
+                    width: 27vw;
+                    float: right;
+                    font-weight: 200;
+
+                }
+        }
+        article:nth-child(even) {
+            background-color: grey;
+        }
+        article:nth-child(odd) {
             background-color: $dark-gray;
-            height: 100%;
         }
     }
 }
