@@ -4,15 +4,17 @@ $margin: 15px;
 $large-content: 75vh;
 $large-header: 13vh;
 $padding: 15px;
-$article-padding: 13px;
-
+$article-padding: 21px;
 $news-highlight-color: $primary-color - 50;
-$mensa-highlight-color: $primary-color - 20; /*#476901*/
+$mensa-highlight-color: $primary-color - 20;
 
+/*#476901*/
+
+@mixin article-padding($left, $right, $up, $down) {}
+$misc-highlight-color: $primary-color;
 $large-content-height: $large-content - $large-header;
 $small-content: $large-content/2;
 $dvb-height: 100vh - $large-content;
-
 html,
 body {
     height: 100%;
@@ -27,8 +29,6 @@ body {
         font-size: 7vh;
         font-weight: 200;
     }
-
-    
     section#news {
         margin: 0px;
         padding-left: 0px;
@@ -36,60 +36,50 @@ body {
         padding-bottom: 0px;
         float: left;
         header {
-            height: $large-header;
-            background-color: white;
             color: $news-highlight-color;
-            padding-left: 1vw;
-            overflow: hidden;
         }
         article {
             background-color: $news-highlight-color;
-            
             height: $large-content-height;
             padding: $article-padding;
             color: white;
             overflow: hidden;
-            h2{
+            h2 {
                 font-size: 3.5vh;
                 line-height: 1;
                 margin-bottom: 2vh;
             }
-            h3  {
+            h3 {
                 font-size: 3vh;
             }
             a {
                 color: white;
                 font-weight: 400;
             }
-            h4,h5,h6 {
+            h4,
+            h5,
+            h6 {
                 font-size: 2.2vh;
                 font-weight: 200;
             }
-            p{
+            p {
                 font-weight: 400;
                 font-size: 1.8vh;
                 margin-bottom: 7px;
             }
             img {
-
-                float: right;
-                width: 10vw;
+                height: $large-header - 3vh;
             }
         }
     }
-    
     section#mensa {
         margin: 0px;
-        padding-left:  $padding/2;
+        padding-left: $padding/2;
         padding-right: $padding/2;
         padding-bottom: 0px;
         float: left;
         header {
-            height: $large-header;
-            background-color: white;
             color: $mensa-highlight-color;
-            padding-left: 1vw;
-            overflow: hidden;
         }
         article {
             background-color: $mensa-highlight-color;
@@ -97,35 +87,26 @@ body {
             padding: $article-padding;
             color: $white;
             overflow: hidden;
-            
-                width: 100%;
-                padding-bottom: 7px;
-                p:nth-child(3n+1){
-                    display: inline-block;
-                    width: 20vw;
-                    float: left;
-                    font-weight: 400;
-                    padding-right: 10px;
-
-                }
-                p:nth-child(3n+2){
-                    width: 8vw;
-                    margin-bottom: 7px;
-                    float: right;
-
-                }
-                p:nth-child(3n+3){
-                    width: 8vw;
-                    float: right;
-
-                }
-            
+            width: 100%;
+            padding-bottom: 7px;
+            p:nth-child(3n+1) {
+                display: inline-block;
+                width: 20vw;
+                float: left;
+                font-weight: 400;
+                padding-right: 10px;
+            }
+            p:nth-child(3n+2) {
+                width: 8vw;
+                margin-bottom: 7px;
+                float: right;
+            }
+            p:nth-child(3n+3) {
+                width: 8vw;
+                float: right;
+            }
         }
     }
-    
-    
-    
-    
     section#other {
         margin: 0px;
         padding: 0px;
@@ -133,16 +114,27 @@ body {
         vertical-align: top;
         float: right;
     }
-    section#weather {
+    section#time {
         margin: 0px;
         padding-left: $padding/2;
         padding-right: 0px;
         padding-bottom: $padding/2;
         height: $small-content;
         article {
-           background-color: $primary-color;
+            background-color: $primary-color;
             height: 100%;
-
+            color: white;
+            padding-top: 2*$article-padding;
+            p:nth-child(1) {
+                padding-left: $article-padding;
+                font-size: 10vw;
+                line-height: 8vw;
+                font-weight: 200;
+            }
+            p:nth-child(2) {
+                padding-left: $article-padding + 7px;
+                font-size: 2.5vw;
+            }
         }
     }
     section#misc {
@@ -153,15 +145,24 @@ body {
         padding-bottom: 0px;
         height: $small-content;
         article {
-             background-color: $primary-color;
+            padding: $article-padding;
+            background-color: $misc-highlight-color;
             height: 100%;
-            background: #9cd618; /* Old browsers */
+            background: #9cd618;
+            /* Old browsers */
             text-align: center;
-            img{
+            overflow: hidden;
+            img {
                 width: 20vw;
-                margin-top: 2vh;
+                margin-top: 0.1vh;
+                margin-bottom: 3.3vh;
             }
-
+            p {
+                color: white;
+                text-align: left;
+                padding-bottom: 1.7vh;
+                margin-bottom: 0px;
+            }
         }
     }
     section#dvb {
@@ -175,45 +176,65 @@ body {
         vertical-align: bottom;
         overflow: hidden;
         article {
+            width: 33.3vw;
+            padding: 0px;
+            margin: 0px;
             display: inline-block;
             float: left;
-            width: 33.3vw;
-            height: 2*$dvb-height/9;
-            color: white;
-            font-size: 4vh;
-             p:nth-child(3n+1){
+            p {
+                display: inline-block;
+                float: left;
+                width: 33.3vw;
+                height: 2*$dvb-height/9;
+                color: white;
+                font-size: 4vh;
+                margin: 0px;
+                padding-left: $article-padding;
+                background-color: $dark-gray;
+                strong {
                     display: inline-block;
-                    width: 4vw;
+                    width: 3.3vw;
                     float: left;
                     font-weight: 900;
-                    padding-left: 10px;
-
+                    margin-right: 0.2vw;
                 }
-                p:nth-child(3n+2){
-                    width: 2vw;
+                i {
+                    width: 1.5vw;
                     float: left;
                     font-weight: 900;
-
+                    margin-right: 2vw;
                 }
-                p:nth-child(3n+3){
+                /*{
                     width: 27vw;
                     float: right;
                     font-weight: 200;
-
-                }
+                }*/
+            }
+            header {
+                display: inline-block;
+                float: left;
+                width: 33.3vw;
+                height: 2*$dvb-height/9;
+                color: white;
+                font-size: 4vh;
+                margin: 0px;
+                padding-left: $article-padding;
+                background-color: $dark-gray;
+            }
         }
-        article:nth-child(even) {
-            background-color: grey;
-        }
-        article:nth-child(odd) {
-            background-color: $dark-gray;
-        }
+        article:nth-child(odd) {}
     }
 }
 section {}
 .large_content {
     height: $large-content;
     display: inline-block;
+}
+header {
+    height: $large-header;
+    background-color: white;
+    padding-left: $article-padding;
+    overflow: hidden;
 }
 .small_content {}
 header {}
