@@ -3,7 +3,7 @@ echo "Content-type: text/json"
 echo ""
 if [ ! -z $QUERY_STRING ]
 then
-curl -k -s http://ingress.42.vc/portal.php?id=$QUERY_STRING
+curl -k -s https://ingress.42.vc/portal.php?id=$QUERY_STRING
 else
 echo "[\"UNK\"]"
 fi
