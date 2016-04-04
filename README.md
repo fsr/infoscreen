@@ -2,9 +2,9 @@
 
 [![githubissues](http://img.shields.io/github/issues/fsr/infoscreen.svg?style=flat)](https://github.com/fsr/infoscreen/issues)
 
-All new version 2.0! :sparkles:
+All new version 2.1! :sparkles:
 
-This is the second incarnation of the **iFSR Infoscreen** for the display in our office window which is still under development.
+This is the second iteration of the **iFSR Infoscreen** for the display in our office window which is still under development.
 
 
 ## Development Environment
@@ -22,7 +22,7 @@ Start the _Flask_ application (living in /home/vagrant/infoscreen/middleware) wi
 $ python3 infoscreen.py vm
 ```
 It's now accessible via [192.168.33.10:5000](http://192.168.33.10:5000) in your browser.  
-_Note that the real Infoscreen html file is at the moment not part of the Flask application and lives inside of the `templates` folder. This will be fixed soon._
+
 
 The (temporary) backend of the Infoscreen lives inside of the VM at `/var/www/public`
 and is accessible via [192.168.33.10/backend.php](http://192.168.33.10/backend.php).
@@ -38,7 +38,6 @@ You can work on the code right on your system, all folders are synced with the V
 3. Run the Flask server from your terminal using:  
 `$ python3 infoscreen.py dev`
 4. Access the application via [127.0.0.1:5000](http://127.0.0.1:5000).  
-_Note that the real Infoscreen is at the moment not part of the Flask application and lives inside of the `templates` folder. This will be fixed soon._
 
 The backend requires a working webserver so you might have to install one on your PC or upload the `backend/` folder to a webhoster.
 
