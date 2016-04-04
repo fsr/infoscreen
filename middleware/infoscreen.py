@@ -7,14 +7,14 @@ import json
 import sys
 # from utils.simple_async import AsyncExec, ct
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='../frontend', static_url_path='/../frontend/')
 APP_VERSION = '1.0'
 # latest Commit Hash: https://api.github.com/repos/fsr/infoscreen/commits/new_version
 
 
 @app.route("/")
 def render_infoscreen():
-    abort(404)
+    #abort(404)
     '''
     url_for('static', filename='style.css')
 
@@ -40,6 +40,12 @@ def render_infoscreen():
                            MPBus=dep_muenchner,
                            TuBus=dep_tu)
     '''
+    return app.send_static_file('infoscreen.html')
+
+
+@app.route('/assets/<path:path>')
+def get_assets(path):
+    return app.send_static_file('assets/{}'.format(path))
 
 
 @app.route("/meals")
