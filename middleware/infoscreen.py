@@ -7,39 +7,21 @@ import json
 import sys
 # from utils.simple_async import AsyncExec, ct
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='../frontend',
+            static_url_path='/../frontend/')
 APP_VERSION = '1.0'
-# latest Commit Hash: https://api.github.com/repos/fsr/infoscreen/commits/new_version
+# latest Commit Hash:
+# https://api.github.com/repos/fsr/infoscreen/commits/new_version
 
 
 @app.route("/")
 def render_infoscreen():
-    abort(404)
-    '''
-    url_for('static', filename='style.css')
+    return app.send_static_file('infoscreen.html')
 
-    meals_future = AsyncExec.create_and_start(utils.getmeals, name='GET MEALS')
-    postillon_ticker_future = AsyncExec.create_and_start(
-        utils.postillon_ticker, name='POSTILLON')
-    latest_news_future = AsyncExec.create_and_start(utils.get_news,
-                                                    name='NEWS')
-    departure_future = AsyncExec.create_and_start(utils.all_departures,
-                                                  name='DEPARTURES')
 
-    meals = meals_future.wait()
-    postillon_ticker = postillon_ticker_future.wait()
-    latest_news = markdown(latest_news_future.wait())
-
-    dep_helmholtz, dep_muenchner, dep_tu = departure_future.wait()
-
-    return render_template("template_infoscreen.json", meals=meals,
-                           ticker=postillon_ticker,
-                           ticker_time=int(len(postillon_ticker) / 5),
-                           article=latest_news,
-                           HhBus=dep_helmholtz,
-                           MPBus=dep_muenchner,
-                           TuBus=dep_tu)
-    '''
+@app.route('/assets/<path:path>')
+def get_assets(path):
+    return app.send_static_file('assets/{}'.format(path))
 
 
 @app.route("/meals")
