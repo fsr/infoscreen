@@ -1,0 +1,53 @@
+{
+  "muenchnerplatz": [
+    {
+      "name": "Wilder Mann",
+      "minutes": "1",
+      "number": "3"
+    },
+    {
+      "name": "Coschütz",
+      "minutes": "3",
+      "number": "3"
+    },
+    {
+      "name": "Wilder Mann",
+      "minutes": "11",
+      "number": "3"
+    }
+  ],
+  "technischeuniversitaet": [
+    {
+      "name": "Löbtau",
+      "minutes": "0",
+      "number": "61"
+    },
+    {
+      "name": "Nickern",
+      "minutes": "1",
+      "number": "66"
+    },
+    {
+      "name": "Weißig",
+      "minutes": "5",
+      "number": "61"
+    }
+  ],
+  "helmholtzstrasse": [
+    {
+      "name": "Striesen",
+      "minutes": "13",
+      "number": "85"
+    },
+    {
+      "name": "Löbtau Süd",
+      "minutes": "20",
+      "number": "85"
+    },
+    {
+      "name": "Striesen",
+      "minutes": "43",
+      "number": "85"
+    }
+  ]
+}

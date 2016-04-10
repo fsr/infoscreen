@@ -1,0 +1,17 @@
+[
+  {
+    "name": "Wokgemüse süß-sauer mit knusprigem Hähnchenfleisch und Mie Nudeln",
+    "notes": [
+      "knoblauch"
+    ],
+    "price": "3.00 €"
+  },
+  {
+    "name": "Wokgemüse süß-sauer mit Mie Nudeln",
+    "notes": [
+      "knoblauch",
+      "vegetarisch"
+    ],
+    "price": "2.50 €"
+  }
+]
