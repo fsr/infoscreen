@@ -6,14 +6,6 @@
     <title>Infoscreen 2.1</title>
 
     <meta name="robots" content="noindex, nofollow">
-<!DOCTYPE html>
-
-<html>
-
-<head>
-    <title>Infoscreen 2.1</title>
-
-    <meta name="robots" content="noindex, nofollow">
     <meta charset="Utf-8">
     <meta name="description" content="">
     <meta name="author" content="ifsr">
@@ -36,10 +28,12 @@
 
     <script type="text/javascript">
         window.onload = InfoScreen;
+
     </script>
 </head>
 
 <body>
+
 
 
     <section class="large-4 medium-4 large_content" id="news">
@@ -89,41 +83,7 @@
 
     <section class="large-4 medium-4 large_content" id="mensa">
         <article>
-            <p>Hähnchenbrust gefüllt mit Champignons und Kräuterbutter in Zitronen-Pfeffersoße, dazu gemischter Wildreis und Blattsalat
-            </p>
-            <p>2,70 €/4,39 €</p>
-            <p><i class="fa fa-lemon-o"></i>
-            </p>
-
-            <p>Pizza mit Salami
-
-            <p id="menu_item">Hähnchenbrust gefüllt mit Champignons und Kräuterbutter in Zitronen-Pfeffersoße, dazu gemischter Wildreis und Blattsalat
-            </p>
-            <p>2,70 €/4,39 €</p>
-            <p><i class="fa fa-lemon-o"></i>
-            </p>
-
-            <p id="menu_item">Pizza mit Salami
-            </p>
-            <p>2,70 €/4,39 €</p>
-            <p><i class="fa fa-lemon-o"></i>
-            </p>
-
-
-
-        </article>
-        <header>
-            <h2>Mensaplan</h2>
-        </header>
-    </section>
-
-    <section class="large-4 medium-4 large_content" id="news">
-        <article>
-            <h2>Artikelüberschrift</h2>
-            </p>
-            <p>2,70 €/4,39 €</p>
-            <p><i class="fa fa-lemon-o"></i>
-            </p>
+          
         </article>
         <header>
             <h2>Mensaplan</h2>
@@ -139,28 +99,22 @@
             <article>
                 <img src="assets/img/logo.png" alt="IFSR Logo" />
 
-                <p>11:31</p>
+                <p id="time_n"></p>
 
-                <p>28.03.2016, KW 13</p>
+                <p id="date_n"></p>
 
             </article>
         </section>
         <section id="misc">
-            postillon
             <article>
                 <img src="assets/img/postillon.png" alt="Postillon Logo" />
-                <p>
-                    +++ Verkaufstrick: Seilhändler erfolgreich +++</p>
-                <p>+++ Tölevision: Hund bekommt Fernsehsendung +++</p>
-                <p>+++ Esso-S: Tankwart unter herabgestürztem Leuchtreklameteil eingeklemmt +++</p>
-                <p> +++ "Ich dacht, ich werd' nicht mehr!": Frau schockiert über drastische Gewichtszunahme +++
-                </p>
+                
             </article>
         </section>
     </section>
 
     <section class="large-12 medium-12" id="dvb">
-        <article>
+        <!--<article>
             <header>
                 Helmholzstraße
             </header>
@@ -221,31 +175,42 @@
             </p>
         </article>
 
-
+-->
     </section>
+<script type="text/javascript">
+    function dayOfTheYear(date) {
+	var year = date.getFullYear();
+	var days = new Array(31,(year%400==0||(year%4==0&&year%100!=0))?29:28,31,30,31,30,31,31,30,31,30,31);
+	var doty = date.getDate();
+	for(var i=0; i < date.getMonth(); i++) {
+		doty += days[i];
+	}
+	return doty;
+}
 
-</body>
-        <article>
-            <p>85</p>
-            <p>></p>
-            <p>Löbtau Süd</p>
-        </article>
-        <article> </article>
-        <article> </article>
+function week(date) {
+	var day = date.getDay();
+	if(day==0) day = 7; // In ISO-8601, Sunday is 7, not 0
+	return Math.floor((dayOfTheYear(date)-day+10)/7);
+}
+    
+    function check(i) {
+    if (i < 10) {
+        i = "0" + i;
+    }
+    return i;
+}
 
-        <article> </article>
-        <article> </article>
-        <article> </article>
-
-        <article> </article>
-        <article> </article>
-        <article> </article>
-
-        <article> </article>
-        <article> </article>
-        <article> </article>
-    </section>
-
+function startTime() {
+    var today = new Date();
+    document.getElementById('time_n').innerHTML = check(today.getHours()) + ":" + check(today.getMinutes()) ;
+    document.getElementById('date_n').innerHTML = check(today.getDate()) + "." + check(today.getMonth()+1) + "." + today.getFullYear() + ", KW " + check(week(today));
+    t = setTimeout(function () {
+        startTime()
+    }, 500);
+}
+startTime();
+    </script>
 </body>
 
 </html>

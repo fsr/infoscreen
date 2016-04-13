@@ -25,7 +25,7 @@ var InfoScreenManager = function () {
     self.basepath = "./"; //"127.0.0.1:5000/";
     self.postfix = ".json"; //"";
 
-    self.newsRefreshTime = 2000; //600000;   // all 10min
+    self.newsRefreshTime = 600000;   // all 10min
     self.mealsRefreshTime = 6000000; // all 100min
     self.busRefreshTime = 60000; // evr min
     self.postillonRefreshTime = 600000; // all 10min
@@ -33,7 +33,7 @@ var InfoScreenManager = function () {
     self.postillonTicker = [];
     self.postillonAmount = 3;
     self.postillonDisplayedIDs = [];
-    self.postillonTickerTime = 1000;
+    self.postillonTickerTime = 6000;
 
     self.fadeTime = 600;
 
@@ -95,6 +95,17 @@ InfoScreenManager.prototype = {
             }
         }
     },
+    replace_simple: function (elem, html, self) {
+        'use strict';
+
+        if (html !== undefined && elem !== undefined) {
+            if (elem.html() !== html) {
+                
+                    elem.html(html);
+                    
+            }
+        }
+    },
     refreshNews: function (response, self) {
         'use strict';
         var elem = $("#news > article");
@@ -110,12 +121,14 @@ InfoScreenManager.prototype = {
 
         for (r in response) {
             if (response.hasOwnProperty(r)) {
-                html += "<p>" + r.name + "</p>";
-                html += "<p>" + r.price + "</p>";
-                html += "<p>";
-                for (n in r.notes) {
-                    if (r.notes.hasOwnProperty(n)) {
-                        switch (n) {
+                //html += "<div>";
+                html += "<p>" + response[r].name + "</p>";
+                html += "<p>" + response[r].price + ", ";
+                //html += "<p>" + response[r].price + "</p>";
+                //html += "<p>";
+                for (n in response[r].notes) {
+                    if (response[r].notes.hasOwnProperty(n)) {
+                        switch (response[r].notes[n]) {
                         case "knoblauch":
                             html += "k ";
                             break;
@@ -137,9 +150,12 @@ InfoScreenManager.prototype = {
                         }
                     }
                 }
+               // html += "</p></div>";
                 html += "</p>";
+                
             }
         }
+        self.replace(elem, html, self);
     },
     refreshWeather: function (response, self) {
         'use strict';
@@ -147,13 +163,71 @@ InfoScreenManager.prototype = {
     },
     refreshPostillon: function (response, self) {
         'use strict';
-
         self.postillonTicker = response;
 
     },
     refreshBus: function (response, self) {
         'use strict';
+        var s, r, html, elem = $("#dvb");
 
+        html = "";
+        
+        html += "<article><header>Helmholtzstraße</header>";
+        for (s in response.helmholtzstrasse) { //alle Daten für Helmholzstraße
+            
+                var direction;
+                switch (response.helmholtzstrasse[s].name) {
+                    case "Striesen":
+                        direction = "left";
+                        break;
+                    case "Löbtau Süd":
+                        direction = "right";
+                        break;
+                    case "Btf. Gruna":
+                        direction = "left";
+                        break;
+                }
+                html += "<p><strong>" + response.helmholtzstrasse[s].minutes + "</strong> min";
+                html += "<i class='fa fa-angle-" + direction + "'></i>";
+                html += "<span>" + response.helmholtzstrasse[s].number + "</span>" + response.helmholtzstrasse[s].name;
+                
+            
+        }
+        html += "</article><article><header>Münchner Platz</header>";
+        for (s in response.muenchnerplatz) { 
+           
+                var direction;
+                switch (response.muenchnerplatz[s].name) {
+                    case "Coschütz":
+                        direction = "up";
+                        break;
+                    case "Wilder Mann":
+                        direction = "down";
+                        break;
+                    case "Btf Trachenberge":
+                        direction = "down";
+                        break;
+                    case "Plauen":
+                        direction = "up";
+                        break;
+                }
+                html += "<p><strong>" + response.muenchnerplatz[s].minutes + "</strong> min";
+                html += "<i class='fa fa-angle-" + direction + "'></i>";
+                html += "<span>" + response.muenchnerplatz[s].number + "</span>" + response.muenchnerplatz[s].name;
+                
+            
+        }
+        html += "</article><article><header>Technische Universität</header>";
+        for (s in response.technischeuniversitaet) { 
+            
+                var direction;
+                html += "<p><strong>" + response.technischeuniversitaet[s].minutes + "</strong> min";
+                html += "<span>" + response.technischeuniversitaet[s].number + "</span>" + response.technischeuniversitaet[s].name;
+                
+            
+        }
+        html += "</article>";
+        self.replace_simple(elem, html, self);
     },
     updatePostillon: function () {
         'use strict';

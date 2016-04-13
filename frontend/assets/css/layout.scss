@@ -109,22 +109,24 @@
                 overflow: hidden;
                 width: 100%;
                 padding-bottom: 7px;
-                p:nth-child(3n+1) {
+
+                p:nth-child(2n+1) {
                     display: inline-block;
                     width: 20vw;
                     float: left;
                     font-weight: 400;
                     padding-right: 10px;
                 }
-                p:nth-child(3n+2) {
+                p:nth-child(2n+2) {
                     width: 8vw;
                     margin-bottom: 7px;
                     float: right;
                 }
-                p:nth-child(3n+3) {
-                    width: 8vw;
-                    float: right;
-                }
+                //p:nth-child(3n+3) {
+                //    width: 8vw;
+                //    float: right;
+                //}
+                
             }
         }
         section#other {
