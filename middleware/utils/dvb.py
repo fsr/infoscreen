@@ -23,8 +23,24 @@ def get_departures(station, city, nextStopCount):
 
 def all_departures():
     all_stops = {}
-    all_stops.update(get_departures('Helmholtzstrasse', 'Dresden', 3))
-    all_stops.update(get_departures('Muenchner%20Platz', 'Dresden', 3))
-    all_stops.update(get_departures('Technische%20Universitaet', 'Dresden', 3))
+    all_stops.update(crop_departures(get_departures('Helmholtzstrasse', 'Dresden', 6), 3))
+    all_stops.update(crop_departures(get_departures('Muenchner%20Platz',
+                                                    'Dresden', 6), 3, 7))
+    all_stops.update(crop_departures(get_departures('Technische%20Universitaet', 'Dresden', 6), 3, 1))
 
     return all_stops
+
+
+def crop_departures(all_departures, nextStopCount, minutes=None):
+    departure_list = []
+    key = sorted(all_departures.keys())[:1][0]
+    for departure in all_departures[key]:
+        if departure['minutes'] != '':
+            if minutes is not None:
+                if int(departure['minutes']) >= minutes:
+                    departure_list.append(departure)
+            else:
+                departure_list.append(departure)
+    new_departures = {key: departure_list[:nextStopCount]}
+
+    return new_departures
