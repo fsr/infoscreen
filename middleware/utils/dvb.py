@@ -17,7 +17,7 @@ def get_departures(station, city='Dresden', min_minutes=None, nextStopCount=3):
     except URLError:
         return []
 
-    formatted_stops = [{'number': stop[0], 'name': stop[1], 'minutes': stop[2]}
+    formatted_stops = [{'number': '0' if stop[0] == '' else stop[0], 'name': stop[1], 'minutes': stop[2]}
                        for stop in next_stops]
 
     return {station.lower().replace('%20', ''): formatted_stops}
