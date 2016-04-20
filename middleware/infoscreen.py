@@ -46,18 +46,18 @@ def json_stops():
 
 @app.route("/stops/helmholtz")
 def json_HhBus():
-    return json.dumps(utils.get_departures('Helmholtzstrasse', 'Dresden', 3))
+    return json.dumps(utils.get_departures('Helmholtzstrasse'))
 
 
 @app.route("/stops/tud")
 def json_TuBus():
     return json.dumps(utils.get_departures('Technische%20Universitaet',
-                                           'Dresden', 3))
+                                           min_minutes=1))
 
 
 @app.route("/stops/muenchner")
 def json_MPBus():
-    return json.dumps(utils.get_departures('Muenchner%20Platz', 'Dresden', 3))
+    return json.dumps(utils.get_departures('Muenchner%20Platz', min_minutes=7))
 
 
 @app.route("/version")
