@@ -2,6 +2,7 @@
 
 from flask import Flask, abort, render_template, url_for
 from flask.ext.misaka import markdown
+import subprocess
 import utils
 import json
 import sys
@@ -58,6 +59,49 @@ def json_TuBus():
 @app.route("/stops/muenchner")
 def json_MPBus():
     return json.dumps(utils.get_departures('Muenchner%20Platz', min_minutes=7))
+
+
+@app.route("/system/restart")
+def restart_browser():
+    command_kill_chrome = ['sudo', 'killall', 'chromium']
+    command_start_chrome = ['DISPLAY=:0', 'sudo', '-u', 'pi', 'chromium', '--disk-cache-dir="/var/tmp"',
+                            '--disable-translate', '--incognito', '--kiosk', '"http://localhost:5000/"']
+
+    subprocess.call(command_kill_chrome)
+    subprocess.call(command_start_chrome)
+
+    # TODO: IF Python3.5
+    # subprocess.run(command_kill_chrome)
+    # subprocess.run(command_start_chrome)
+
+
+@app.route("/system/shutdown")
+def shutdown_pi():
+    subprocess.call(['sudo', 'shutdown', '-h', 'now'])
+
+    # TODO: If Python3.5
+    # subprocess.run(['sudo', 'shutdown', '-h', 'now'])
+
+
+@app.route("/system/reboot")
+def reboot_pi():
+    subprocess.call(['sudo', 'reboot'])
+
+    # TODO: If Python3.5
+    # subprocess.run(['sudo', 'reboot'])
+
+
+@app.route("/zih")
+def play_zih_vid():
+    command_play = ['DISPLAY=:0', 'sudo', '-u', 'pi', 'omxplayer', '/var/www/zihsd.mp4', '-r', '15', '>', '/dev/null']
+    # TODO: evtl stdout mit open(os.devnull) statt '>' ?
+    command_refresh = ['sudo', '-u', 'pi', '/usr/bin/xrefresh', '-display', ':0']
+    subprocess.call(command_play)
+    subprocess.call(command_refresh)
+
+    # TODO: IF Python3.5
+    # subprocess.run(command_play)
+    # subprocess.run(command_refresh)
 
 
 @app.route("/version")
