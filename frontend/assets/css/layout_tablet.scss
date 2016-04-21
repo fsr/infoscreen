@@ -1,0 +1,115 @@
+      @import 'ifsr/css/global';
+      @import 'ifsr/css/grid/grid';
+      @font-face {
+          font-family: 'FontAwesome';
+          src: url('/assets/fonts/fontawesome-webfont.eot?v=4.2.0');
+          src: url('/assets/fonts/fontawesome-webfont.eot?#iefix&v=4.2.0') format('embedded-opentype'), url('/assets/fonts/fontawesome-webfont.woff?v=4.2.0') format('woff'), url('/assets/fonts/fontawesome-webfont.ttf'), url('../fonts/fontawesome-webfont.ttf') format('truetype'), url('/assets/fonts/fontawesome-webfont.svg?v=4.2.0#fontawesomeregular')
+      }
+      $background: #111111;
+      $grey1: #444444;
+      $padding: 2vw;
+      $button_font_size:5vh;
+      $footer_font_size: 10vh;
+      $dvb_h3: 4vh;
+      $dvb_font_size: 9vh;
+      $dvb_color_head:$primary-color - 50;
+      $button-color:$primary-color - 50;
+      $dvb_padding_left: 3vw;
+      html,
+      body {
+          width: 100vw;
+          height: 100vh;
+          overflow: hidden;
+          margin: 0px;
+          padding: 0px;
+          box-sizing: border-box;
+      }
+      body {
+          background-color: $background;
+          color: white;
+      }
+      section {
+          height: 80vh;
+          display: inline-block;
+      }
+      #buttons {
+          float: left;
+          text-align: center;
+          input {
+              width: 20vw;
+              margin-top: 4vh;
+              height: 16vh;
+              transition: background-color 3s cubic-bezier(1, .05, 1, .26);
+              -webkit-transition: background-color 3s cubic-bezier(1, .05, 1, .26);
+              background-color: $dark-gray;
+              color: white;
+              border-width: 0px;
+              font-size: $button_font_size;
+          }
+          input:active {
+              box-shadow: unset;
+              transition: background-color 0s cubic-bezier(1, .05, 1, .26);
+              -webkit-transition: background-color 0s cubic-bezier(1, .05, 1, .26);
+              background-color: $button-color;
+          }
+          input:focus {
+              box-shadow: unset;
+          }
+      }
+      #dvb {
+          float: right;
+          article {
+              h3 {
+                  background-color: $dvb_color_head;
+                  height: 6vh;
+                  width: 100%;
+                  font-size: $dvb_h3;
+                  color: white;
+                  margin: 0px;
+                  padding: 0px;
+                  padding-left: $dvb_padding_left;
+              }
+              p {
+                  width: 100%;
+                  height: 17vh;
+                  text-align: left;
+                  font-size: $dvb_font_size;
+                  background-color: $dark-gray;
+                  margin: 0px;
+                  padding: 0px;
+                  padding-left: $dvb_padding_left;
+                  padding-top: 3vh;
+                  overflow: hidden;
+                  list-style-type: none;
+                  strong {
+                      min-width: 6vw;
+                      text-align: right;
+                      display: inline-block;
+                  }
+                  i {
+                      width: 6vw;
+                      text-align: center;
+                      display: inline-block
+                  }
+                  span {
+                      margin-right: 1vw;
+                  }
+              }
+          }
+      }
+      footer {
+          height: 20vh;
+          width: 100vw;
+          font-size: $footer_font_size;
+          padding-left: $padding;
+          padding-right: $padding;
+          p {
+              display: inline-block;
+          }
+      }
+      #buttons {
+          float: left;
+      }
+      #dvb {
+          float: right;
+      }

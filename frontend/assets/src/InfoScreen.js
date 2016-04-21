@@ -14,11 +14,11 @@ function InfoScreen() {
 }
 
 // loads new Apps
-var InfoScreenManager = function() {
+var InfoScreenManager = function () {
     'use strict';
     var self = this;
 
-    $(document).bind('contextmenu', function(e) {
+    $(document).bind('contextmenu', function (e) {
         e.preventDefault();
     });
 
@@ -43,32 +43,32 @@ var InfoScreenManager = function() {
 InfoScreenManager.prototype = {
     constructor: InfoScreen,
 
-    init: function() {
+    init: function () {
         'use strict';
         var self = this;
 
         self.request("news", self.refreshNews);
-        setInterval(function() {
+        setInterval(function () {
             self.request("news", self.refreshNews);
         }, self.newsRefreshTime);
         self.request("meals", self.refreshMensa);
-        setInterval(function() {
+        setInterval(function () {
             self.request("meals", self.refreshMensa);
         }, self.mealsRefreshTime);
         self.request("stops", self.refreshBus);
-        setInterval(function() {
+        setInterval(function () {
             self.request("stops", self.refreshBus);
         }, self.busRefreshTime);
         self.request("postillon", self.refreshPostillon);
-        setInterval(function() {
+        setInterval(function () {
             self.request("postillon", self.refreshPostillon);
         }, self.postillonRefreshTime);
 
-        setInterval(function() {
+        setInterval(function () {
             self.updatePostillon();
         }, self.postillonTickerTime);
     },
-    request: function(ressource, callback) {
+    request: function (ressource, callback) {
         'use strict';
         var self = this;
 
@@ -76,27 +76,27 @@ InfoScreenManager.prototype = {
             type: "GET",
             dataType: "json",
             url: self.basepath + ressource + self.postfix
-        }).done(function(e) {
+        }).done(function (e) {
             if (e !== undefined) {
                 callback(e, self);
             }
-        }).fail(function(e) {
+        }).fail(function (e) {
             console.log("Could not load " + ressource + " [" + e.error_description + "]");
         });
     },
-    replace: function(elem, html, self) {
+    replace: function (elem, html, self) {
         'use strict';
 
         if (html !== undefined && elem !== undefined) {
             if (elem.html() !== html) {
-                elem.fadeOut(self.fadeTime, function() {
+                elem.fadeOut(self.fadeTime, function () {
                     elem.html(html);
                     elem.fadeIn(self.fadeTime);
                 });
             }
         }
     },
-    replace_simple: function(elem, html, self) {
+    replace_simple: function (elem, html, self) {
         'use strict';
 
         if (html !== undefined && elem !== undefined) {
@@ -107,14 +107,14 @@ InfoScreenManager.prototype = {
             }
         }
     },
-    refreshNews: function(response, self) {
+    refreshNews: function (response, self) {
         'use strict';
         var elem = $("#news > article");
 
         self.replace(elem, response, self);
 
     },
-    refreshMensa: function(response, self) {
+    refreshMensa: function (response, self) {
         'use strict';
         var r, n, html, elem = $("#mensa > article");
 
@@ -158,16 +158,16 @@ InfoScreenManager.prototype = {
         }
         self.replace(elem, html, self);
     },
-    refreshWeather: function(response, self) {
+    refreshWeather: function (response, self) {
         'use strict';
 
     },
-    refreshPostillon: function(response, self) {
+    refreshPostillon: function (response, self) {
         'use strict';
         self.postillonTicker = response;
 
     },
-    refreshBus: function(response, self) {
+    refreshBus: function (response, self) {
         'use strict';
         var s, r, html, elem = $("#dvb");
 
@@ -183,6 +183,15 @@ InfoScreenManager.prototype = {
                     break;
                 case "Löbtau Süd":
                     direction = "right";
+                    break;
+                case "Löbtau":
+                    direction = "right";
+                    break;
+                case "Plauen, Rathaus":
+                    direction = "right";
+                    break;
+                case "Btf. Gruna":
+                    direction = "left";
                     break;
                 case "Btf. Gruna":
                     direction = "left";
@@ -205,10 +214,19 @@ InfoScreenManager.prototype = {
                 case "Wilder Mann":
                     direction = "down";
                     break;
+                case "Weixdorf":
+                    direction = "down";
+                    break;
+                case "Trachenberge":
+                    direction = "down";
+                    break;
                 case "Btf Trachenberge":
                     direction = "down";
                     break;
                 case "Plauen":
+                    direction = "up";
+                    break;
+                case "Plauen, Nöthnitzer":
                     direction = "up";
                     break;
             }
@@ -230,7 +248,7 @@ InfoScreenManager.prototype = {
         html += "</article>";
         self.replace_simple(elem, html, self);
     },
-    updatePostillon: function() {
+    updatePostillon: function () {
         'use strict';
         var amount, nextID, html, self = this;
 
@@ -244,7 +262,7 @@ InfoScreenManager.prototype = {
                 nextID = (self.postillonDisplayedIDs[self.postillonDisplayedIDs.length - 1] + 1) % self.postillonTicker.length;
             }
             if (self.postillonDisplayedIDs.length === amount) {
-                $("#postillon" + self.postillonDisplayedIDs[0]).slideUp(self.fadeTime, function() {
+                $("#postillon" + self.postillonDisplayedIDs[0]).slideUp(self.fadeTime, function () {
                     $(this).remove();
                 });
                 self.postillonDisplayedIDs.shift();
@@ -262,7 +280,7 @@ InfoScreenManager.prototype = {
             html.slideDown(self.fadeTime);
         }
     },
-    updateTime: function() {
+    updateTime: function () {
         'use strict';
     }
 };

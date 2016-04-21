@@ -6,12 +6,12 @@
     $padding: 15px;
     $article-padding: 21px;
     $news-highlight-color: $primary-color - 50;
-    $mensa-highlight-color: $primary-color - 20;
+    $mensa-highlight-color: $primary-color - 50;
     $right-padding-left-extra: 40px;
     /*#476901*/
     
     @mixin article-padding($left, $right, $up, $down) {}
-    $misc-highlight-color: $primary-color;
+    $misc-highlight-color: $primary-color - 50;
     $large-content-height: $large-content - $large-header;
     $small-content: $large-content/2;
     $dvb-height: 100vh - $large-content;
@@ -109,7 +109,6 @@
                 overflow: hidden;
                 width: 100%;
                 padding-bottom: 7px;
-
                 p:nth-child(2n+1) {
                     display: inline-block;
                     width: 20vw;
@@ -117,7 +116,7 @@
                     font-weight: 400;
                     padding-right: 10px;
                 }
-                p:nth-child(2n+2) { 
+                p:nth-child(2n+2) {
                     width: 8vw;
                     margin-bottom: 7px;
                     float: right;
@@ -126,7 +125,6 @@
                 //    width: 8vw;
                 //    float: right;
                 //}
-                
             }
         }
         section#other {
@@ -144,7 +142,7 @@
             position: relative;
             height: $small-content;
             article {
-                background-color: $primary-color;
+                background-color: $misc-highlight-color;
                 height: 100%;
                 color: white;
                 overflow: hidden;
@@ -184,7 +182,6 @@
                 background-color: $misc-highlight-color;
                 padding-left: $article-padding;
                 height: 100%;
-                background: #9cd618;
                 /* Old browsers */
                 overflow: hidden;
                 text-align: center;

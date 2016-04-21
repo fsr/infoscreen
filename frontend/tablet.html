@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Infoscreen 2.1</title>
+
+    <meta name="robots" content="noindex, nofollow">
+    <meta charset="Utf-8">
+    <meta name="description" content="">
+    <meta name="author" content="ifsr">
+
+    <link rel="stylesheet" href="assets/css/stylereset.css" />
+    <link rel="stylesheet" type="text/css" href="assets/css/lib/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/lib/jquery-ui.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/lib/jquery-ui.structure.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/lib/jquery-ui.theme.min.css">
+    <link rel="stylesheet" href="assets/css/ifsr/css/foundation.min.css" />
+
+    <link rel="stylesheet" href="assets/css/layout_tablet.min.css" type="text/css">
+    <link rel="stylesheet" href="assets/css/layout_tablet.css" type="text/css">
+
+    <!-- dependencies -->
+    <script src="assets/lib/jquery-1.11.1.min.js"></script>
+    <script src="assets/lib/jquery-ui.min.js"></script>
+
+    <script src="assets/src/InfoScreen_Tablet.js"></script>
+
+    <script type="text/javascript">
+        window.onload = InfoScreen;
+
+    </script>
+</head>
+
+<body>
+    <section id="buttons" class="large-3 medium-3 small-3 columns">
+        <form>
+            <input id="restart" type="button" value="restart" />
+            <input id="zih" type="button" value="ZIH" />
+            <input id="shutdown" type="button" value="shutdown" />
+            <input id="reboot" type="button" value="reboot" />
+        </form>
+    </section>
+    <section id="dvb" class="large-9 medium-9 small-9">
+        <article>
+            <h3>Helmholtzstraße</h3>
+            <p>
+                <strong>13</strong> min
+                <i class="fa fa-angle-left"></i>
+                <span>85</span> Wilder Mann
+            </p>
+            <p>
+                <strong>23</strong> min
+                <i class="fa fa-angle-left"></i>
+                <span>85</span> Wilder Mann
+            </p>
+            <h3>Münchner Platz</h3>
+            <p>
+                <strong>3</strong> min
+                <i class="fa fa-angle-left"></i>
+                <span>85</span> Wilder Mann
+            </p>
+            <p>
+                <strong>3</strong> min
+                <i class="fa fa-angle-left"></i>
+                <span>85</span> Wilder Mann
+            </p>
+        </article>
+    </section>
+    <footer class="large-12">
+        <p id="kw_n" class="large-3 medium-3 small-3"></p>
+        <p id="date_n" class="large-5 medium-5 small-5"></p>
+        <p id="time_n" class="large-3 medium-3 small-3"></p>
+    </footer>
+
+
+
+
+    <script type="text/javascript">
+        function dayOfTheYear(date) {
+            var year = date.getFullYear();
+            var days = new Array(31, (year % 400 == 0 || (year % 4 == 0 && year % 100 != 0)) ? 29 : 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31);
+            var doty = date.getDate();
+            for (var i = 0; i < date.getMonth(); i++) {
+                doty += days[i];
+            }
+            return doty;
+        }
+
+        function week(date) {
+            var day = date.getDay();
+            if (day == 0) day = 7; // In ISO-8601, Sunday is 7, not 0
+            return Math.floor((dayOfTheYear(date) - day + 10) / 7);
+        }
+
+        function check(i) {
+            if (i < 10) {
+                i = "0" + i;
+            }
+            return i;
+        }
+
+        function startTime() {
+            var today = new Date();
+            document.getElementById('time_n').innerHTML = check(today.getHours()) + ":" + check(today.getMinutes()) + ":" + check(today.getSeconds());
+            document.getElementById('date_n').innerHTML = check(today.getDate()) + "." + check(today.getMonth() + 1) + "." + today.getFullYear();
+            document.getElementById('kw_n').innerHTML = "KW " + check(week(today));
+            t = setTimeout(function() {
+                startTime()
+            }, 500);
+        }
+        startTime();
+
+
+        self.basepath = "../"; //"127.0.0.1:5000/";
+        self.postfix = "/"; //"";
+        var xhttp = new XMLHttpRequest();
+
+        document.getElementById('restart').onclick = function() {
+            xhttp.open("GET", self.basepath + "system/restart" + self.postfix, true);
+            xhttp.send();
+        }
+        document.getElementById('zih').onclick = function() {
+            xhttp.open("GET", self.basepath + "zih" + self.postfix, true);
+            xhttp.send();
+        }
+        document.getElementById('shutdown').onclick = function() {
+            xhttp.open("GET", self.basepath + "system/shutdown" + self.postfix, true);
+            xhttp.send();
+        }
+        document.getElementById('reboot').onclick = function() {
+            xhttp.open("GET", self.basepath + "system/reboot" + self.postfix, true);
+            xhttp.send();
+        }
+
+    </script>
+</body>
+
+</html>
