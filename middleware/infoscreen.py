@@ -117,9 +117,9 @@ if __name__ == "__main__":
     elif args[1] == 'vm':
         app.debug = True
         app.run(host="0.0.0.0")
-    elif args[2] == 'production':
+    elif args[1] == 'production':
         app.debug = False
-        app.run()
+        app.run(host="0.0.0.0")
     else:
         print('[INFO] Invalid command. Starting in development mode...')
         app.debug = True
