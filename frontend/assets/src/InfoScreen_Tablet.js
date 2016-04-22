@@ -99,112 +99,96 @@ InfoScreenManager.prototype = {
         html += "<article><h3>Helmholtzstraße</h3>";
 
 
+        for (var s = 0; s < 2; s++) {
+            if (s in response.helmholtzstrasse) {
+                var direction = "";
+                if (response.helmholtzstrasse[s].name !== "") {
+                    switch (response.helmholtzstrasse[s].name) {
+                        case "Striesen":
+                            direction = "angle-right";
+                            break;
+                        case "Löbtau Süd":
+                            direction = "angle-left";
+                            break;
+                        case "Löbtau":
+                            direction = "angle-left";
+                            break;
+                        case "Plauen, Rathaus":
+                            direction = "angle-left";
+                            break;
+                        case "Hp. Plauen":
+                            direction = "angle-left";
+                            break;
+                        case "Plauen":
+                            direction = "angle-left";
+                            break;
+                        case "Btf. Gruna":
+                            direction = "angle-right";
+                            break;
+                        case "Gruna":
+                            direction = "angle-right";
+                            break;
+                    }
+                    if (direction === "") {
+                        direction = "question-circle-o";
+                    }
+                    html += "<p><strong>" + response.helmholtzstrasse[s].minutes + "</strong>";
+                    html += "<i class='fa fa-" + direction + "'></i>";
+                    html += "<span>" + response.helmholtzstrasse[s].number + "</span>" + response.helmholtzstrasse[s].name;
 
-        if (0 in response.helmholtzstrasse) {
-            var direction;
-            if (response.helmholtzstrasse[0].name != "") {
-                switch (response.helmholtzstrasse[0].name) {
-                    case "Striesen":
-                        direction = "right";
-                        break;
-                    case "Löbtau Süd":
-                        direction = "left";
-                        break;
-                    case "Löbtau":
-                        direction = "left";
-                        break;
-                    case "Plauen, Rathaus":
-                        direction = "left";
-                        break;
-                    case "Btf. Gruna":
-                        direction = "right";
-                        break;
-                    case "Gruna":
-                        direction = "right";
-                        break;
+                } else {
+                    html += "<p><strong></strong><i></i><span></span>Keine Daten</p>";
                 }
-                html += "<p><strong>" + response.helmholtzstrasse[0].minutes + "</strong>";
-                html += "<i class='fa fa-angle-" + direction + "'></i>";
-                html += "<span>" + response.helmholtzstrasse[0].number + "</span>" + response.helmholtzstrasse[0].name;
+            } else {
+                html += "<p><strong></strong><i></i><span></span>Keine Daten</p>";
+            }
+        }
 
-            } else {
-                html += "<p>Keine Daten vorhanden.</p>";
-            }
-        } else {
-            html += "<p>Keine Daten vorhanden.</p>";
-        }
-        if (1 in response.helmholtzstrasse) {
-            var direction;
-            if (response.helmholtzstrasse[1].name != "") {
-                switch (response.helmholtzstrasse[1].name) {
-                    case "Striesen":
-                        direction = "right";
-                        break;
-                    case "Löbtau Süd":
-                        direction = "left";
-                        break;
-                    case "Löbtau":
-                        direction = "left";
-                        break;
-                    case "Plauen, Rathaus":
-                        direction = "left";
-                        break;
-                    case "Btf. Gruna":
-                        direction = "right";
-                        break;
-                    case "Gruna":
-                        direction = "right";
-                        break;
-                }
-                html += "<p><strong>" + response.helmholtzstrasse[1].minutes + "</strong>";
-                html += "<i class='fa fa-angle-" + direction + "'></i>";
-                html += "<span>" + response.helmholtzstrasse[1].number + "</span>" + response.helmholtzstrasse[1].name;
-            } else {
-                html += "<p>Keine Daten vorhanden.</p>";
-            }
-        } else {
-            html += "<p>Keine Daten vorhanden.</p>";
-        }
         html += "<h3>Münchner Platz</h3>";
-
-        if (0 in response.muenchnerplatz) {
-            var direction;
-            if (response.muenchnerplatz[0].name != "") {
-                switch (response.muenchnerplatz[0].name) {
-                    case "Coschütz":
-                        direction = "down";
-                        break;
-                    case "Wilder Mann":
-                        direction = "up";
-                        break;
-                    case "Weixdorf":
-                        direction = "up";
-                        break;
-                    case "Btf Trachenberge":
-                        direction = "up";
-                        break;
-                    case "Trachenberge":
-                        direction = "up";
-                        break;
-                    case "Plauen":
-                        direction = "down";
-                        break;
-                    case "Plauen, Nöthnitzer":
-                        direction = "down";
-                        break;
+        for (var s = 0; s < 2; s++) {
+            if (s in response.muenchnerplatz) {
+                var direction = "";
+                if (response.muenchnerplatz[s].name !== "") {
+                    switch (response.muenchnerplatz[s].name) {
+                        case "Coschütz":
+                            direction = "down";
+                            break;
+                        case "Wilder Mann":
+                            direction = "up";
+                            break;
+                        case "Weixdorf":
+                            direction = "up";
+                            break;
+                        case "Btf Trachenberge":
+                            direction = "up";
+                            break;
+                        case "Trachenberge":
+                            direction = "up";
+                            break;
+                        case "Plauen":
+                            direction = "down";
+                            break;
+                        case "Plauen, Nöthnitzer":
+                            direction = "down";
+                            break;
+                    }
+                    if (direction === "") {
+                        direction = "question-circle-o";
+                    }
+                    html += "<p><strong>" + response.muenchnerplatz[s].minutes + "</strong>";
+                    html += "<i class='fa fa-angle-" + direction + "'></i>";
+                    html += "<span>" + response.muenchnerplatz[s].number + "</span>" + response.muenchnerplatz[s].name;
+                } else {
+                    html += "<p>Keine Daten vorhanden.</p>";
                 }
-                html += "<p><strong>" + response.muenchnerplatz[0].minutes + "</strong>";
-                html += "<i class='fa fa-angle-" + direction + "'></i>";
-                html += "<span>" + response.muenchnerplatz[0].number + "</span>" + response.muenchnerplatz[0].name;
             } else {
                 html += "<p>Keine Daten vorhanden.</p>";
             }
-        } else {
-            html += "<p>Keine Daten vorhanden.</p>";
         }
+        /*
         if (1 in response.muenchnerplatz) {
             var direction;
-            if (response.muenchnerplatz[1].name != "") {
+            if (response.muenchnerplatz[1].name !== "") {
                 switch (response.muenchnerplatz[1].name) {
                     case "Coschütz":
                         direction = "down";
@@ -236,7 +220,7 @@ InfoScreenManager.prototype = {
             }
         } else {
             html += "<p>Keine Daten vorhanden.</p>";
-        }
+        }*/
 
 
         html += "</article>";

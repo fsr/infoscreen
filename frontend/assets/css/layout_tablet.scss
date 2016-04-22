@@ -80,8 +80,9 @@
                   padding: 0px;
                   padding-top: 0vh;
                   padding-left: 0vw;
-                  line-height: 0;
                   list-style-type: none;
+                  overflow: hidden;
+                  line-height: 12vh;
                   strong {
                       min-width: 14vw;
                       font-size: $dvb_font_size_min;
