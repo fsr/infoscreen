@@ -23,7 +23,7 @@ var InfoScreenManager = function () {
     });
 
     self.basepath = "./"; //"127.0.0.1:5000/";
-    self.postfix = ".json"; //"";
+    self.postfix = ""; //"";
 
 
     self.busRefreshTime = 30000; // evr halfmin
