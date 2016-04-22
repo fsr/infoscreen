@@ -19,6 +19,9 @@ APP_VERSION = '1.0'
 def render_infoscreen():
     return app.send_static_file('infoscreen.html')
 
+@app.route("/tab")
+def render_tablet_screen():
+    return app.send_static_file('tablet.html')
 
 @app.route('/assets/<path:path>')
 def get_assets(path):
