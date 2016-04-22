@@ -10,9 +10,9 @@
     <meta name="description" content="">
     <meta name="author" content="ifsr">
     <meta name="mobile-web-app-capable" content="yes">
-	  <link rel="manifest" href="assets/misc/manifest.json">
-	  <!-- launcher icons generated with Android Asset Studio based on Sebastian Lay's iFSR logo -->
-	  <meta name=viewport content="width=device-width, initial-scale=1">
+    <link rel="manifest" href="assets/misc/manifest.json">
+    <!-- launcher icons generated with Android Asset Studio based on Sebastian Lay's iFSR logo -->
+    <meta name=viewport content="width=device-width, initial-scale=1">
 
     <link rel="stylesheet" href="assets/css/stylereset.css" />
     <link rel="stylesheet" type="text/css" href="assets/css/lib/font-awesome.min.css">
@@ -37,7 +37,7 @@
 </head>
 
 <body>
-    <section id="buttons" class="large-3 medium-3 small-3 columns">
+    <section id="buttons" class="large-2 medium-2 small-2 columns">
         <form>
             <input id="restart" type="button" value="restart" />
             <input id="zih" type="button" value="ZIH" />
@@ -45,34 +45,11 @@
             <input id="reboot" type="button" value="reboot" />
         </form>
     </section>
-    <section id="dvb" class="large-9 medium-9 small-9">
-        <article>
-            <h3>Helmholtzstraße</h3>
-            <p>
-                <strong>13</strong> min
-                <i class="fa fa-angle-left"></i>
-                <span>85</span> Wilder Mann
-            </p>
-            <p>
-                <strong>23</strong> min
-                <i class="fa fa-angle-left"></i>
-                <span>85</span> Wilder Mann
-            </p>
-            <h3>Münchner Platz</h3>
-            <p>
-                <strong>3</strong> min
-                <i class="fa fa-angle-left"></i>
-                <span>85</span> Wilder Mann
-            </p>
-            <p>
-                <strong>3</strong> min
-                <i class="fa fa-angle-left"></i>
-                <span>85</span> Wilder Mann
-            </p>
-        </article>
+    <section id="dvb" class="large-10 medium-10 small-10">
+
     </section>
     <footer class="large-12">
-        <p id="kw_n" class="large-3 medium-3 small-3"></p>
+        <p id="kw_n" class="large-4 medium-4 small-3"></p>
         <p id="date_n" class="large-5 medium-5 small-5"></p>
         <p id="time_n" class="large-3 medium-3 small-3"></p>
     </footer>
@@ -117,7 +94,7 @@
 
 
         self.basepath = "../"; //"127.0.0.1:5000/";
-        self.postfix = "/"; //"";
+        self.postfix = ""; //"";
         var xhttp = new XMLHttpRequest();
 
         document.getElementById('restart').onclick = function() {

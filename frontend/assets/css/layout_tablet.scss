@@ -8,10 +8,11 @@
       $background: #111111;
       $grey1: #444444;
       $padding: 2vw;
-      $button_font_size:5vh;
-      $footer_font_size: 10vh;
+      $button_font_size:4vh;
+      $footer_font_size: 14.5vh;
       $dvb_h3: 4vh;
-      $dvb_font_size: 9vh;
+      $dvb_font_size: 15vh;
+      $dvb_font_size_min: 18vh;
       $dvb_color_head:$primary-color - 50;
       $button-color:$primary-color - 50;
       $dvb_padding_left: 3vw;
@@ -36,7 +37,7 @@
           float: left;
           text-align: center;
           input {
-              width: 20vw;
+              width: 13vw;
               margin-top: 4vh;
               height: 16vh;
               transition: background-color 3s cubic-bezier(1, .05, 1, .26);
@@ -70,29 +71,32 @@
                   padding-left: $dvb_padding_left;
               }
               p {
-                  width: 100%;
+                  min-width: 100%;
                   height: 17vh;
                   text-align: left;
                   font-size: $dvb_font_size;
                   background-color: $dark-gray;
                   margin: 0px;
                   padding: 0px;
-                  padding-left: $dvb_padding_left;
-                  padding-top: 3vh;
-                  overflow: hidden;
+                  padding-top: 0vh;
+                  padding-left: 0vw;
+                  line-height: 0;
                   list-style-type: none;
                   strong {
-                      min-width: 6vw;
+                      min-width: 14vw;
+                      font-size: $dvb_font_size_min;
                       text-align: right;
                       display: inline-block;
                   }
                   i {
-                      width: 6vw;
+                      width: 10vw;
                       text-align: center;
+                      font-size: $dvb_font_size_min;
                       display: inline-block
                   }
                   span {
                       margin-right: 1vw;
+                      font-size: $dvb_font_size_min;
                   }
               }
           }
