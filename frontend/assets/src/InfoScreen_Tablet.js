@@ -23,7 +23,7 @@ var InfoScreenManager = function () {
     });
 
     self.basepath = "./"; //"127.0.0.1:5000/";
-    self.postfix = ""; //"";
+    self.postfix = ".json"; //"";
 
 
     self.busRefreshTime = 30000; // evr halfmin
@@ -123,7 +123,7 @@ InfoScreenManager.prototype = {
                         direction = "right";
                         break;
                 }
-                html += "<p><strong>" + response.helmholtzstrasse[0].minutes + "</strong> min";
+                html += "<p><strong>" + response.helmholtzstrasse[0].minutes + "</strong>";
                 html += "<i class='fa fa-angle-" + direction + "'></i>";
                 html += "<span>" + response.helmholtzstrasse[0].number + "</span>" + response.helmholtzstrasse[0].name;
 
@@ -156,7 +156,7 @@ InfoScreenManager.prototype = {
                         direction = "right";
                         break;
                 }
-                html += "<p><strong>" + response.helmholtzstrasse[1].minutes + "</strong> min";
+                html += "<p><strong>" + response.helmholtzstrasse[1].minutes + "</strong>";
                 html += "<i class='fa fa-angle-" + direction + "'></i>";
                 html += "<span>" + response.helmholtzstrasse[1].number + "</span>" + response.helmholtzstrasse[1].name;
             } else {
@@ -193,7 +193,7 @@ InfoScreenManager.prototype = {
                         direction = "down";
                         break;
                 }
-                html += "<p><strong>" + response.muenchnerplatz[0].minutes + "</strong> min";
+                html += "<p><strong>" + response.muenchnerplatz[0].minutes + "</strong>";
                 html += "<i class='fa fa-angle-" + direction + "'></i>";
                 html += "<span>" + response.muenchnerplatz[0].number + "</span>" + response.muenchnerplatz[0].name;
             } else {
@@ -228,7 +228,7 @@ InfoScreenManager.prototype = {
                         direction = "down";
                         break;
                 }
-                html += "<p><strong>" + response.muenchnerplatz[1].minutes + "</strong> min";
+                html += "<p><strong>" + response.muenchnerplatz[1].minutes + "</strong>";
                 html += "<i class='fa fa-angle-" + direction + "'></i>";
                 html += "<span>" + response.muenchnerplatz[1].number + "</span>" + response.muenchnerplatz[1].name;
             } else {
