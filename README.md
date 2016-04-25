@@ -42,4 +42,11 @@ You can work on the code right on your system, all folders are synced with the V
 The backend requires a working webserver so you might have to install one on your PC or upload the `backend/` folder to a webhoster.
 
 
+
+## Deployment
+
+Comming soon...
+
+The infoscreen file has to be copied to /etc/init.d/
+
 _TODO: Extend this._
