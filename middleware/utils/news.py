@@ -7,7 +7,10 @@ md_news = []
 
 
 def get_news():
-
+    """
+    Gets the infoscreen news from the (atm temporary) backend.
+    :return: the last item from the `news` list which is a single article.
+    """
     if len(md_news) == 0:
 
         url = BASE_URL + 'articles.php'

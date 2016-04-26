@@ -17,55 +17,101 @@ APP_VERSION = '1.0'
 
 @app.route("/")
 def render_infoscreen():
+    """
+    Serves the infoscreen. \o/
+    :return: The infoscreen html file for rendering.
+    """
     return app.send_static_file('infoscreen.html')
+
 
 @app.route("/tab")
 def render_tablet_screen():
+    """
+    Serves the page for the tablet backend.
+    :return: The tablet html file.
+    """
     return app.send_static_file('tablet.html')
+
 
 @app.route('/assets/<path:path>')
 def get_assets(path):
+    """
+    A wrapper for an html opening a style asset.
+    :param path: The path the file _should_ be at.
+    :return: The actual file.
+    """
     return app.send_static_file('assets/{}'.format(path))
 
 
 @app.route("/meals")
 def json_meals():
+    """
+    Gets todays meals to display onscreen.
+    :return: A json dump of the Meals that are (theoretically) available at the moment of refresh.
+    """
     return json.dumps(utils.getmeals())
 
 
 @app.route("/postillon")
 def json_postillon():
+    """
+    Fetches the Postillon Ticker.
+    :return: A json dump of the previously fetched Postillon Newsticker.
+    """
     return json.dumps(utils.postillon_ticker())
 
 
 @app.route("/news")
 def json_news():
+    """
+    Fetches a single News article for display onscreen.
+    :return: A rendered version of a markdown-formatted news article as json dump.
+    """
     return json.dumps(markdown(utils.get_news()))
 
 
 @app.route("/stops")
 def json_stops():
+    """
+    Get a json representation of the next departures from all 3 stops.
+    :return: A json dump of the `utils.all_departures()` call for all 3 stops.
+    """
     return json.dumps(utils.all_departures())
 
 
 @app.route("/stops/helmholtz")
 def json_HhBus():
+    """
+    Get a json representation of the next departures from the stop 'Helmholtzstraße'.
+    :return: A json dump of the `utils.get_departures()` call for the Helmholtzstraße.
+    """
     return json.dumps(utils.get_departures('Helmholtzstrasse'))
 
 
 @app.route("/stops/tud")
 def json_TuBus():
+    """
+    Get a json representation of the next departures from the stop 'Technische Universität'.
+    :return: A json dump of the `utils.get_departures()` call for the Technische Universität.
+    """
     return json.dumps(utils.get_departures('Technische%20Universitaet',
                                            min_minutes=1))
 
 
 @app.route("/stops/muenchner")
 def json_MPBus():
+    """
+    Get a json representation of the next departures from the stop 'Münchner Platz'.
+    :return: A json dump of the `utils.get_departures()` call for the Münchner Platz.
+    """
     return json.dumps(utils.get_departures('Muenchner%20Platz', min_minutes=7))
 
 
 @app.route("/system/restart")
 def restart_browser():
+    """
+    Restart the Chromium browser the Infoscreen is displayed in.
+    """
     command_kill_chrome = ['sudo', 'killall', 'chromium']
     command_start_chrome = ['DISPLAY=:0', 'sudo', '-u', 'pi', 'chromium', '--disk-cache-dir="/var/tmp"',
                             '--disable-translate', '--incognito', '--kiosk', '"http://localhost:5000/"']
@@ -80,6 +126,9 @@ def restart_browser():
 
 @app.route("/system/shutdown")
 def shutdown_pi():
+    """
+    Shut the Pi down.
+    """
     subprocess.call(['sudo', 'shutdown', '-h', 'now'])
 
     # TODO: If Python3.5
@@ -88,6 +137,9 @@ def shutdown_pi():
 
 @app.route("/system/reboot")
 def reboot_pi():
+    """
+    Reboots the infoscreen.
+    """
     subprocess.call(['sudo', 'reboot'])
 
     # TODO: If Python3.5
@@ -96,6 +148,9 @@ def reboot_pi():
 
 @app.route("/zih")
 def play_zih_vid():
+    """
+    Play the 'Route to the ZIH' video.
+    """
     command_play = ['DISPLAY=:0', 'sudo', '-u', 'pi', 'omxplayer', '/var/www/zihsd.mp4', '-r', '15', '>', '/dev/null']
     # TODO: evtl stdout mit open(os.devnull) statt '>' ?
     command_refresh = ['sudo', '-u', 'pi', '/usr/bin/xrefresh', '-display', ':0']
@@ -109,6 +164,10 @@ def play_zih_vid():
 
 @app.route("/version")
 def version():
+    """
+    Gets the Version number of the Infoscreen.
+    :return: The Version number as String.
+    """
     return json.dumps(APP_VERSION)
 
 

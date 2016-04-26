@@ -8,10 +8,10 @@ MENSA_API_URL = 'http://openmensa.org/api/v2/canteens/{mensa}/days/{date}/meals'
 
 
 def getmeals():
-    '''
-    Loads, Reads and parses the meals.
-
-    '''
+    """
+    Gets todays' meals from the OpenMensa API and parses them.
+    :return: A list of dicts where every dict represents a single meal.
+    """
     today = time.strftime('%Y-%m-%d')
     link = MENSA_API_URL.format(
         mensa=79, date=today)
@@ -34,6 +34,12 @@ def getmeals():
 
 
 def mk_meal(raw_data, is_morning):
+    """
+    Generates a dict for a single meal containing all relevant information.
+    :param raw_data: The raw API data for a single meal.
+    :param is_morning: Boolean Value that indicates whether it's earlier than 3pm.
+    :return:
+    """
     return {
         'price': calc_price(raw_data['prices']['students']),
         'notes': get_notes(raw_data['notes']),
@@ -44,6 +50,11 @@ def mk_meal(raw_data, is_morning):
 
 
 def get_notes(meal):
+    """
+    Parses the annotations for a meal.
+    :param meal: A list of notes for the meal, e.g. "Menü enthält Knoblauch"
+    :return: A list of infoscreen-parsable annotations.
+    """
     notes = []
 
     if "Menü enthält Knoblauch" in meal:
@@ -63,6 +74,11 @@ def get_notes(meal):
 
 
 def calc_price(price):
+    """
+    Formats the price of a meal.
+    :param price: A float number, representing the prize for a meal. May be `None`.
+    :return: The prize, with two digits after the decimal point. May be `None`.
+    """
     if price is None:
         return None
     else:
