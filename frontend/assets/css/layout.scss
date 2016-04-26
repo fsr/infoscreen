@@ -217,22 +217,24 @@
                 width: 33.3vw;
                 padding: 0px;
                 margin: 0px;
+                min-height: (2*$dvb-height/10.5)*3 +(2*$dvb-height/7);
                 display: inline-block;
                 float: left;
+                background-color: $dark-gray;
                 p {
                     display: inline-block;
                     float: left;
                     width: 33.3vw;
-                    height: 2*$dvb-height/11;
+                    height: 2*$dvb-height/10.5;
                     color: white;
-                    font-size: 3vh;
+                    font-size: 2em;
                     margin: 0px;
                     padding-left: $article-padding;
                     background-color: $dark-gray;
                     strong {
                         display: inline-block;
                         float: left;
-                        width: 2vw;
+                        width: 2.5vw;
                         font-weight: 900;
                         text-align: right;
                         margin-right: 0.3vw;
@@ -244,20 +246,21 @@
                         color: white;
                     }
                     i {
-                        font-size: 3vh;
+                        font-size: 1em;
                         vertical-align: bottom;
                         width: 0.5vw;
                         margin-left: 0.7vw;
                         font-weight: 900;
                         margin-right: 0.0vw;
                         font-weight: 200;
-                        padding-top: 3px;
+                        padding-top: 0px;
+                        margin-right: 0.5vw;
                     }
                     span {
                         display: inline-block;
                         width: 2vw;
                         text-align: right;
-                        margin-left: 0.4vw;
+                        margin-left: 0.6vw;
                         margin-right: 1.2vw;
                     }
                     /*{
