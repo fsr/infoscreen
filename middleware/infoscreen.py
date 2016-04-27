@@ -143,6 +143,17 @@ def play_zih_vid():
     subprocess.run(command_refresh)
 
 
+@app.route("/gitpull")
+def git_pull():
+    command_reset = ['sudo', '-u', 'pi', 'git', '--git-dir=/home/pi/infoscreen/.git',
+                     '--work-tree=/home/pi/infoscreen', 'reset', '--hard']
+    command_pull = ['sudo', '-u', 'pi', 'git', '--git-dir=/home/pi/infoscreen/.git',
+                    '--work-tree=/home/pi/infoscreen', 'pull', 'origin', 'master']
+    subprocess.run(command_reset)
+    subprocess.run(command_pull)
+    restart()
+
+
 @app.route("/version")
 def version():
     """
