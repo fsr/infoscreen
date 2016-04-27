@@ -108,7 +108,6 @@ def json_MPBus():
 
 
 @app.route("/system/restart")
-
 def restart():
     """
     Restart the Chromium browser the Infoscreen is displayed in.
