@@ -179,48 +179,13 @@ InfoScreenManager.prototype = {
                     html += "<i class='fa fa-angle-" + direction + "'></i>";
                     html += "<span>" + response.muenchnerplatz[s].number + "</span>" + response.muenchnerplatz[s].name;
                 } else {
-                    html += "<p>Keine Daten vorhanden.</p>";
+                    html += "<p><strong></strong><i></i><span></span>Keine Daten</p>";
                 }
             } else {
-                html += "<p>Keine Daten vorhanden.</p>";
+                html += "<p><strong></strong><i></i><span></span>Keine Daten</p>";
             }
         }
-        /*
-        if (1 in response.muenchnerplatz) {
-            var direction;
-            if (response.muenchnerplatz[1].name !== "") {
-                switch (response.muenchnerplatz[1].name) {
-                    case "Coschütz":
-                        direction = "down";
-                        break;
-                    case "Wilder Mann":
-                        direction = "up";
-                        break;
-                    case "Weixdorf":
-                        direction = "up";
-                        break;
-                    case "Btf Trachenberge":
-                        direction = "up";
-                        break;
-                    case "Trachenberge":
-                        direction = "up";
-                        break;
-                    case "Plauen":
-                        direction = "down";
-                        break;
-                    case "Plauen, Nöthnitzer":
-                        direction = "down";
-                        break;
-                }
-                html += "<p><strong>" + response.muenchnerplatz[1].minutes + "</strong>";
-                html += "<i class='fa fa-angle-" + direction + "'></i>";
-                html += "<span>" + response.muenchnerplatz[1].number + "</span>" + response.muenchnerplatz[1].name;
-            } else {
-                html += "<p>Keine Daten vorhanden.</p>";
-            }
-        } else {
-            html += "<p>Keine Daten vorhanden.</p>";
-        }*/
+        
 
 
         html += "</article>";
