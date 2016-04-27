@@ -4,10 +4,10 @@ import json
 
 
 def postillon_ticker():
-    '''
-    Get ticker data from the Postillon.
-    '''
-
+    """
+    Queries the `Postillon` ticker for a short ticker feed.
+    :return: A list with formatted ticker news.
+    """
     try:
         ret = urllib.request.urlopen(
             'http://www.der-postillion.de/ticker/newsticker2.php')
@@ -17,8 +17,3 @@ def postillon_ticker():
 
     return ['+++ {} +++'.format(element['text'])
             for element in ticker["tickers"]]
-    # space = 6
-    # return (' ' * space).join(
-    #     '+++ ' + line['text'] + ' +++'
-    #     for line in ticker['tickers']
-    # )
