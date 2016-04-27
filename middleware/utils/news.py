@@ -1,7 +1,11 @@
 import urllib.request
 import json
 
-BASE_URL = 'http://192.168.33.10/'  # URL for backend here
+BASE_URL = ''
+
+with open('backend.json', 'r') as data:
+    temp_data = json.load(data)
+    BASE_URL = temp_data['BASE_URL']
 
 md_news = []
 
