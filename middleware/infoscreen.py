@@ -152,6 +152,7 @@ def git_pull():
     subprocess.run(command_reset)
     subprocess.run(command_pull)
     restart()
+    render_infoscreen()
 
 
 @app.route("/version")
