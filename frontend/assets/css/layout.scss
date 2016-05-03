@@ -143,7 +143,7 @@
             height: $small-content;
             article {
                 background-color: $misc-highlight-color;
-                height: 100%;
+                height: calc( #{$small-content} - #{$padding/2} );
                 color: white;
                 overflow: hidden;
                 padding-left: $padding/2 + $right-padding-left-extra;
@@ -181,7 +181,7 @@
                 padding: $article-padding;
                 background-color: $misc-highlight-color;
                 padding-left: $article-padding;
-                height: 100%;
+                height: calc( #{$small-content} - #{$padding/2} );
                 /* Old browsers */
                 overflow: hidden;
                 text-align: center;

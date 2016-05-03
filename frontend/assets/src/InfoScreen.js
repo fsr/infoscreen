@@ -12,7 +12,16 @@ function InfoScreen() {
     'use strict';
     var screen = new InfoScreenManager();
 }
-
+function reduceString(text, length) {
+    'use strict';
+    if (text.length > length) {
+        var shortText = text.substring(0, length - 3) + "...";
+        return shortText;
+    } else {
+        return text;
+    }
+    
+}
 // loads new Apps
 var InfoScreenManager = function () {
     'use strict';
@@ -130,24 +139,24 @@ InfoScreenManager.prototype = {
                 for (n in response[r].notes) {
                     if (response[r].notes.hasOwnProperty(n)) {
                         switch (response[r].notes[n]) {
-                            case "knoblauch":
-                                html += "k ";
-                                break;
-                            case "vegetarisch":
-                                html += "v ";
-                                break;
-                            case "vegan":
-                                html += "v ";
-                                break;
-                            case "schwein":
-                                html += "s ";
-                                break;
-                            case "rind":
-                                html += "r ";
-                                break;
-                            case "alkohol":
-                                html += "a ";
-                                break;
+                        case "knoblauch":
+                            html += "k ";
+                            break;
+                        case "vegetarisch":
+                            html += "v ";
+                            break;
+                        case "vegan":
+                            html += "v ";
+                            break;
+                        case "schwein":
+                            html += "s ";
+                            break;
+                        case "rind":
+                            html += "r ";
+                            break;
+                        case "alkohol":
+                            html += "a ";
+                            break;
                         }
                     }
                 }
@@ -169,79 +178,80 @@ InfoScreenManager.prototype = {
     },
     refreshBus: function (response, self) {
         'use strict';
-        var s, r, html, elem = $("#dvb");
+        var s, r, html, direction, elem = $("#dvb");
 
         html = "";
 
         html += "<article><header>Helmholtzstraße</header>";
         for (s in response.helmholtzstrasse) { //alle Daten für Helmholzstraße
 
-            var direction;
+            direction = "";
             switch (response.helmholtzstrasse[s].name) {
-                case "Striesen":
-                    direction = "left";
-                    break;
-                case "Löbtau Süd":
-                    direction = "right";
-                    break;
-                case "Löbtau":
-                    direction = "right";
-                    break;
-                case "Plauen, Rathaus":
-                    direction = "right";
-                    break;
-                case "Btf. Gruna":
-                    direction = "left";
-                    break;
-                case "Btf. Gruna":
-                    direction = "left";
-                    break;
+            case "Striesen":
+                direction = "left";
+                break;
+            case "Löbtau Süd":
+                direction = "right";
+                break;
+            case "Löbtau":
+                direction = "right";
+                break;
+            case "Plauen, Rathaus":
+                direction = "right";
+                break;
+            case "Btf. Gruna":
+                direction = "left";
+                break;
+            case "E Karcherallee":
+                direction = "left";
+                break;
             }
             html += "<p><strong>" + response.helmholtzstrasse[s].minutes + "</strong> min";
             html += "<i class='fa fa-angle-" + direction + "'></i>";
-            html += "<span>" + response.helmholtzstrasse[s].number + "</span>" + response.helmholtzstrasse[s].name;
+            html += "<span>" + response.helmholtzstrasse[s].number + "</span>" + reduceString(response.helmholtzstrasse[s].name, 20);
 
 
         }
         html += "</article><article><header>Münchner Platz</header>";
         for (s in response.muenchnerplatz) {
 
-            var direction;
+            direction = "";
             switch (response.muenchnerplatz[s].name) {
-                case "Coschütz":
-                    direction = "up";
-                    break;
-                case "Wilder Mann":
-                    direction = "down";
-                    break;
-                case "Weixdorf":
-                    direction = "down";
-                    break;
-                case "Trachenberge":
-                    direction = "down";
-                    break;
-                case "Btf Trachenberge":
-                    direction = "down";
-                    break;
-                case "Plauen":
-                    direction = "up";
-                    break;
-                case "Plauen, Nöthnitzer":
-                    direction = "up";
-                    break;
+            case "Coschütz":
+                direction = "up";
+                break;
+            case "Wilder Mann":
+                direction = "down";
+                break;
+            case "Weixdorf":
+                direction = "down";
+                break;
+            case "Trachenberge":
+                direction = "down";
+                break;
+            case "Btf Trachenberge":
+                direction = "down";
+                break;
+            case "Plauen":
+                direction = "up";
+                break;
+            case "Plauen, Nöthnitzer":
+                direction = "up";
+                break;
             }
             html += "<p><strong>" + response.muenchnerplatz[s].minutes + "</strong> min";
             html += "<i class='fa fa-angle-" + direction + "'></i>";
-            html += "<span>" + response.muenchnerplatz[s].number + "</span>" + response.muenchnerplatz[s].name;
+            html += "<span>" + response.muenchnerplatz[s].number + "</span>" +
+                    reduceString(response.muenchnerplatz[s].name, 20);
 
 
         }
         html += "</article><article><header>Technische Universität</header>";
         for (s in response.technischeuniversitaet) {
 
-            var direction;
+            direction = "";
             html += "<p><strong>" + response.technischeuniversitaet[s].minutes + "</strong> min";
-            html += "<span>" + response.technischeuniversitaet[s].number + "</span>" + response.technischeuniversitaet[s].name;
+            html += "<span>" + response.technischeuniversitaet[s].number + "</span>" + reduceString(response.technischeuniversitaet[s].name, 20);
 
 
         }
