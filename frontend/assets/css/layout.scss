@@ -3,11 +3,11 @@
     $margin: 15px;
     $large-content: 75vh;
     $large-header: 13vh;
-    $padding: 15px;
+    $padding: 1.4vh;//15px;
     $article-padding: 21px;
     $news-highlight-color: $primary-color - 50;
     $mensa-highlight-color: $primary-color - 50;
-    $right-padding-left-extra: 40px;
+    $right-padding-left-extra:3vh;// 40px;
     /*#476901*/
     
     @mixin article-padding($left, $right, $up, $down) {}
@@ -143,7 +143,7 @@
             height: $small-content;
             article {
                 background-color: $misc-highlight-color;
-                height: calc( #{$small-content} - #{$padding/2} );
+                height: $small-content - $padding/2;
                 color: white;
                 overflow: hidden;
                 padding-left: $padding/2 + $right-padding-left-extra;
@@ -181,7 +181,7 @@
                 padding: $article-padding;
                 background-color: $misc-highlight-color;
                 padding-left: $article-padding;
-                height: calc( #{$small-content} - #{$padding/2} );
+                height: $small-content - $padding/2;
                 /* Old browsers */
                 overflow: hidden;
                 text-align: center;
