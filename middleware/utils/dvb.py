@@ -7,7 +7,7 @@ DEPARTURE_LINK = 'http://widgets.vvo-online.de/abfahrtsmonitor/Abfahrten.do?ort\
 ={ort}&hst={hst}&vz={minutes}&lim={count}'
 
 
-def get_departures(station, city='Dresden', min_minutes=None, nextStopCount=3):
+def get_departures(station, city='Dresden', min_minutes=None, nextStopCount=4):
     """
     Queries the DVB 'API' for the next departures from a single station.
     :param station: The name of the Station as String.
