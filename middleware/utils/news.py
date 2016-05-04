@@ -17,7 +17,7 @@ def get_news():
     """
     if len(md_news) == 0:
 
-        url = BASE_URL + 'articles.php'
+        url = BASE_URL + '/articles.php'
         try:
             news = json.loads(urllib.request.urlopen(
                 url).read().decode("UTF-8"))
