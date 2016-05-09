@@ -1,10 +1,4 @@
-import json
-import urllib.request
-from urllib.error import URLError
-
-
-DEPARTURE_LINK = 'http://widgets.vvo-online.de/abfahrtsmonitor/Abfahrten.do?ort\
-={ort}&hst={hst}&vz={minutes}&lim={count}'
+import dvb
 
 
 def get_departures(station, city='Dresden', min_minutes=None, nextStopCount=4):
@@ -16,17 +10,13 @@ def get_departures(station, city='Dresden', min_minutes=None, nextStopCount=4):
     :param nextStopCount: Number of next stops to be displayed (int). Defaults to 3 Stops.
     :return: A dict which contains the name of the station as key and a list of upcoming departures as value.
     """
-    link = DEPARTURE_LINK.format(
-        ort=city, hst=station, minutes=min_minutes, count=nextStopCount)
 
-    try:
-        ret = urllib.request.urlopen(link)
-        next_stops = json.loads(ret.read().decode("UTF-8"))
-    except URLError:
-        return []
+    minutes = min_minutes if min_minutes is not None else 0
+    stops = dvb.monitor(stop=station, offset=minutes, limit=nextStopCount, city=city)
 
-    formatted_stops = [{'number': '0' if stop[0] == '' else stop[0], 'name': stop[1], 'minutes': stop[2]}
-                       for stop in next_stops]
+
+    formatted_stops = [{'number': stop['line'] , 'name': stop['direction'], 'minutes': stop['arrival']}
+                       for stop in stops]
 
     return {station.lower().replace('%20', ''): formatted_stops}
 
@@ -40,6 +30,6 @@ def all_departures():
     all_stops.update(get_departures('Helmholtzstrasse'))
     all_stops.update(get_departures('Muenchner%20Platz', min_minutes=7))
     all_stops.update(get_departures(
-        'Technische%20Universitaet', min_minutes=1))
+        'Technische%20Universitaet', min_minutes=15))
 
     return all_stops
