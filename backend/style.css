@@ -23,9 +23,18 @@ body{
     overflow: auto;
 }
 
-.delete {
+
+.buttons {
     float: right;
-    display: block;
+    display:inline;
+}
+
+.articlelist form {
+    display:inline;
+    float:right;
+}
+
+.delete, .edit {
     font-size: 0.8em;
     background: none;
     border: none;
@@ -34,7 +43,7 @@ body{
     cursor: pointer; 
 }
 
-.delete:hover {
+.delete:hover, .edit:hover {
   color: #606c76;
 }
 
