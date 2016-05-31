@@ -10,9 +10,7 @@ import sys
 
 app = Flask(__name__, static_folder='../frontend',
             static_url_path='/../frontend/')
-APP_VERSION = '1.0'
-# latest Commit Hash:
-# https://api.github.com/repos/fsr/infoscreen/commits/new_version
+APP_VERSION = '2.1'
 
 
 @app.route("/")
@@ -95,7 +93,7 @@ def json_TuBus():
     :return: A json dump of the `utils.get_departures()` call for the Technische Universität.
     """
     return json.dumps(utils.get_departures('Technische%20Universitaet',
-                                           min_minutes=1))
+                                           min_minutes=15))
 
 
 @app.route("/stops/muenchner")
