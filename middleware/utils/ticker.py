@@ -13,7 +13,7 @@ def postillon_ticker():
             'http://www.der-postillion.de/ticker/newsticker2.php')
         ticker = json.loads(ret.read().decode("utf-8-sig"))
     except URLError:
-        return '+++ Tickt nicht mehr richtig: Kein Ticker verfügbar +++'
+        return ['+++ Tickt nicht mehr richtig: Kein Ticker verfügbar +++']
 
     return ['+++ {} +++'.format(element['text'])
             for element in ticker["tickers"]]
