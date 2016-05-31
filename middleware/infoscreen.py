@@ -164,6 +164,16 @@ def version():
     return json.dumps(APP_VERSION)
 
 
+@app.route("/hash")
+def commit_hash():
+    """
+    Gets the latest commit hash from HEAD
+    :return: The short commit hash.
+    """
+    process = subprocess.run("git rev-parse HEAD".split(),  stdout=subprocess.PIPE)
+    return process.stdout[:7].decode("utf-8")
+
+
 if __name__ == "__main__":
     args = sys.argv
     if len(args) < 2 or args[1] == 'dev':
