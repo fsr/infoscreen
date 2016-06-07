@@ -205,6 +205,9 @@ InfoScreenManager.prototype = {
             case "E Karcherallee":
                 direction = "left";
                 break;
+            case "Hp. Strehlen":
+                direction = "left";
+                break;
             }
             html += "<p><strong>" + response.helmholtzstrasse[s].minutes + "</strong> min";
             html += "<i class='fa fa-angle-" + direction + "'></i>";
