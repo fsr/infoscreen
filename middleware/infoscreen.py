@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 from flask import Flask, abort, render_template, url_for
-from flask.ext.misaka import markdown
+from flask_misaka import markdown
 import subprocess
 import utils
 import json
@@ -127,6 +127,18 @@ def reboot_pi():
     Reboots the infoscreen.
     """
     subprocess.run(['sudo', 'reboot'])
+
+
+@app.route("/weather")
+def weather():
+    '''
+    Return warnings if there are any else returns the current weather
+    '''
+    result = utils.get_waringns()
+    if result is None:
+        return json.dumps(utils.get_weather())
+    else:
+        return json.dumps(result)
 
 
 @app.route("/zih")
