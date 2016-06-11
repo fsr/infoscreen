@@ -134,7 +134,7 @@ def weather():
     '''
     Return warnings if there are any else returns the current weather
     '''
-    result = utils.get_waringns()
+    result = utils.get_warnings()
     if result is None:
         return json.dumps(utils.get_weather())
     else:

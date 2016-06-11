@@ -10,17 +10,15 @@ with open('backend.json', 'r') as data:
     API_KEY = temp_data['API_KEY']
 
 
-def get_waringns(id='114612000'):
+def get_warnings(id='114612000'):
     url = "http://www.dwd.de/DWD/warnungen/warnapp/json/warnings.json"
     try:
         full_warnings = urllib.request.urlopen(
             url).read().decode("UTF-8")
     except:
         return None
-
-    inner_json = re.compile(r'warnWetter\.loadWarnings\((.*)\);')
-
-    weather_json = json.loads(inner_json.match(full_warnings).group(1))
+    weather_json = json.loads(full_warnings[full_warnings.find("{"):
+                                            full_warnings.rfind("}") + 1])
 
     return gerate_return(weather_json['warnings'][id][0]) if weather_json.get(
         'warnings').get(id) is not None else None
