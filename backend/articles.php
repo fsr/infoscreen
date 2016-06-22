@@ -1,6 +1,6 @@
 <?php
 $db = new SQLite3("items.sqlite");
-$query = $db->query("SELECT * FROM items;");
+$query = $db->query("SELECT id, headline, content, image FROM items WHERE visibility = 1;");
 
 $results = array();
 

@@ -10,24 +10,26 @@
 <body>
 <?php
 	$db = new SQLite3("items.sqlite");
-	$db->exec("CREATE TABLE IF NOT EXISTS items (id INTEGER PRIMARY KEY, headline TEXT, content TEXT, image TEXT);");
+	$db->exec("CREATE TABLE IF NOT EXISTS items (id INTEGER PRIMARY KEY, headline TEXT, content TEXT, image TEXT, visibility INTEGER);");
 
 	if(isset($_POST['new_submit'])) {
-		$statement = $db->prepare('INSERT INTO items (headline, content, image) VALUES (:headline, :content, :image);');
+		$statement = $db->prepare('INSERT INTO items (headline, content, image, visibility) VALUES (:headline, :content, :image, :visibility);');
 		$statement->bindValue(':headline', $_POST['new_headline']);
 		$statement->bindValue(':image', $_POST['new_image']);
 		$statement->bindValue(':content', $_POST['new_content']);
+		$statement->bindValue(':visibility', $_POST['new_visibility']);
 		$result = $statement->execute();
 	} else if(isset($_POST['delete_submit'])) {
 		$statement = $db->prepare('DELETE FROM items WHERE id = :id;');
 		$statement->bindValue(':id', $_POST['delete_nr']);
 		$result = $statement->execute();
 	} else if(isset($_POST['saveEdit_submit'])) {
-		$statement = $db->prepare('UPDATE items SET headline=:headline, content=:content, image=:image WHERE id = :id;');
+		$statement = $db->prepare('UPDATE items SET headline=:headline, content=:content, image=:image, visibility=:visibility WHERE id = :id;');
 		$statement->bindValue(':id', $_POST['edit_nr']);
 		$statement->bindValue(':headline', $_POST['new_headline']);
 		$statement->bindValue(':image', $_POST['new_image']);
 		$statement->bindValue(':content', $_POST['new_content']);
+		$statement->bindValue(':visibility', $_POST['new_visibility']);
 		$result = $statement->execute();
 	}
 ?>
@@ -76,7 +78,16 @@
 			                    <textarea name=\"new_content\" placeholder=\"Nachrichtentext hier einfügen...\" class=\"newstext\">$row[content]</textarea>
 			                </div>
 			                <input name=\"edit_nr\" type=\"hidden\" value=\"$row[id]\" />
-			                <input name=\"saveEdit_submit\" type=\"submit\" class=\"submitbutton button-outline\" />
+
+			                <label for=\"visibility\">Sichtbar?</label>";
+
+                 if($row["visibility"] == 1)  
+			        echo "<input type=\"radio\" name=\"new_visibility\" value=\"1\" checked=\"checked\" /> ja
+			              <input type=\"radio\" name=\"new_visibility\" value=\"0\" /> nein";
+			     else
+			     	echo "<input type=\"radio\" name=\"new_visibility\" value=\"1\" /> ja
+			              <input type=\"radio\" name=\"new_visibility\" value=\"0\" checked=\"checked\" /> nein";
+			     echo "<p><input name=\"saveEdit_submit\" type=\"submit\" class=\"submitbutton button-outline\" /></p>
 			            </fieldset>
 			        </form>";
 	    	}
@@ -95,7 +106,10 @@
 			                <div class=\"newstextbox\">
 			                    <textarea name=\"new_content\" placeholder=\"Nachrichtentext hier einfügen...\" class=\"newstext\"></textarea>
 			                </div>
-			                <input name=\"new_submit\" type=\"submit\" class=\"submitbutton button-outline\" />
+			                <label for=\"visibility\">Sichtbar?</label>
+			                <input type=\"radio\" name=\"new_visibility\" value=\"1\" checked=\"checked\" /> ja
+			                <input type=\"radio\" name=\"new_visibility\" value=\"0\" /> nein
+			                <p><input name=\"new_submit\" type=\"submit\" class=\"submitbutton button-outline\" /></p>
 			            </fieldset>
 			        </form>";
 		}
