@@ -1,4 +1,4 @@
-body{
+body {
     margin: 0;
 }
 
@@ -6,7 +6,7 @@ body{
     float: left;
     height: 100%;
     width: 18%;
-    background-color: #F7F7F7; 
+    background-color: #F7F7F7;
     padding: 20px 15px;
     margin: 0;
     position: fixed;
@@ -40,7 +40,7 @@ body{
     border: none;
     color: #9b4dca;
     text-decoration: none;
-    cursor: pointer; 
+    cursor: pointer;
 }
 
 .delete:hover, .edit:hover {
@@ -57,6 +57,7 @@ body{
 .inputfield {
     font-family: "Source Code Pro";
     font-size: 1em;
+    width: 50%;
 }
 
 .newstext, .newstext:focus {
