@@ -71,7 +71,7 @@
 			            <fieldset>
 			                <pre class=\"info\">Der Nachrichtentext unterstützt valides <strong>Markdown</strong>.</pre>
 			                <label for=\"headline\">Überschrift:</label>
-			                <input name=\"new_headline\" placeholder=\"Titel\" id=\"headline\" class=\"inputfield\" value=\"" . htmlspecialchars($row[headline]). "\" required />
+			                <input name=\"new_headline\" placeholder=\"Titel\" id=\"headline\" class=\"inputfield\" value=\"" . htmlspecialchars($row["headline"]). "\" required />
 			                <label for=\"imagelink\">Bildlink:</label>
 			                <input name=\"new_image\" placeholder=\"Bildlink\" id=\"imagelink\" class=\"inputfield\" value=\"$row[image]\" />
 			                <div class=\"newstextbox\">
