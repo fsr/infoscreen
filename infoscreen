@@ -22,6 +22,7 @@ NAME=infoscreen
 DAEMON=$DIR/$NAME.py
 DAEMON_OPTS="production"
 DAEMON_USER="pi"
+LOGFILE=/home/pi/infoscreen.log
 PIDFILE=/var/run/$NAME.pid
 SCRIPTNAME=/etc/init.d/$NAME
 
@@ -29,7 +30,10 @@ SCRIPTNAME=/etc/init.d/$NAME
 
 do_start()
 {
-    start-stop-daemon --start --background --pidfile $PIDFILE --make-pidfile --user $DAEMON_USER --chuid $DAEMON_USER --startas $DAEMON -- $DAEMON_OPTS
+    start-stop-daemon --start --background --pidfile $PIDFILE --make-pidfile --user $DAEMON_USER --chuid $DAEMON_USER --startas /bin/bash -- -c "exec $DAEMON $DAEMON_OPTS > $LOGFILE 2>&1"
+    sleep 10
+    export DISPLAY=:0
+    xdotool key F5
 }
 
 #
@@ -44,6 +48,9 @@ do_stop()
 case "$1" in
   start)
     do_start
+    sleep 35
+    export DISPLAY=:0
+    xdotool key F5
     ;;
   stop)
     do_stop
@@ -61,4 +68,3 @@ case "$1" in
     ;;
 esac
 exit 0
-

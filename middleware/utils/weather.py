@@ -1,11 +1,12 @@
 import re
+import os
 import json
 import forecastio
 import urllib.request
 from datetime import datetime
 
 API_KEY = ''
-with open('backend.json', 'r') as data:
+with open(os.path.join(os.path.dirname(os.path.abspath(__file__)),'../backend.json'), 'r') as data:
     temp_data = json.load(data)
     API_KEY = temp_data['API_KEY']
 

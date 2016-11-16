@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/local/bin/python3
 
 from flask import Flask, abort, render_template, url_for
 from flask_misaka import markdown

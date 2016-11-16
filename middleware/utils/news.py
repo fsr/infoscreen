@@ -1,9 +1,10 @@
 import urllib.request
 import json
+import os
 
 BASE_URL = ''
 
-with open('backend.json', 'r') as data:
+with open(os.path.join(os.path.dirname(os.path.abspath(__file__)),'../backend.json'), 'r') as data:
     temp_data = json.load(data)
     BASE_URL = temp_data['BASE_URL']
 
