@@ -1,4 +1,0 @@
-#!/bin/bash
-echo "Content-type: text/json"
-echo ""
-ifconfig|sed -n "/inet addr:.*255.255.255.0/{s/.*inet addr://; s/ .*//; p}"

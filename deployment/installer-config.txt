@@ -1,0 +1,9 @@
+
+preset=server
+release=wheezy
+packages=chromium,nano,curl,omxplayer,lightdm,git,raspi-config,sudo,xserver-xorg,xinit,tmux,xserver-xorg-video-fbdev,snmp,vim,apt-utils,unzip,gcc,make,libssl-dev,zlib1g-dev,lsb-release,libffi-dev,xdotool
+hostname=infoscreen
+domainname=ifsr.de
+rootpw=fsrberry
+online_config= # URL to extra config that will be executed after installer-config.txt
+usbroot= # set to 1 to install to first USB disk

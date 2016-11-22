@@ -1,0 +1,50 @@
+{
+    "fsr-infoscreen": {
+        "version": 1
+
+    {% if meals %}
+      , "mensa": {
+        "meal": [ {} {% for meal in meals %} ,{
+            "name": "{{ meal.name }}",
+            {% if meal.price %} "price": "{{ meal.price }}", {% endif %}
+            "notes": [ "" {% for note in meal.notes %} ,
+                "{{ note }}"
+                 {% endfor %}]
+        }{% endfor %}]
+      }
+    {% endif %}
+
+    {% if ticker %}
+       , "postillon": [ "" {% for message in ticker %} {% if message.text %} ,
+            "{{ message.text }}" }{% endif %} {% endfor %}]
+    {% endif %}
+
+    {% if article %}
+      , "news": '{{ article }}'
+    {% endif %}
+
+    {% if HhBus %}
+      , "stop-helmholtz": [ {} {% for item in HhBus %} ,{
+        "number": {{ item[0] }},
+        "name": "{{ item[1] }}",
+        "minutes": {{ item[2] }}
+      } {% endfor %} ]
+    {% endif %}
+
+    {% if MPBus %}
+      , "stop-muenchenerplatz": [ {} {% for item in MPBus %} ,{
+        "number": {{ item[0] }},
+        "name": "{{ item[1] }}",
+        "minutes": {{ item[2] }}
+      } {% endfor %} ]
+    {% endif %}
+
+    {% if TuBus %}
+      , "stop-tudresden": [ {} {% for item in TuBus %} ,{
+        "number": {{ item[0] }},
+        "name": "{{ item[1] }}",
+        "minutes": {{ item[2] }}
+      } {% endfor %} ]
+    {% endif %}
+    }
+}

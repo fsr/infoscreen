@@ -1,1 +1,16 @@
-www/images/speiseplan
+items.sqlite
+*.json
+
+# Vagrant
+.vagrant/
+
+# Ignore python cache folder
+__pycache__/
+*.pyc
+/frontend/assets/css/layout.css
+/frontend/assets/css/layout.css.map
+/frontend/assets/css/layout_tablet.css
+/frontend/assets/css/layout_tablet.css.map
+/frontend/assets/css/stylereset.min.css
+/frontend/assets/src/InfoScreen.min.js
+/frontend/assets/src/InfoScreen_Tablet.min.js
