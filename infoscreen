@@ -62,8 +62,7 @@ case "$1" in
   status)
     status_of_proc -p $PIDFILE "$NAME" && exit 0 || exit $?    ;;
   *)
-    #echo "Usage: $SCRIPTNAME {start|stop|restart|reload|force-reload}" >&2
-    echo "Usage: $SCRIPTNAME {start|stop|restart|status}" >&2
+    echo "$NAME\n$DESC\n\nUsage: $SCRIPTNAME {start|stop|restart|status}" >&2
     exit 3
     ;;
 esac
