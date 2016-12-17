@@ -12,11 +12,11 @@ def get_departures(station, city='Dresden', min_minutes=None, nextStopCount=4):
     """
 
     minutes = min_minutes if min_minutes is not None else 0
-    stops = dvb.monitor(stop=station, offset=minutes, limit=nextStopCount, city=city)
+    stops = dvb.monitor(stop=station, offset=minutes,
+                        limit=nextStopCount, city=city)
 
-
-    formatted_stops = [{'number': stop['line'] , 'name': stop['direction'], 'minutes': stop['arrival']}
-                       for stop in stops]
+    formatted_stops = [{'number': stop['line'], 'name': stop['direction'],
+                        'minutes': stop['arrival']} for stop in stops]
 
     return {station.lower().replace('%20', ''): formatted_stops}
 

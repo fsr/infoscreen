@@ -134,11 +134,7 @@ def weather():
     '''
     Return warnings if there are any else returns the current weather
     '''
-    result = utils.get_warnings()
-    if result is None:
-        return json.dumps(utils.get_weather())
-    else:
-        return json.dumps(result)
+    return json.dumps(utils.get_weather())
 
 
 @app.route("/zih")
