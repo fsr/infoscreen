@@ -222,22 +222,23 @@
                     height: 100%;
                     display: inline-block;
                     i{
-                        font-size: 11em;
+                        font-size: 16em;
                         display: inline-block; 
                         text-align: left;
-                        margin-top: 0.7em; 
+                        margin-top: 0.2em; 
                         margin-left: $padding + 2*$padding/3;
                     }
                 }
                 div:nth-child(1){
                     text-align: right;
-                    max-width: 50%;
+                    max-width: 55%;
                     float: left;
-                }
+                    
+                } 
                 div:nth-child(2){
                     text-align: left;
-                    max-width: 45%;
-                    margin-left: 5%;
+                    max-width: 40%;
+                    padding-left: 5%;
                     float:left;
                 }
                 p {
