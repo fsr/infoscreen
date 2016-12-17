@@ -1,9 +1,10 @@
 import re
 import os
 import json
-import forecastio
 import urllib.request
+from forecastiopy import *
 from datetime import datetime
+
 
 API_KEY = ''
 with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), '../backend.json'), 'r') as data:
@@ -11,33 +12,23 @@ with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), '../backend.j
     API_KEY = temp_data['API_KEY']
 
 
-# def get_warnings(id='114612000'):
-#     url = "http://www.dwd.de/DWD/warnungen/warnapp/json/warnings.json"
-#     try:
-#         full_warnings = urllib.request.urlopen(
-#             url).read().decode("UTF-8")
-#     except:
-#         return None
-#     weather_json = json.loads(full_warnings[full_warnings.find("{"):
-#                                             full_warnings.rfind("}") + 1])
-#
-#     return gerate_return(weather_json['warnings'][id][0]) if weather_json.get(
-#         'warnings').get(id) is not None else None
-#
-#
-# def gerate_return(warning):
-#     time = '{} - {}'.format(
-#         datetime.utcfromtimestamp(
-#             warning['start'] / 1000).strftime("%d.%m. %H:%M"),
-#         datetime.utcfromtimestamp(warning['end'] / 1000).strftime("%H:%M"))
-#
-#     return {'time': time,
-#             'description': warning['description'],
-#             'warning': True}
-
-
 def get_weather(lat=51.0536, lng=13.7408):
-    weather = forecastio.load_forecast(API_KEY, lat, lng)
-    return {'temperature': '{} °C'.format(weather.currently().temperature),
-            'summary': weather.currently().summary,
-            'icon': weather.currently().icon}
+    try:
+        weather = ForecastIO.ForecastIO(API_KEY,
+                                        units=ForecastIO.ForecastIO.UNITS_SI,
+                                        lang=ForecastIO.ForecastIO.LANG_GERMAN,
+                                        latitude=lat, longitude=lng)
+
+        if weather.has_currently() is True:
+            cw = FIOCurrently.FIOCurrently(weather)
+            return {'temperature': str(round(cw.temperature)),
+                    'summary': cw.summary,
+                    'icon': cw.icon}
+        else:
+            return {'temperature': '',
+                    'summary': '',
+                    'icon': ''}
+    except:
+        return {'temperature': '',
+                'summary': '',
+                'icon': ''}

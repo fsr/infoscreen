@@ -1,4 +1,4 @@
 Flask
 Flask-Misaka
 dvb
-python-forecastio
+forecastiopy
