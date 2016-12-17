@@ -1,10 +1,10 @@
 /*\
 |*| InfoScreen Front-End
 |*|
-|*| ask: lars@ifsr.de
+|*| ask: lars@ifsr.de or vogel@ifsr.de
 \*/
 
-var console = window.console;
+//var console = window.console;
 /*jslint browser: true*/
 /*globals $, InfoScreenManager*/
 
@@ -20,31 +20,34 @@ function reduceString(text, length) {
     } else {
         return text;
     }
-    
+
 }
 // loads new Apps
 var InfoScreenManager = function () {
     'use strict';
     var self = this;
 
-    $(document).bind('contextmenu', function (e) {
-        e.preventDefault();
-    });
+    //$(document).bind('contextmenu', function (e) {
+    //    e.preventDefault();
+    //});
 
     self.basepath = "/"; //"127.0.0.1:5000/";
     self.postfix = ""; //"";
 
-    self.newsRefreshTime = 600000; // all 10min
+    self.newsRefreshTime = 30000; // all 30 sec
     self.mealsRefreshTime = 6000000; // all 100min
     self.busRefreshTime = 60000; // evr min
     self.postillonRefreshTime = 600000; // all 10min
+    self.weatherRefreshTime = 300000; // all 5min
+    self.miscToggleTime = 30000; //evr 30sec
 
     self.postillonTicker = [];
     self.postillonAmount = 3;
     self.postillonDisplayedIDs = [];
     self.postillonTickerTime = 6000;
 
-    self.fadeTime = 600;
+    self.fadeTime = 0;
+    self.postillonFadeTime = 500;
 
     self.init();
 };
@@ -60,22 +63,34 @@ InfoScreenManager.prototype = {
         setInterval(function () {
             self.request("news", self.refreshNews);
         }, self.newsRefreshTime);
+
         self.request("meals", self.refreshMensa);
         setInterval(function () {
             self.request("meals", self.refreshMensa);
         }, self.mealsRefreshTime);
+
         self.request("stops", self.refreshBus);
         setInterval(function () {
             self.request("stops", self.refreshBus);
         }, self.busRefreshTime);
+
         self.request("postillon", self.refreshPostillon);
         setInterval(function () {
             self.request("postillon", self.refreshPostillon);
         }, self.postillonRefreshTime);
 
+        self.request("weather", self.refreshWeather);
+        setInterval(function () {
+            self.request("weather", self.refreshWeather);
+        }, self.weatherRefreshTime);
+
         setInterval(function () {
             self.updatePostillon();
         }, self.postillonTickerTime);
+
+        setInterval(function () {
+            self.miscToggle();
+        }, self.miscToggleTime);
     },
     request: function (ressource, callback) {
         'use strict';
@@ -98,6 +113,7 @@ InfoScreenManager.prototype = {
 
         if (html !== undefined && elem !== undefined) {
             if (elem.html() !== html) {
+              elem.html(html);
                 elem.fadeOut(self.fadeTime, function () {
                     elem.html(html);
                     elem.fadeIn(self.fadeTime);
@@ -167,14 +183,73 @@ InfoScreenManager.prototype = {
         }
         self.replace(elem, html, self);
     },
-    refreshWeather: function (response, self) {
-        'use strict';
-
-    },
     refreshPostillon: function (response, self) {
         'use strict';
         self.postillonTicker = response;
 
+    },
+    refreshWeather: function (response, self) {
+        'use strict';
+        var icon ="";
+        switch (response.icon) {
+        case "day-sunny":
+            icon = "wi-forecast-io-clear-day:";
+            break;
+        case "night-clear":
+            icon = "wi-forecast-io-clear-night";
+            break;
+        case "rain":
+            icon = "wi-forecast-io-rain";
+            break;
+        case "snow":
+            icon = "wi-forecast-io-snow";
+            break;
+        case "sleet":
+            icon = "wi-forecast-io-sleet";
+            break;
+        case "strong-wind":
+            icon = "wi-forecast-io-wind";
+            break;
+        case "fog":
+            icon = "wi-forecast-io-fog";
+            break;
+        case "cloudy":
+            icon = "wi-forecast-io-cloudy";
+            break;
+        case "day-cloudy":
+            icon = "wi-forecast-io-partly-cloudy-day";
+            break;
+        case "night-cloudy":
+            icon = "wi-forecast-io-partly-cloudy-night";
+            break;
+        case "hail":
+            icon = "wi-forecast-io-hail";
+            break;
+        case "thunderstorm":
+            icon = "wi-forecast-io-thunderstorm";
+            break;
+        case "tornado":
+            icon = "wi-forecast-io-tornado";
+            break;
+        }
+        if(icon ==""){
+          icon = "wi wi-forecast-io-" + response.icon;
+        } else {
+        icon = "wi " + icon;
+      }
+        $("#weather-icon").removeClass().addClass(icon);
+        $("#weather-temperature").html(response.temperature + "°C");
+        $("#weather-text").html(response.summary);
+    },
+    miscToggle: function () {
+        'use strict';
+        if ($('#postillon').css('display') == 'none'){
+          $('#weather').css('display','none');
+          $('#postillon').css('display','block');
+        } else {
+          $('#weather').css('display','block');
+          $('#postillon').css('display','none');
+        }
     },
     refreshBus: function (response, self) {
         'use strict';
@@ -275,7 +350,7 @@ InfoScreenManager.prototype = {
                 nextID = (self.postillonDisplayedIDs[self.postillonDisplayedIDs.length - 1] + 1) % self.postillonTicker.length;
             }
             if (self.postillonDisplayedIDs.length === amount) {
-                $("#postillon" + self.postillonDisplayedIDs[0]).slideUp(self.fadeTime, function () {
+                $("#postillon" + self.postillonDisplayedIDs[0]).slideUp(self.postillonFadeTime, function () {
                     $(this).remove();
                 });
                 self.postillonDisplayedIDs.shift();
@@ -289,8 +364,8 @@ InfoScreenManager.prototype = {
             html += "</p>";
             html = $(html);
             html.hide();
-            $("#misc > article").append(html);
-            html.slideDown(self.fadeTime);
+            $("#misc > #postillon").append(html);
+            html.slideDown(self.postillonFadeTime);
         }
     },
     updateTime: function () {

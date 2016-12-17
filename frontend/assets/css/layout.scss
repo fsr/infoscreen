@@ -9,7 +9,7 @@
     $mensa-highlight-color: $primary-color - 50;
     $right-padding-left-extra:3vh;// 40px;
     /*#476901*/
-    
+
     @mixin article-padding($left, $right, $up, $down) {}
     $misc-highlight-color: $primary-color - 50;
     $large-content-height: $large-content - $large-header;
@@ -22,6 +22,7 @@
         border-spacing: 0px;
         /*box-sizing: border-box;*/
     }
+    
     body {
         font-family: $body-font-family;
         background-color: $black;
@@ -29,12 +30,16 @@
             font-size: 7vh;
             font-weight: 200;
         }
+                   
         section#news {
             margin: 0px;
             padding-left: 0px;
             padding-right: $padding/2;
             padding-bottom: 0px;
             float: left;
+            hr {
+                border-bottom: thin solid #FFFFFF !important;
+            }
             header {
                 color: $news-highlight-color;
             }
@@ -88,7 +93,7 @@
             position: relative;
             vertical-align: bottom;
             margin-top: 0px;
-            
+
         }*/
             }
         }
@@ -177,7 +182,14 @@
             padding-top: $padding/2;
             padding-bottom: 0px;
             height: $small-content;
-            article {
+            article{
+                padding: $article-padding;
+                background-color: $misc-highlight-color;
+                padding-left: $article-padding;
+                height: $small-content - $padding/2;
+                overflow: hidden;
+            }
+            article#postillon { 
                 padding: $article-padding;
                 background-color: $misc-highlight-color;
                 padding-left: $article-padding;
@@ -200,6 +212,49 @@
                     text-align: left;
                     padding-bottom: 1.7vh;
                     margin-bottom: 0px;
+                }
+                
+            }
+            article#weather {
+                color: #FFFFFF;
+                text-align: left;
+                div {
+                    height: 100%;
+                    display: inline-block;
+                    i{
+                        font-size: 11em;
+                        display: inline-block; 
+                        text-align: left;
+                        margin-top: 0.7em; 
+                        margin-left: $padding + 2*$padding/3;
+                    }
+                }
+                div:nth-child(1){
+                    text-align: right;
+                    max-width: 50%;
+                    float: left;
+                }
+                div:nth-child(2){
+                    text-align: left;
+                    max-width: 45%;
+                    margin-left: 5%;
+                    float:left;
+                }
+                p {
+                    margin-top: 1.2em;
+                    font-weight: 200;
+                    display: inline-block;
+                    width: unset; 
+                    font-size: 7em;
+                    padding-bottom: 0px;
+                    margin-bottom: 0px;
+                } 
+                span {
+                    display: inline-block; 
+                    font-weight: 400;
+                    font-size: 1.4em;
+                    margin-top: -1em;
+                    margin-left: 0.2em;
                 }
             }
         }

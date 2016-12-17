@@ -12,6 +12,7 @@
 
     <link rel="stylesheet" href="assets/css/stylereset.css" />
     <link rel="stylesheet" type="text/css" href="assets/css/lib/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/fonts/weather-icons/css/weather-icons.min.css">
     <link rel="stylesheet" type="text/css" href="assets/css/lib/jquery-ui.min.css">
     <link rel="stylesheet" type="text/css" href="assets/css/lib/jquery-ui.structure.min.css">
     <link rel="stylesheet" type="text/css" href="assets/css/lib/jquery-ui.theme.min.css">
@@ -48,7 +49,7 @@
 
     <section class="large-4 medium-4 large_content" id="mensa">
         <article>
-          
+
         </article>
         <header>
             <h2>Mensaplan</h2>
@@ -67,15 +68,25 @@
             </article>
         </section>
         <section id="misc">
-            <article>
+            <article id="postillon" style="display:none">
                 <img src="assets/img/postillon.png" alt="Postillon Logo" />
-                
+
+            </article>
+            <article id="weather">
+              <div>
+                <i id="weather-icon" class=""></i>
+                </div>
+                <div>
+                <p id="weather-temperature">
+                </p>
+                <span id="weather-text"></span>
+                    </div>
             </article>
         </section>
     </section>
 
     <section class="large-12 medium-12" id="dvb">
-      
+
 
     </section>
 <script type="text/javascript">
@@ -94,7 +105,7 @@ function week(date) {
 	if(day==0) day = 7; // In ISO-8601, Sunday is 7, not 0
 	return Math.floor((dayOfTheYear(date)-day+10)/7);
 }
-    
+
     function check(i) {
     if (i < 10) {
         i = "0" + i;
