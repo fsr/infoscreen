@@ -43,10 +43,8 @@ The backend requires a working webserver so you might have to install one on you
 
 
 
-## Deployment
-
-### Setting up the Infoscreen
-#### Installing Base System
+## Setting up the Infoscreen
+### Installing Base System
 Installing the Base System is pretty easy and can be done in three simple steps:
 1.  Download the [latest release](https://github.com/debian-pi/raspbian-ua-netinst/releases/latest) of the [raspbian-ua-netinst](https://github.com/debian-pi/raspbian-ua-netinst) and flash it to the SD-Card
 2.  Copy `installer-config.txt` into `/` of the SD-Card
@@ -54,7 +52,7 @@ Installing the Base System is pretty easy and can be done in three simple steps:
 
 The last Step may take some time (ETA 90 Minutes)
 
-#### Configuration
+### Configuration
 Congratulations! You have successfully installed the Raspbian image! Now it's time to configure it. Therefore, log in as `root` at infoscreen.ifsr.de (you may use the IP instead of the hostname if there is an old Infoscreen instance still running). The password is `fsrberry`, as usual. You can also attach a screen and a keyboard to the Pi and do the configuration there.
 
 At first, run `apt-get update` and `apt-get dist-upgrade` to update the system.
@@ -66,8 +64,8 @@ Run `raspi-config` , overclock the Raspbery Pi to Medium (900MHz) and reboot
 Then, download, unpack and install the latest release of **python3**. This is necessary since Debians/Raspbians package management sucks and doesn't provide the required Python version (3.5+) for Wheezy ARMv6, unfortunately.
 
 ```
-wget https://www.python.org/ftp/python/3.5.2/Python-3.5.2.tgztar
-xzf Python-3.5.2.tgz
+wget https://www.python.org/ftp/python/3.5.2/Python-3.5.2.tgz
+tar xzf Python-3.5.2.tgz
 cd Python-3.5.2 && sed -ie 's/^#zlib/zlib/' Modules/Setup.dist
 ./configure
 make
