@@ -1,22 +1,19 @@
 {
-  "name": "electron-quick-start",
+  "name": "Infoscreen",
   "version": "1.0.0",
-  "description": "A minimal Electron application",
+  "description": "The information display of the iFSR",
   "main": "main.js",
   "scripts": {
     "start": "electron ."
   },
-  "repository": "https://github.com/electron/electron-quick-start",
+  "repository": "https://github.com/fsr/infoscreen",
   "keywords": [
-    "Electron",
-    "quick",
-    "start",
-    "tutorial",
-    "demo"
+    "Infoscreen"
   ],
-  "author": "GitHub",
-  "license": "CC0-1.0",
+  "author": "fsr",
+  "license": "MIT",
   "devDependencies": {
-    "electron": "^1.4.1"
+    "electron": "^1.4.1",
+    "jquery": "1.11.1"
   }
 }
