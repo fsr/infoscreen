@@ -1,0 +1,19 @@
+{
+  "name": "Infoscreen",
+  "version": "1.0.0",
+  "description": "The information display of the iFSR",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": "https://github.com/fsr/infoscreen",
+  "keywords": [
+    "Infoscreen"
+  ],
+  "author": "fsr",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^1.4.1",
+    "jquery": "1.11.1"
+  }
+}

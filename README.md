@@ -45,10 +45,11 @@ The backend requires a working webserver so you might have to install one on you
 
 ## Setting up the Infoscreen
 ### Installing Base System
-Installing the Base System is pretty easy and can be done in three simple steps:
-1.  Download the [latest release](https://github.com/debian-pi/raspbian-ua-netinst/releases/latest) of the [raspbian-ua-netinst](https://github.com/debian-pi/raspbian-ua-netinst) and flash it to the SD-Card
-2.  Copy `installer-config.txt` into `/` of the SD-Card
-3.  Connect the pi to the internet and power it up. The script will install the system
+Installing the Base System is pretty easy and can be done in three simple steps:  
+
+1.  Download the [latest release](https://github.com/debian-pi/raspbian-ua-netinst/releases/latest) of the [raspbian-ua-netinst](https://github.com/debian-pi/raspbian-ua-netinst) and flash it to the SD-Card  
+2.  Copy `installer-config.txt` into `/` of the SD-Card  
+3.  Connect the pi to the internet and power it up. The script will install the system  
 
 The last Step may take some time (ETA 90 Minutes)
 
