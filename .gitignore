@@ -14,3 +14,4 @@ __pycache__/
 /frontend/assets/css/stylereset.min.css
 /frontend/assets/src/InfoScreen.min.js
 /frontend/assets/src/InfoScreen_Tablet.min.js
+node_modules
