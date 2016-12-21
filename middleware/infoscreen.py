@@ -137,28 +137,33 @@ def weather():
     return json.dumps(utils.get_weather())
 
 
-@app.route("/zih")
-def play_zih_vid():
-    """
-    Play the 'Route to the ZIH' video.
-    """
-    command_play = ['DISPLAY=:0', 'sudo', '-u', 'pi', 'omxplayer', '/var/www/zihsd.mp4', '-r', '15', '>', '/dev/null']
-    # TODO: evtl stdout mit open(os.devnull) statt '>' ?
-    command_refresh = ['sudo', '-u', 'pi', '/usr/bin/xrefresh', '-display', ':0']
-    subprocess.run(command_play)
-    subprocess.run(command_refresh)
+# @app.route("/zih")
+# def play_zih_vid():
+#     """
+#     Play the 'Route to the ZIH' video.
+#     """
+#     command_play = ['DISPLAY=:0', 'sudo', '-u', 'pi', 'omxplayer',
+#                     '/var/www/zihsd.mp4', '-r', '15', '>', '/dev/null']
+#     # TODO: evtl stdout mit open(os.devnull) statt '>' ?
+#     command_refresh = ['sudo', '-u', 'pi',
+#                        '/usr/bin/xrefresh', '-display', ':0']
+#     subprocess.run(command_play)
+#     subprocess.run(command_refresh)
 
 
-@app.route("/gitpull")
-def git_pull():
-    command_reset = ['sudo', '-u', 'pi', 'git', '--git-dir=/home/pi/infoscreen/.git',
-                     '--work-tree=/home/pi/infoscreen', 'reset', '--hard']
-    command_pull = ['sudo', '-u', 'pi', 'git', '--git-dir=/home/pi/infoscreen/.git',
-                    '--work-tree=/home/pi/infoscreen', 'pull', 'origin', 'master']
-    subprocess.run(command_reset)
-    subprocess.run(command_pull)
-    restart()
-    render_infoscreen()
+# @app.route("/gitpull")
+# def git_pull():
+#     command_reset = ['sudo', '-u', 'pi', 'git',
+#                      '--git-dir=/home/pi/infoscreen/.git',
+#                      '--work-tree=/home/pi/infoscreen', 'reset', '--hard']
+#     command_pull = ['sudo', '-u', 'pi', 'git',
+#                     '--git-dir=/home/pi/infoscreen/.git',
+#                     '--work-tree=/home/pi/infoscreen', 'pull', 'origin',
+#                     'master']
+#     subprocess.run(command_reset)
+#     subprocess.run(command_pull)
+#     restart()
+#     render_infoscreen()
 
 
 @app.route("/version")
@@ -176,8 +181,9 @@ def commit_hash():
     Gets the latest commit hash from HEAD
     :return: The short commit hash.
     """
-    process = subprocess.run("git rev-parse HEAD".split(),  stdout=subprocess.PIPE)
-    return process.stdout[:7].decode("utf-8")
+    process = subprocess.run(["git", "rev-parse", "HEAD"],
+                             stdout=subprocess.PIPE)
+    return json.dumps(process.stdout.decode("utf-8").replace('\n', ''))
 
 
 if __name__ == "__main__":
