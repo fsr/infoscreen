@@ -65,10 +65,10 @@ Run `raspi-config` , overclock the Raspbery Pi to Medium (900MHz) and reboot
 Then, download, unpack and install the latest release of **python3**. This is necessary since Debians/Raspbians package management sucks and doesn't provide the required Python version (3.5+) for Wheezy ARMv6, unfortunately.
 
 ```
-wget https://www.python.org/ftp/python/3.5.2/Python-3.5.2.tgz
-tar xzf Python-3.5.2.tgz
-cd Python-3.5.2 && sed -ie 's/^#zlib/zlib/' Modules/Setup.dist
-./configure
+wget https://www.python.org/ftp/python/3.6.0/Python-3.6.0.tgz
+tar xzf Python-3.6.0.tgz
+cd Python-3.6.0 && sed -ie 's/^#zlib/zlib/' Modules/Setup.dist
+./configure --enable-optimizations
 make
 make test
 make install

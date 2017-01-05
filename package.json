@@ -1,6 +1,6 @@
 {
   "name": "Infoscreen",
-  "version": "1.0.0",
+  "version": "2.1.0",
   "description": "The information display of the iFSR",
   "main": "main.js",
   "scripts": {

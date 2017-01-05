@@ -164,26 +164,26 @@ def weather():
 #     subprocess.run(command_pull)
 #     restart()
 #     render_infoscreen()
-
-
-@app.route("/version")
-def version():
-    """
-    Gets the Version number of the Infoscreen.
-    :return: The Version number as String.
-    """
-    return json.dumps(APP_VERSION)
-
-
-@app.route("/hash")
-def commit_hash():
-    """
-    Gets the latest commit hash from HEAD
-    :return: The short commit hash.
-    """
-    process = subprocess.run(["git", "rev-parse", "HEAD"],
-                             stdout=subprocess.PIPE)
-    return json.dumps(process.stdout.decode("utf-8").replace('\n', ''))
+#
+#
+# @app.route("/version")
+# def version():
+#     """
+#     Gets the Version number of the Infoscreen.
+#     :return: The Version number as String.
+#     """
+#     return json.dumps(APP_VERSION)
+#
+#
+# @app.route("/hash")
+# def commit_hash():
+#     """
+#     Gets the latest commit hash from HEAD
+#     :return: The short commit hash.
+#     """
+#     process = subprocess.run(["git", "rev-parse", "HEAD"],
+#                              stdout=subprocess.PIPE)
+#     return json.dumps(process.stdout.decode("utf-8").replace('\n', ''))
 
 
 if __name__ == "__main__":
