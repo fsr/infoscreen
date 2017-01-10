@@ -60,16 +60,14 @@ At first, run `apt-get update` and `apt-get dist-upgrade` to update the system.
 
 Run `dpkg-reconfigure locales` and select the locales you want to use and set a standard locale
 
-Run `raspi-config` , overclock the Raspbery Pi to Medium (900MHz) and reboot
-
 Then, download, unpack and install the latest release of **python3**. This is necessary since Debians/Raspbians package management sucks and doesn't provide the required Python version (3.5+) for Wheezy ARMv6, unfortunately.
 
 ```
-wget https://www.python.org/ftp/python/3.6.0/Python-3.6.0.tgz
-tar xzf Python-3.6.0.tgz
-cd Python-3.6.0 && sed -ie 's/^#zlib/zlib/' Modules/Setup.dist
+wget https://www.python.org/ftp/python/3.5.2/Python-3.5.2.tgz
+tar xzf Python-3.5.2.tgz
+cd Python-3.5.2 && sed -ie 's/^#zlib/zlib/' Modules/Setup.dist
 ./configure --enable-optimizations
-make
+make -j4
 make test
 make install
 ```
@@ -79,6 +77,13 @@ Now would be an excellent time to get a coffee, do your homework or get some sle
 ```
 cd ..
 rm -rf Python-3.5.2*
+```
+
+It is time to install Node.js to use electron
+
+```
+curl -sL https://deb.nodesource.com/setup_7.x | sudo -E bash -
+apt install nodejs
 ```
 
 Add a new user named `pi` to the system. We recommend using the same password the root account has.
@@ -98,6 +103,7 @@ cd /home/pi
 git clone https://github.com/fsr/infoscreen.git
 cd infoscreen
 sudo pip3 install -r requirements.txt
+npm install
 ```
 
 TODO: Bürostatus  
