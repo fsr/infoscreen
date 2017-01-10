@@ -60,7 +60,7 @@ At first, run `apt-get update` and `apt-get dist-upgrade` to update the system.
 
 Run `dpkg-reconfigure locales` and select the locales you want to use and set a standard locale
 
-Then, download, unpack and install the latest release of **python3**. This is necessary since Debians/Raspbians package management sucks and doesn't provide the required Python version (3.5+) for Wheezy ARMv6, unfortunately.
+Then, download, unpack and install the latest release of **python3**. This is necessary since Debians/Raspbians package management sucks and doesn't provide the required Python version (3.5+) for Wheezy ARMv7, unfortunately.
 
 ```
 wget https://www.python.org/ftp/python/3.5.2/Python-3.5.2.tgz
@@ -110,6 +110,7 @@ TODO: Bürostatus
 TODO: Printerscript
 
 Copy the `backend.json.example` file in the middleware folder to `backend.json` and provide it with the required information.
--   copy infoscreen to /etc/init.d/ (sudo)
+-   run `sudo cp deployment/infoscreen /etc/init.d/`
+-   run `sudo update-rc.d enable infoscreen`
 -   run `sudo ./deployment/lightdm.sh` to set up lightdm-config
 -   run `sudo ./deployment/cron.sh` to setup all needed cron jobs
