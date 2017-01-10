@@ -58,7 +58,9 @@ Congratulations! You have successfully installed the Raspbian image! Now it's ti
 
 At first, run `apt-get update` and `apt-get dist-upgrade` to update the system.
 
-Run `dpkg-reconfigure locales` and select the locales you want to use and set a standard locale
+Run `dpkg-reconfigure locales` and select the locales you want to use and set a standard locale.
+
+Run `dpkg-reconfigure tzdata` and set the correct timezone.
 
 Then, download, unpack and install the latest release of **python3**. This is necessary since Debians/Raspbians package management sucks and doesn't provide the required Python version (3.5+) for Wheezy ARMv7, unfortunately.
 
