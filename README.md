@@ -6,8 +6,9 @@ All new version 2.1! :sparkles:
 
 This is the second iteration of the **iFSR Infoscreen** for the display in our office window which is still under development.
 
-
 ## Development Environment
+
+Please note, that the backend for the infoscreen has now been moved to the [Propaganda project](https://github.com/fsr/propaganda).
 
 If you want to work on this project, there are two possibilities:
 
