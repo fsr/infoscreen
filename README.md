@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/2625584/31773136-0ec09584-b4e2-11e7-8be5-2b74fede8504.jpg" />
+</p>
+
 # iFSR Infoscreen for the office Raspberry Pi
 
 [![githubissues](http://img.shields.io/github/issues/fsr/infoscreen.svg?style=flat)](https://github.com/fsr/infoscreen/issues)
