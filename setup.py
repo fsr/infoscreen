@@ -7,5 +7,6 @@ setup(
    author='revol-xut',
    author_email='tassilo.tanneberger@ifsr.de',
    packages=['middleware'],  #same as name
+   install_requires = [ 'dvb', 'Flask', 'Flask-Misaka', 'forecastiopy' ]
 )
 
