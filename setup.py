@@ -6,6 +6,6 @@ setup(
    description='monitor inside the fsr office',
    author='revol-xut',
    author_email='tassilo.tanneberger@ifsr.de',
-   packages=['fsr-infoscreen'],  #same as name
+   packages=['middleware'],  #same as name
 )
 
