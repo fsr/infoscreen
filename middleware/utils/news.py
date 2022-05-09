@@ -2,11 +2,11 @@ import urllib.request
 import json
 import os
 
-BASE_URL = ''
+BASE_URL = 'https://www.ifsr.de/news'
 
-with open(os.path.join(os.path.dirname(os.path.abspath(__file__)),'../backend.json'), 'r') as data:
-    temp_data = json.load(data)
-    BASE_URL = temp_data['BASE_URL']
+#with open(os.path.join(os.path.dirname(os.path.abspath(__file__)),'../backend.json'), 'r') as data:
+#    temp_data = json.load(data)
+#    #BASE_URL = temp_data['BASE_URL']
 
 md_news = []
 
@@ -18,7 +18,7 @@ def get_news():
     """
     if len(md_news) == 0:
 
-        url = BASE_URL + '/articles.php'
+        url = BASE_URL# + '/articles.php'
         try:
             news = json.loads(urllib.request.urlopen(
                 url).read().decode("UTF-8"))

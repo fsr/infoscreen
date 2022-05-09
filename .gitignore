@@ -1,5 +1,4 @@
 items.sqlite
-*.json
 
 # Vagrant
 .vagrant/

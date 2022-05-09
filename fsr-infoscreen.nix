@@ -2,7 +2,7 @@
 , pkgs
 , buildPythonApplication
 , buildPythonPackage
-, fetchFromGitHub 
+, fetchFromGitHub
 , pyproj
 , numpy
 , requests
@@ -14,44 +14,40 @@
 }:
 let
 
-dvb = buildPythonPackage rec {
-  pname = "dvb";
-  version = "1.2.0";
+  dvb = buildPythonPackage rec {
+    pname = "dvb";
+    version = "1.2.0";
 
-  src = dvb-source;
+    src = dvb-source;
 
-  doCheck = false;
-  propagatedBuildInputs = [ pyproj numpy requests ];
-};
+    doCheck = false;
+    propagatedBuildInputs = [ pyproj numpy requests ];
+  };
 
-flask-misaka = buildPythonPackage rec {
-  pname = "flask-misaka";
-  version = "1.0.0";
+  flask-misaka = buildPythonPackage rec {
+    pname = "flask-misaka";
+    version = "1.0.0";
 
-  src = flask-misaka-source;
+    src = flask-misaka-source;
 
-  doCheck = false;
-  propagatedBuildInputs = [ flask misaka ];
-};
+    doCheck = false;
+    propagatedBuildInputs = [ flask misaka ];
+  };
 
-in buildPythonApplication rec {
+in
+buildPythonApplication rec {
   pname = "fsr-infoscreen";
   version = "2.1.0";
-  
+
   src = ./.;
 
-  propagatedBuildInputs = [ flask python-forecastio flask-misaka dvb ];
-  
-  installPhase = ''
-    mkdir -p $out/build/middleware
-    install -Dm755 middleware/infoscreen.py $out/build/middleware
-    mkdir -p $out/share/infoscreen
-    wrapPythonPrograms
-  '';
+  buildInputs = [ (pkgs.python39.withPackages (ps: with ps; [ flask python-forecastio flask-misaka dvb ])) ];
+  propagatedBuildInputs = [ (pkgs.python39.withPackages (ps: with ps; [ flask python-forecastio flask-misaka dvb ])) ];
 
-  makeWrapperArgs = [
-    "--prefix PYTHONPATH : $out/share/fsr-infoscreen"
-  ];
+  installPhase = ''
+    mkdir -p $out/bin
+    cp -r ./middleware/* $out/bin
+  '';
 
   meta = with lib; {
     description = "A minimal python server which supplies the fsr infoscreen with information.";

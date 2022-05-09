@@ -15,20 +15,22 @@
     };
 
   };
-  outputs = { self, nixpkgs, utils, dvb-source, flask-misaka-source}: 
-  utils.lib.eachDefaultSystem (system: let
-    pkgs = nixpkgs.legacyPackages.${system};
-    infoboard = pkgs.python39Packages.callPackage ./fsr-infoscreen.nix {
-      pkgs = pkgs;
-      dvb-source = dvb-source;
-      flask-misaka-source = flask-misaka-source;
-    };
-    in rec {
-      checks = packages;
-      packages.fsr-infoscreen = infoboard;
-      overlay = (final: prev: {
-        fsr-infoscreen = infoboard;
-      });
-    }
-   );
+  outputs = { self, nixpkgs, utils, dvb-source, flask-misaka-source }:
+    utils.lib.eachDefaultSystem (system:
+      let
+        pkgs = nixpkgs.legacyPackages.${system};
+        infoboard = pkgs.python39Packages.callPackage ./fsr-infoscreen.nix {
+          pkgs = pkgs;
+          dvb-source = dvb-source;
+          flask-misaka-source = flask-misaka-source;
+        };
+      in
+      rec {
+        checks = packages;
+        packages.infoscreen = infoboard;
+        overlay = (final: prev: {
+          fsr-infoscreen = infoboard;
+        });
+      }
+    );
 }
