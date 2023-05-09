@@ -1,17 +1,30 @@
-items.sqlite
-*.json
+src/apiKey.js
 
-# Vagrant
-.vagrant/
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
 
-# Ignore python cache folder
-__pycache__/
-*.pyc
-/frontend/assets/css/layout.css
-/frontend/assets/css/layout.css.map
-/frontend/assets/css/layout_tablet.css
-/frontend/assets/css/layout_tablet.css.map
-/frontend/assets/css/stylereset.min.css
-/frontend/assets/src/InfoScreen.min.js
-/frontend/assets/src/InfoScreen_Tablet.min.js
 node_modules
+.DS_Store
+dist
+dist-ssr
+coverage
+*.local
+
+/cypress/videos/
+/cypress/screenshots/
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?

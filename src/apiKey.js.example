@@ -1,0 +1,2 @@
+// get from https://openweathermap.org/api
+export default "xxxx";

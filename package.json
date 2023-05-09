@@ -1,19 +1,18 @@
 {
-  "name": "Infoscreen",
-  "version": "2.1.0",
-  "description": "The information display of the iFSR",
-  "main": "main.js",
+  "name": "infoscreen",
+  "version": "0.0.0",
+  "private": true,
   "scripts": {
-    "start": "electron ."
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   },
-  "repository": "https://github.com/fsr/infoscreen",
-  "keywords": [
-    "Infoscreen"
-  ],
-  "author": "fsr",
-  "license": "MIT",
+  "dependencies": {
+    "vue": "^3.2.47",
+    "weeknumber": "^1.2.1"
+  },
   "devDependencies": {
-    "electron": "^1.4.1",
-    "jquery": "1.11.1"
+    "@vitejs/plugin-vue": "^4.2.1",
+    "vite": "^4.3.4"
   }
 }

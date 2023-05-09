@@ -1,8 +1,0 @@
-preset=server
-packages=nano,curl,omxplayer,lightdm,git,raspi-config,sudo,xserver-xorg,xinit,tmux,xserver-xorg-video-fbdev,snmp,snmp-mibs-downloader,vim,apt-utils,unzip,gcc,g++,make,libssl-dev,zlib1g-dev,lsb-release,libffi-dev,xdotool,htop,xz-utils,libxss-dev,libgtkextra-dev,libgconf2-dev,libnss3,libasound2,libxtst-dev,libxss1,x11-utils
-release=jessie
-hostname=infoscreen
-domainname=ifsr.de
-rootpw=fsrberry
-online_config= # URL to extra config that will be executed after installer-config.txt
-usbroot= # set to 1 to install to first USB disk
